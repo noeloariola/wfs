@@ -9,10 +9,10 @@ import Carousel from "@/components/elements/carousel";
 // Banner images for carousel
 const bannerImages = [
   "/app/home-banner.jpg",
-  "/app/featured_arrangement/R12A.jpeg",
-  "/app/featured_arrangement/R14.jpg",
-  "/app/featured_arrangement/S9RO.jpg",
-  "/app/featured_arrangement/T3.jpg"
+  "/app/featured_arrangement/ROSE25-1/ROSE25-1.1.jpg",
+  "/app/featured_arrangement/REDBLK-1/REDBLK-1.1.jpg",
+  "/app/featured_arrangement/SUN12-1/SUN12-1.1.jpg",
+  "/app/featured_arrangement/T3-1/T3-1.1.jpg"
 ];
 
 // YouTube video data
