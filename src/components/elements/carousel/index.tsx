@@ -58,7 +58,7 @@ export default function Carousel({
         {/* Overlay for text */}
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-white font-bold drop-shadow-md text-4xl sm:text-5xl md:text-7xl duration-300 hover:scale-110">
-            Wel's Flower Shop
+            Wel&#39;s Flower Shop
           </span>
         </div>
       </div>
