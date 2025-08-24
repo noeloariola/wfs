@@ -1,6 +1,41 @@
 
-export const headerLinks: string[] = [
-    'Home', 'Bouquet', 'Add-ons', 'Gifts', 'Centerpieces', 'Wedding', 'Inaugural Standee', 'Funeral & Sympathy'
+export const headerLinks: {title: string, href: string}[] = [
+  {
+    title: 'Home',
+    href: ''
+  },
+  {
+    title: 'Bouquet',
+    href: '/bouquets'
+  },
+  {
+    title: 'Add-ons',
+    href: '/add-ons'
+  },
+  {
+    title: 'Gifts',
+    href: '/gifts'
+  },
+  {
+    title: 'Centerpieces',
+    href: '/centerpieces'
+  },
+  {
+    title: 'Wedding',
+    href: '/weddings'
+  },
+  {
+    title: 'Inaugural Standee',
+    href: '/inaugural-standee'
+  },
+  {
+    title: 'Funeral & Sympathy',
+    href: '/funeral-sympathy'
+  },
+  {
+    title: 'Videos',
+    href: '/videos'
+  }
 ]
 
 export interface ArrangementData {
