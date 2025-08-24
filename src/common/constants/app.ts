@@ -38,57 +38,56 @@ export const headerLinks: {title: string, href: string}[] = [
   }
 ]
 
+export type ArrangementCategory = 'bouquet' | 'add-on' | 'gift' | 'centerpiece' | 'wedding' | 'inaugural-standee' | 'funeral-sympathy';
 export interface ArrangementData {
   id: string;
   title: string;
   mainImage: string;
   images: string[];
   description: string;
+  category?: ArrangementCategory;
 }
 
 export const featuredArrangements: ArrangementData[] = [
   {
-    id: 'spring-bouquet',
-    title: 'A3',
-    mainImage: '/app/featured_arrangement/R12A.jpeg',
+    id: 'rose-collection',
+    title: 'SUN14-1',
+    mainImage: '/app/featured_arrangement/ROSEYLW14-1/ROSEYLW14-1.1.jpg',
     images: [
-      '/app/featured_arrangement/R12A.jpeg',
-      '/app/featured_arrangement/R12A_2.jpg',
-      '/app/featured_arrangement/R12A_3.jpg'
+      '/app/featured_arrangement/ROSEYLW14-1/ROSEYLW14-1.1.jpg',
+      '/app/featured_arrangement/ROSEYLW14-1/ROSEYLW14-1.2.jpg',
     ],
-    description: 'A romantic mix of red and baby pink roses'
+    description: 'A burst of yellow happiness',
+    category: 'bouquet'
   },
   {
-    id: 'rose-collection',
-    title: 'R14',
-    mainImage: '/app/featured_arrangement/R14.jpg',
+    id: 'spring-bouquet',
+    title: 'REDPNK20-#1',
+    mainImage: '/app/featured_arrangement/REDPNK20-1/REDPNK20-1.1.jpg',
     images: [
-      '/app/featured_arrangement/R14.jpg',
-      '/app/featured_arrangement/R14_2.jpg',
-      '/app/featured_arrangement/R14_3.jpg'
+      '/app/featured_arrangement/REDPNK20-1/REDPNK20-1.1.jpg'
     ],
-    description: 'A burst of yellow happiness'
+    description: 'A romantic mix of red and baby pink roses',
+    category: 'bouquet'
   },
   {
     id: 'tropical-paradise',
-    title: 'S9RO',
-    mainImage: '/app/featured_arrangement/S9RO.jpg',
+    title: 'SUN12-#1',
+    mainImage: '/app/featured_arrangement/SUN12-1/SUN12-1.1.jpg',
     images: [
-      '/app/featured_arrangement/S9RO.jpg',
-      '/app/featured_arrangement/S9RO_2.jpg',
-      '/app/featured_arrangement/S9RO_3.jpg'
+      '/app/featured_arrangement/SUN12-1/SUN12-1.1.jpg'
     ],
-    description: 'Sunshine wrapped in black and gold'
+    description: 'Sunshine wrapped in black and gold',
+    category: 'bouquet'
   },
   {
     id: 'Pang Bading',
-    title: 'T3',
-    mainImage: '/app/featured_arrangement/T3.jpg',
+    title: 'T3-#1',
+    mainImage: '/app/featured_arrangement/T3-1/T3-1.1.jpg',
     images: [
-      '/app/featured_arrangement/T3.jpg',
-      '/app/featured_arrangement/T3_2.jpg',
-      '/app/featured_arrangement/T3_3.jpg'
+      '/app/featured_arrangement/T3-1/T3-1.1.jpg'
     ],
-    description: 'A vibrant tulip bouquet, bursting with cheerful color, fresh charm, and elegant grace'
+    description: 'A vibrant tulip bouquet, bursting with cheerful color, fresh charm, and elegant grace',
+    category: 'bouquet'
   }
 ]
