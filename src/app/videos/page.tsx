@@ -1,10 +1,10 @@
 "use client";
 
-import { use, useState } from "react"
+import { useState } from "react"
 
 export default function VideosPage() {
 
-    const [ videos, setVideos ] = useState([
+    const [ videos ] = useState([
         {
             id: "4E-HjMycMkg",
             title: "50pcs Purple Carnation",
@@ -35,9 +35,6 @@ export default function VideosPage() {
             title: "Code: TR12-01",
             description: "12 Pink Tulips"
         }
-
-
-        
 
     ])
 

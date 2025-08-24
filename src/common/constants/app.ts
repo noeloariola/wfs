@@ -2,7 +2,7 @@
 export const headerLinks: {title: string, href: string}[] = [
   {
     title: 'Home',
-    href: ''
+    href: '/'
   },
   {
     title: 'Bouquet',
