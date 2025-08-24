@@ -54,9 +54,9 @@ export default function Header() {
       <nav className="hidden md:flex justify-center w-full">
         <ul className="flex space-x-8">
           {headerLinks.map((link) => (
-            <li key={link}>
-              <Link href={link} className="hover:text-gray-300 transition-colors">
-                {link}
+            <li key={link.href}>
+              <Link href={link.href} className="hover:text-gray-300 transition-colors">
+                {link.title}
               </Link>
             </li>
           ))}
@@ -72,13 +72,13 @@ export default function Header() {
         <div className="flex flex-col items-center justify-center h-full">
           <ul className="flex flex-col space-y-8 text-center">
             {headerLinks.map((link) => (
-              <li key={link}>
+              <li key={link.href}>
                 <Link
-                  href={link}
+                  href={link.href}
                   className="text-xl hover:text-gray-300 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {link}
+                  {link.title}
                 </Link>
               </li>
             ))}
