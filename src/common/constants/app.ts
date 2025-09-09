@@ -46,6 +46,8 @@ export interface ArrangementData {
   images: string[];
   description: string;
   category?: ArrangementCategory;
+  price?: number;
+  discountPrice?: number;
 }
 
 export const featuredArrangements: ArrangementData[] = [
