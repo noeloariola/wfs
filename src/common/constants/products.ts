@@ -11,6 +11,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/ROSEYLW14-1/ROSEYLW14-1.2.jpg',
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'spring-bouquet',
@@ -20,6 +22,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/REDPNK20-1/REDPNK20-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'tropical-paradise',
@@ -29,6 +33,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/SUN12-1/SUN12-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 2600,
+    showPrice: true
   },
   {
     id: 'tulipt31',
@@ -38,6 +44,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/T3-1/T3-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'CRNTION12-#1',
@@ -47,6 +55,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/CRNTION12-1/CRNTION12-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'SUN14-#1',
@@ -56,6 +66,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/SUN14-1/SUN14-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'REDBLK-#1',
@@ -65,6 +77,9 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/REDBLK-1/REDBLK-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 2250,
+    discountPrice: 350,
+    showPrice: true
   },
   {
     id: 'ROSE25-#1',
@@ -74,7 +89,60 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/ROSE25-1/ROSE25-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
+  {
+    id: 'CRNTION-PC1-1-#1',
+    title: 'CRNTION-PC1-1-1',
+    mainImage: '/app/arrangements/bouquets/CRNTION-PC1-1/CRNTION-PC1-1.1.jpg',
+    images: [
+      '/app/arrangements/bouquets/CRNTION-PC1-1/CRNTION-PC1-1.1.jpg',
+      '/app/arrangements/bouquets/CRNTION-PC1-1/CRNTION-PC1-1.2.jpg',
+      '/app/arrangements/bouquets/CRNTION-PC1-1/CRNTION-PC1-1.3.jpg',
+    ],
+    description: 'Price: available soon',
+    price: 190,
+    discountPrice: 0,
+    showPrice: true
+  },
+
+  {
+    id: 'CRNTION-PC3-1-#1',
+    title: 'CRNTION-PC3-1',
+    mainImage: '/app/arrangements/bouquets/CRNTION-PC3-1/CRNTION-PC3-1.1.jpg',
+    images: [
+      '/app/arrangements/bouquets/CRNTION-PC3-1/CRNTION-PC3-1.1.jpg',
+      '/app/arrangements/bouquets/CRNTION-PC3-1/CRNTION-PC3-1.2.jpg'
+    ],
+    description: 'Price: available soon',
+    price: 450,
+    discountPrice: 0,
+    showPrice: true
+  },
+
+  {
+    id: 'ROSE-PC1-1-#1',
+    title: 'ROSE-PC1-1-1',
+    mainImage: '/app/arrangements/bouquets/ROSE-PC3-1/ROSE-PC3-1.1.jpg',
+    images: [
+      '/app/arrangements/bouquets/ROSE-PC3-1/ROSE-PC3-1.1.jpg',
+      '/app/arrangements/bouquets/ROSE-PC3-1/ROSE-PC3-1.2.jpg'
+    ],
+    description: 'Price: available soon',
+    price: 450,
+    discountPrice: 0,
+    showPrice: true
+  },
+
+
+
+
+
+
+
+
+
   {
     id: 'CRNTION-G2',
     title: 'CRNTION-G2',
@@ -83,6 +151,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/CRNTION-G2/CRNTION-G2.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'REDPNK12-#2',
@@ -92,6 +162,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/REDPNK12-2/REDPNK12-2.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'SUN1-#1',
@@ -101,6 +173,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/SUN1-1/SUN1-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'PNK40',
@@ -110,6 +184,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/PNK40/PNK40.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'GER-#00',
@@ -119,6 +195,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/GER-00/GER-00.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'CRNTION-#1',
@@ -128,6 +206,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/CRNTION-1/CRNTION-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'SUN3-#1',
@@ -137,6 +217,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/SUN3-1/SUN3-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'REDGLD-#1',
@@ -146,6 +228,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/REDGLD-1/REDGLD-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'REDPNK10-#1',
@@ -155,6 +239,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/REDPNK10-1/REDPNK10-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'REDWHT10-#1',
@@ -164,6 +250,8 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/REDWHT10-1/REDWHT10-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   },
   {
     id: 'ROSE36-#1',
@@ -173,5 +261,20 @@ export const Boquets: ArrangementData[] = [
       '/app/arrangements/bouquets/ROSE36-1/ROSE36-1.1.jpg'
     ],
     description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
+  },
+  {
+    id: 'SPRYPNK16-1',
+    title: 'SPRYPNK16-#1',
+    mainImage: '/app/arrangements/bouquets/SPRYPNK16-1/SPRYPNK16-1.1.jpg',
+    images: [
+      '/app/arrangements/bouquets/SPRYPNK16-1/SPRYPNK16-1.1.jpg',
+      '/app/arrangements/bouquets/SPRYPNK16-1/SPRYPNK16-1.2.jpg',
+      '/app/arrangements/bouquets/SPRYPNK16-1/SPRYPNK16-1.3.jpg'
+    ],
+    description: 'Price: available soon',
+    price: 5000,
+    showPrice: false
   }
 ]

@@ -48,6 +48,7 @@ export interface ArrangementData {
   category?: ArrangementCategory;
   price?: number;
   discountPrice?: number;
+  showPrice?: boolean;
 }
 
 export const featuredArrangements: ArrangementData[] = [
@@ -60,7 +61,8 @@ export const featuredArrangements: ArrangementData[] = [
       '/app/featured_arrangement/ROSEYLW14-1/ROSEYLW14-1.2.jpg',
     ],
     description: 'A burst of yellow happiness',
-    category: 'bouquet'
+    category: 'bouquet',
+    showPrice: false
   },
   {
     id: 'spring-bouquet',
@@ -70,7 +72,8 @@ export const featuredArrangements: ArrangementData[] = [
       '/app/featured_arrangement/REDPNK20-1/REDPNK20-1.1.jpg'
     ],
     description: 'A romantic mix of red and baby pink roses',
-    category: 'bouquet'
+    category: 'bouquet',
+    showPrice: false
   },
   {
     id: 'tropical-paradise',
@@ -80,7 +83,8 @@ export const featuredArrangements: ArrangementData[] = [
       '/app/featured_arrangement/SUN12-1/SUN12-1.1.jpg'
     ],
     description: 'Sunshine wrapped in black and gold',
-    category: 'bouquet'
+    category: 'bouquet',
+    showPrice: false
   },
   {
     id: 'Pang Bading',
@@ -90,6 +94,7 @@ export const featuredArrangements: ArrangementData[] = [
       '/app/featured_arrangement/T3-1/T3-1.1.jpg'
     ],
     description: 'A vibrant tulip bouquet, bursting with cheerful color, fresh charm, and elegant grace',
-    category: 'bouquet'
+    category: 'bouquet',
+    showPrice: false
   }
 ]
