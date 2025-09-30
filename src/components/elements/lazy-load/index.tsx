@@ -22,14 +22,16 @@ export default function LazyLoad({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const node = ref.current;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasIntersected) {
           setIsVisible(true);
           setHasIntersected(true);
           // Once we've loaded, we can disconnect the observer
-          if (ref.current) {
-            observer.unobserve(ref.current);
+          if (node) {
+            observer.unobserve(node);
           }
         }
       },
@@ -39,13 +41,13 @@ export default function LazyLoad({
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (node) {
+        observer.unobserve(node);
       }
     };
   }, [threshold, rootMargin, hasIntersected]);

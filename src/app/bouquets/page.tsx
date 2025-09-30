@@ -18,7 +18,7 @@ export default function BouquetsPage() {
         const value = e.target.value;
         setPriceFilter(value);
 
-        let sortedProducts = [...Boquets];
+        const sortedProducts = [...Boquets];
         if (value === "low") {
             sortedProducts.sort((a, b) => (a.price || 0) - (b.price || 0));
         } else if (value === "high") {
@@ -62,7 +62,7 @@ export default function BouquetsPage() {
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {products.map((arrangement, index) => (
+                {products.map((arrangement) => (
                     <LazyLoad 
                         key={arrangement.id}
                         threshold={0.1}
