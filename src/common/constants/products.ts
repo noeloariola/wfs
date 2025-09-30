@@ -134,6 +134,45 @@ export const Boquets: ArrangementData[] = [
     discountPrice: 0,
     showPrice: true
   },
+  {
+    id: 'ROSE-PC3-2-#1',
+    title: 'ROSE-PC3-2-1',
+    mainImage: '/app/arrangements/bouquets/ROSE-PC3-2/ROSE-PC3-2.1.jpg',
+    images: [
+      '/app/arrangements/bouquets/ROSE-PC3-2/ROSE-PC3-2.1.jpg',
+      '/app/arrangements/bouquets/ROSE-PC3-2/ROSE-PC3-2.2.jpg'
+    ],
+    description: 'Price: available soon',
+    price: 600,
+    discountPrice: 0,
+    showPrice: true
+  },
+  {
+    id: 'SUNFLR-PC3-1-#1',
+    title: 'SUNFLR-PC3-1-1',
+    mainImage: '/app/arrangements/bouquets/SUNFLR-PC3-1/SUNFLR-PC3-1.1.jpg',
+    images: [
+      '/app/arrangements/bouquets/SUNFLR-PC3-1/SUNFLR-PC3-1.1.jpg',
+      '/app/arrangements/bouquets/SUNFLR-PC3-1/SUNFLR-PC3-1.2.jpg'
+    ],
+    description: 'Price: available soon',
+    price: 5000,
+    discountPrice: 0,
+    showPrice: false
+  },
+  {
+    id: 'SUNFLR-PC5-1-#1',
+    title: 'SUNFLR-PC5-1-1',
+    mainImage: '/app/arrangements/bouquets/SUNFLR-PC5-1/SUNFLR-PC5-1.1.jpg',
+    images: [
+      '/app/arrangements/bouquets/SUNFLR-PC5-1/SUNFLR-PC5-1.1.jpg',
+      '/app/arrangements/bouquets/SUNFLR-PC5-1/SUNFLR-PC5-1.2.jpg'
+    ],
+    description: 'Price: available soon',
+    price: 5000,
+    discountPrice: 0,
+    showPrice: false
+  },
 
 
 
