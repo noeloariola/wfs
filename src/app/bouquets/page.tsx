@@ -11,6 +11,22 @@ export default function BouquetsPage() {
     const [selectedArrangement, setSelectedArrangement] = useState<typeof Boquets[0] | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const [products, setProducts] = useState(Boquets);
+    const [priceFilter, setPriceFilter] = useState("");
+
+    const handlePriceFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const value = e.target.value;
+        setPriceFilter(value);
+
+        let sortedProducts = [...Boquets];
+        if (value === "low") {
+            sortedProducts.sort((a, b) => (a.price || 0) - (b.price || 0));
+        } else if (value === "high") {
+            sortedProducts.sort((a, b) => (b.price || 0) - (a.price || 0));
+        }
+        setProducts(sortedProducts);
+    };
+
     const openModal = (arrangement: typeof Boquets[0]) => {
         setSelectedArrangement(arrangement);
         setIsModalOpen(true);
@@ -35,8 +51,8 @@ export default function BouquetsPage() {
                 />
                 <select
                     className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 md:w-48"
-                    // value={priceFilter}
-                    // onChange={handlePriceFilterChange}
+                    value={priceFilter}
+                    onChange={handlePriceFilterChange}
                 >
                     <option value="">Sort by price</option>
                     <option value="high">High to Low</option>
@@ -46,7 +62,7 @@ export default function BouquetsPage() {
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {Boquets.map((arrangement, index) => (
+                {products.map((arrangement, index) => (
                     <LazyLoad 
                         key={arrangement.id}
                         threshold={0.1}
