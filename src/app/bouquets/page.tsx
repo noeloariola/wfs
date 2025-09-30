@@ -70,7 +70,9 @@ export default function BouquetsPage() {
                                 />
                             </div>
                             <h3 className="text-lg font-semibold text-gray-800 mb-2">{arrangement.title}</h3>
-                            <p className="text-sm text-gray-600 text-center"><s>₱{arrangement.price}</s> &nbsp; ₱{(arrangement.price || 0) - (arrangement.discountPrice || 0)}</p>
+                            {
+                                arrangement.showPrice && (<p className="text-sm text-gray-600 text-center"> ₱{(arrangement.price || 0) - (arrangement.discountPrice || 0)} &nbsp; <s>{arrangement.discountPrice && arrangement.discountPrice > 0 ? `₱` + arrangement.price : '' }</s></p> )
+                            } 
                         </div>
                     </LazyLoad>
                 ))}
