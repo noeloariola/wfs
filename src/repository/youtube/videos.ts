@@ -1,8 +1,11 @@
 import jsonData from './index.json'  assert { type: "json" }; // optional in ESM
-import { ArrangementData } from '@/common/constants/app';
-
+export interface VideoData {
+  id: string;
+  title: string;
+  description: string;
+}
 
 export const GetVideos = () => {
-  const videos: ArrangementData[] = jsonData as unknown as any[];
+  const videos: VideoData[] = jsonData as unknown as VideoData[]
   return videos;
 }
