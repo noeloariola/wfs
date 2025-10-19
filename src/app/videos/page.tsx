@@ -1,42 +1,11 @@
 "use client";
 
+import { GetVideos } from "@/repository/youtube/videos";
 import { useState } from "react"
 
 export default function VideosPage() {
 
-    const [ videos ] = useState([
-        {
-            id: "4E-HjMycMkg",
-            title: "50pcs Purple Carnation",
-            description: "Big bouquet of purple carnations"
-        },
-        {
-            id: "LkPz1f4H4JE",
-            title: "Code: ASSR-01",
-            description: "Beautiful assorted flowers"
-        },
-        {
-            id: "0D7ychvHz_w",
-            title: "Code: T3",
-            description: "Yellow and Pink Tulips"
-        },
-        {
-            id: "4yhHUzhNFjc",
-            title: "Code: R12",
-            description: "1 Dozen White Roses"
-        },
-        {
-            id: "728tCA3nVw0",
-            title: "Code: NP1",
-            description: "A Touch of Fuchsia: Hand-Sprayed Roses "
-        },
-        {
-            id: "4jTwa4xh_tk",
-            title: "Code: TR12-01",
-            description: "12 Pink Tulips"
-        }
-
-    ])
+    const [ videos ] = useState(GetVideos());
 
     return (
         <div className="w-full max-w-7xl mx-auto my-8">
