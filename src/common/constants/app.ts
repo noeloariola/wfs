@@ -39,6 +39,11 @@ export const headerLinks: {title: string, href: string}[] = [
 ]
 
 export type ArrangementCategory = 'bouquet' | 'add-on' | 'gift' | 'centerpiece' | 'wedding' | 'inaugural-standee' | 'funeral-sympathy';
+export enum ColorType {
+  ORGINAL = 'original',
+  COLORED =  'sprayed or dyed',
+  UNDEFINED = 'undefined'
+}
 export interface ArrangementData {
   id: string;
   title: string;
@@ -46,6 +51,7 @@ export interface ArrangementData {
   images: string[];
   description: string;
   category?: ArrangementCategory;
+  colorType?: ColorType | undefined;
   price?: number;
   discountPrice?: number;
   showPrice?: boolean;

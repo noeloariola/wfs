@@ -6,12 +6,13 @@ import LazyLoad from "@/components/elements/lazy-load";
 import Placeholder from "@/components/elements/placeholder";
 import Image from "next/image";
 import { useState } from "react";
+import { GetBouquets } from "@/repository/bouquet/bouquets";
 
 export default function BouquetsPage() {
     const [selectedArrangement, setSelectedArrangement] = useState<typeof Boquets[0] | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [products, setProducts] = useState(Boquets);
+    const [products, setProducts] = useState(GetBouquets());
     const [priceFilter, setPriceFilter] = useState("");
 
     const handlePriceFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
