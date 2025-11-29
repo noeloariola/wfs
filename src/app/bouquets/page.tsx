@@ -19,11 +19,15 @@ export default function BouquetsPage() {
         const value = e.target.value;
         setPriceFilter(value);
 
-        const sortedProducts = [...Boquets];
+        const sortedProducts = [...GetBouquets()];
         if (value === "low") {
-            sortedProducts.sort((a, b) => (a.price || 0) - (b.price || 0));
+            sortedProducts.sort((a, b) => ((a.price || 0) - (a.discountPrice || 0)) - ((b.price || 0) - (b.discountPrice || 0)));
         } else if (value === "high") {
-            sortedProducts.sort((a, b) => (b.price || 0) - (a.price || 0));
+            sortedProducts.sort((a, b) => ((b.price || 0) - (b.discountPrice || 0)) - ((a.price || 0) - (a.discountPrice || 0)));
+        } else {
+            // Reset to original order when "Sort by price" is selected
+            setProducts(GetBouquets());
+            return;
         }
         setProducts(sortedProducts);
     };

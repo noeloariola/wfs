@@ -54,6 +54,7 @@ export interface ArrangementData {
   colorType?: ColorType | undefined;
   price?: number;
   discountPrice?: number;
+  sellingPrice?: number;
   showPrice?: boolean;
   flowers?: string[]
 }
@@ -69,7 +70,7 @@ export const featuredArrangements: ArrangementData[] = [
     ],
     description: 'A burst of yellow happiness',
     category: 'bouquet',
-    showPrice: false
+    showPrice: false,
   },
   {
     id: 'spring-bouquet',
