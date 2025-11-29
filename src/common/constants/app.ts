@@ -55,6 +55,7 @@ export interface ArrangementData {
   price?: number;
   discountPrice?: number;
   showPrice?: boolean;
+  flowers?: string[]
 }
 
 export const featuredArrangements: ArrangementData[] = [
