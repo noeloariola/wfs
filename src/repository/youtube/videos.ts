@@ -1,4 +1,4 @@
-import jsonData from './index.json'  assert { type: "json" }; // optional in ESM
+import jsonData from './index.json' with { type: "json" }; // optional in ESM
 export interface VideoData {
   id: string;
   title: string;
