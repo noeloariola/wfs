@@ -74,19 +74,19 @@
     "images": [
       "/app/arrangements/bouquets/REDPNK20-1/REDPNK20-1.1.jpg"
     ],
-    "description": "20 PCS Local Roses",
+    "description": "20 PCS Roses",
     "price": 2600,
     "showPrice": true,
     "flowers": ["roses"]
   },
   {
     "id": "tropical-paradise",
-    "title": "SUN12-#1",
+    "title": "SUN12-1",
     "mainImage": "/app/arrangements/bouquets/SUN12-1/SUN12-1.1.jpg",
     "images": [
       "/app/arrangements/bouquets/SUN12-1/SUN12-1.1.jpg"
     ],
-    "description": "Price: available soon",
+    "description": "9PCS Sunflowers",
     "price": 2600,
     "showPrice": true,
     "flowers": ["sunflower"]
@@ -98,7 +98,7 @@
     "images": [
       "/app/arrangements/bouquets/T3-1/T3-1.1.jpg"
     ],
-    "description": "3pcs Tulips (Pink and Yellow)",
+    "description": "3pcs Tulips",
     "price": 1900,
     "showPrice": true,
     "flowers": ["tulips"]
@@ -110,7 +110,7 @@
     "images": [
       "/app/arrangements/bouquets/CRNTION12-1/CRNTION12-1.1.jpg"
     ],
-    "description": "12 PCS Carnations",
+    "description": "12 PCS Carnations - Mixed Colors",
     "price": 2450,
     "discountPrice": 300,
     "showPrice": true,
@@ -130,21 +130,21 @@
     "flowers": ["sunflower"]
   },
   {
-    "id": "REDBLK-#1",
-    "title": "REDBLK-#1",
+    "id": "REDBLK-1",
+    "title": "REDBLK-1",
     "mainImage": "/app/arrangements/bouquets/REDBLK-1/REDBLK-1.1.jpg",
     "images": [
       "/app/arrangements/bouquets/REDBLK-1/REDBLK-1.1.jpg",
       "/app/arrangements/bouquets/REDBLK-1/REDBLK-1.2.jpg"
     ],
-    "description": "Price: available soon",
+    "description": "12Pcs Red Roses",
     "price": 2250,
     "discountPrice": 350,
     "showPrice": true
   },
   {
-    "id": "ROSE25-#1",
-    "title": "ROSE25-#1",
+    "id": "ROSE25-1",
+    "title": "ROSE25-1",
     "mainImage": "/app/arrangements/bouquets/ROSE25-1/ROSE25-1.1.jpg",
     "images": [
       "/app/arrangements/bouquets/ROSE25-1/ROSE25-1.1.jpg"
@@ -154,7 +154,7 @@
     "showPrice": false
   },
   {
-    "id": "CRNTION-PC1-1-#1",
+    "id": "CRNTION-PC1-1-1",
     "title": "CRNTION-PC1-1-1",
     "mainImage": "/app/arrangements/bouquets/CRNTION-PC1-1/CRNTION-PC1-1.1.jpg",
     "images": [
@@ -162,52 +162,52 @@
       "/app/arrangements/bouquets/CRNTION-PC1-1/CRNTION-PC1-1.2.jpg",
       "/app/arrangements/bouquets/CRNTION-PC1-1/CRNTION-PC1-1.3.jpg"
     ],
-    "description": "Price: available soon",
+    "description": "1Pc Carnation",
     "price": 190,
     "discountPrice": 0,
     "showPrice": true
   },
   {
-    "id": "CRNTION-PC3-1-#1",
+    "id": "CRNTION-PC3-1-1",
     "title": "CRNTION-PC3-1",
     "mainImage": "/app/arrangements/bouquets/CRNTION-PC3-1/CRNTION-PC3-1.1.jpg",
     "images": [
       "/app/arrangements/bouquets/CRNTION-PC3-1/CRNTION-PC3-1.1.jpg",
       "/app/arrangements/bouquets/CRNTION-PC3-1/CRNTION-PC3-1.2.jpg"
     ],
-    "description": "Price: available soon",
+    "description": "3pcs Carnations",
     "price": 450,
     "discountPrice": 0,
     "showPrice": true
   },
   {
-    "id": "ROSE-PC1-1-#1",
+    "id": "ROSE-PC1-1-1",
     "title": "ROSE-PC1-1-1",
     "mainImage": "/app/arrangements/bouquets/ROSE-PC3-1/ROSE-PC3-1.1.jpg",
     "images": [
       "/app/arrangements/bouquets/ROSE-PC3-1/ROSE-PC3-1.1.jpg",
       "/app/arrangements/bouquets/ROSE-PC3-1/ROSE-PC3-1.2.jpg"
     ],
-    "description": "Price: available soon",
+    "description": "3pcs Roses",
     "price": 450,
     "discountPrice": 0,
     "showPrice": true
   },
   {
-    "id": "ROSE-PC3-2-#1",
+    "id": "ROSE-PC3-2-1",
     "title": "ROSE-PC3-2-1",
     "mainImage": "/app/arrangements/bouquets/ROSE-PC3-2/ROSE-PC3-2.1.jpg",
     "images": [
       "/app/arrangements/bouquets/ROSE-PC3-2/ROSE-PC3-2.1.jpg",
       "/app/arrangements/bouquets/ROSE-PC3-2/ROSE-PC3-2.2.jpg"
     ],
-    "description": "Price: available soon",
+    "description": "3pcs Roses",
     "price": 600,
     "discountPrice": 0,
     "showPrice": true
   },
   {
-    "id": "SUNFLR-PC3-1-#1",
+    "id": "SUNFLR-PC3-1-1",
     "title": "SUNFLR-PC3-1-1",
     "mainImage": "/app/arrangements/bouquets/SUNFLR-PC3-1/SUNFLR-PC3-1.1.jpg",
     "images": [
@@ -240,31 +240,31 @@
       "/app/arrangements/bouquets/CRNTION-G2/CRNTION-G2.1.jpg",
       "/app/arrangements/bouquets/CRNTION-G2/CRNTION-G2.2.jpg"
     ],
-    "description": "Price: available soon",
-    "price": 5000,
-    "showPrice": false
+    "description": "6pcs Rose + 6pcs Carnation",
+    "price": 1500,
+    "showPrice": true
   },
   {
     "id": "REDPNK12-#2",
-    "title": "REDPNK12-#2",
+    "title": "REDPNK12-2",
     "mainImage": "/app/arrangements/bouquets/REDPNK12-2/REDPNK12-2.1.jpg",
     "images": [
       "/app/arrangements/bouquets/REDPNK12-2/REDPNK12-2.1.jpg"
     ],
-    "description": "Price: available soon",
-    "price": 5000,
-    "showPrice": false
+    "description": "12 PCS Red and Pink Roses",
+    "price": 1900,
+    "showPrice": true
   },
   {
-    "id": "SUN1-#1",
-    "title": "SUN1-#1",
+    "id": "SUN1-1",
+    "title": "SUN1-1",
     "mainImage": "/app/arrangements/bouquets/SUN1-1/SUN1-1.1.jpg",
     "images": [
       "/app/arrangements/bouquets/SUN1-1/SUN1-1.1.jpg"
     ],
-    "description": "Price: available soon",
-    "price": 5000,
-    "showPrice": false
+    "description": "1pc Sunflower + 3pcs Roses",
+    "price": 850,
+    "showPrice": true
   },
   {
     "id": "PNK40",
@@ -295,7 +295,7 @@
     "images": [
       "/app/arrangements/bouquets/GERB6-1/GERB6-1.1.jpg"
     ],
-    "description": "6 PCS Gerbera",
+    "description": "6pcs Gerbera + 6pcs Carnations",
     "price": 1500,
     "discountPrice": 11,
     "showPrice": true,
@@ -308,7 +308,7 @@
     "images": [
       "/app/arrangements/bouquets/CRNTION-1/CRNTION-1.1.jpg"
     ],
-    "description": "10 PCS Carnations",
+    "description": "10pcs Carnations",
     "price": 1500,
     "discountPrice": 201,
     "showPrice": true
@@ -515,9 +515,10 @@
     "images": [
       "/app/arrangements/bouquets/GERB8ROSE-1/GERB8ROSE-1.1.jpg"
     ],
-    "description": "Price: available soon",
-    "price": 5000,
-    "showPrice": false
+    "description": "9pcs Gergerba + 6pcs Roses",
+    "price": 2150,
+    "discountPrice": 300,
+    "showPrice": true
   },
   {
     "id": "GERB3MUMS-1",
@@ -538,7 +539,7 @@
       "/app/arrangements/bouquets/ROSES-15-1/ROSES-15-1.1.jpg"
     ],
     "description": "15 PCS Roses",
-    "price": 2200,
+    "price": 1800,
     "showPrice": true
   },
   {
