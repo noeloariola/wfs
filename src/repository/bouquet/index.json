@@ -207,6 +207,19 @@
     "flowers": ["rose"]
   },
   {
+    "id": "ROSE7-5",
+    "title": "ROSE7-5",
+    "mainImage": "/app/arrangements/bouquets/ROSE7-5/ROSE7-5.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/ROSE7-5/ROSE7-5.1.jpg"
+    ],
+    "description": "7pcs Roses",
+    "price": 1200,
+    "discountPrice": 0,
+    "showPrice": true,
+    "flowers": ["rose"]
+  },
+  {
     "id": "ROSEYLW14-1",
     "title": "ROSEYLW14-1",
     "mainImage": "/app/arrangements/bouquets/ROSEYLW14-1/ROSEYLW14-1.1.jpg",

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface ModalProps {
@@ -13,18 +13,48 @@ interface ModalProps {
 
 export default function ArrangementModal({ isOpen, onClose, arrangementImages, arrangementTitle, arrangementDescription }: ModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isImageLoading, setIsImageLoading] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   if (!isOpen) return null;
 
   const nextImage = () => {
+    setIsImageLoading(true);
     setCurrentImageIndex((prev) => (prev + 1) % arrangementImages.length);
   };
 
   const prevImage = () => {
+    setIsImageLoading(true);
     setCurrentImageIndex((prev) => 
       prev === 0 ? arrangementImages.length - 1 : prev - 1
     );
   };
+
+  const openFullscreen = () => {
+    setIsImageLoading(true);
+    setIsFullscreen(true);
+  };
+
+  const closeFullscreen = () => {
+    setIsFullscreen(false);
+    setIsImageLoading(false);
+  };
+
+  // Close fullscreen on Escape and lock body scroll while fullscreen
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (isFullscreen) closeFullscreen();
+        else onClose();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    if (isFullscreen) document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [isFullscreen]);
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 h-screen overflow-auto">
@@ -42,12 +72,23 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
           {/* Image area (square on md+) */}
           <div className="w-full md:w-1/2">
             <div className="w-full aspect-square relative overflow-hidden rounded-lg bg-gray-100">
-              <Image
-                src={arrangementImages[currentImageIndex]}
-                alt={`${arrangementTitle} - Image ${currentImageIndex + 1}`}
-                fill
-                className="object-contain"
-              />
+              <div className="w-full h-full cursor-zoom-in" onClick={openFullscreen}>
+                <Image
+                  src={arrangementImages[currentImageIndex]}
+                  alt={`${arrangementTitle} - Image ${currentImageIndex + 1}`}
+                  fill
+                  className="object-contain"
+                  onLoadingComplete={() => setIsImageLoading(false)}
+                />
+              </div>
+
+              {/* Loading overlay */}
+              {isImageLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-white/50">
+                  <div className="w-12 h-12 rounded-full border-4 border-gray-300 border-t-transparent animate-spin" aria-hidden="true" />
+                  <span className="sr-only">Loading image</span>
+                </div>
+              )}
 
               {/* Navigation buttons (overlay) */}
               <button
@@ -102,6 +143,61 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
           </div>
         </div>
       </div>
+      {/* Fullscreen viewer */}
+      {isFullscreen && (
+        <div className="fixed inset-0 z-60 bg-black bg-opacity-90 flex items-center justify-center">
+          <button
+            onClick={closeFullscreen}
+            className="absolute top-4 right-4 text-white text-4xl z-70"
+            aria-label="Close fullscreen"
+          >
+            ×
+          </button>
+
+          <div className="relative w-full h-full flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="relative max-w-[100vw] max-h-[100vh] w-full h-full">
+                <Image
+                  src={arrangementImages[currentImageIndex]}
+                  alt={`${arrangementTitle} - Image ${currentImageIndex + 1}`}
+                  fill
+                  className="object-contain"
+                  onLoadingComplete={() => setIsImageLoading(false)}
+                />
+
+                {/* Loading overlay for fullscreen */}
+                {isImageLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                    <div className="w-16 h-16 rounded-full border-4 border-white border-t-transparent animate-spin" aria-hidden="true" />
+                    <span className="sr-only">Loading image</span>
+                  </div>
+                )}
+
+                {/* Prev/Next in fullscreen */}
+                <button
+                  onClick={() => { setIsImageLoading(true); prevImage(); }}
+                  className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-10 hover:bg-opacity-30 rounded-full p-3 text-white"
+                  aria-label="Previous image"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={() => { setIsImageLoading(true); nextImage(); }}
+                  className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-10 hover:bg-opacity-30 rounded-full p-3 text-white"
+                  aria-label="Next image"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 } 
