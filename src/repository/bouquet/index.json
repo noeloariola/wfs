@@ -105,7 +105,7 @@
       "/app/arrangements/bouquets/ROSE5-1/ROSE5-1.2.jpg"
     ],
     "description": "5pcs Rose",
-    "price": 850,
+    "price": 900,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": ["carnation"]
@@ -148,7 +148,7 @@
     ],
     "description": "6pcs Roses",
     "price": 999,
-    "discountPrice": 101,
+    "discountPrice": 100,
     "showPrice": true,
     "flowers": ["rose"]
   },
@@ -292,7 +292,7 @@
     ],
     "description": "45pcs Purple Carnations",
     "price": 4500,
-    "discountPrice": 800,
+    "discountPrice": 700,
     "showPrice": true,
     "flowers": ["carnation"]
   },
