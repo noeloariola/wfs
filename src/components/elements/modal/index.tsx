@@ -20,7 +20,11 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
 
   const nextImage = () => {
     setIsImageLoading(true);
-    setCurrentImageIndex((prev) => (prev + 1) % arrangementImages.length);
+    setCurrentImageIndex((prev) => {
+      const i = (prev + 1) % arrangementImages.length
+      console.log('Next image index:', i);
+      return i;
+    });
   };
 
   const prevImage = () => {
@@ -76,16 +80,16 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
                 <Image
                   src={arrangementImages[currentImageIndex]}
                   alt={`${arrangementTitle} - Image ${currentImageIndex + 1}`}
-                  fill
-                  className="object-contain"
-                  onLoadingComplete={() => setIsImageLoading(false)}
+                  fill={true}
+                  className="relative object-contain"
+                  onLoad={() => setIsImageLoading(false)}
                 />
               </div>
 
               {/* Loading overlay */}
               {isImageLoading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-white/50">
-                  <div className="w-12 h-12 rounded-full border-4 border-gray-300 border-t-transparent animate-spin" aria-hidden="true" />
+                  <div className="w-12 h-12 rounded-full border-4 border-gray-300 border-t-transparent animate-spin " aria-hidden="true" />
                   <span className="sr-only">Loading image</span>
                 </div>
               )}
