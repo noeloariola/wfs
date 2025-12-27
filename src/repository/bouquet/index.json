@@ -8,7 +8,7 @@
     ],
     "description": "3pcs Roses",
     "price": 750,
-    "discountPrice": 150,
+    "discountPrice": 100,
     "showPrice": true,
     "flowers": ["rose"]
   },
@@ -159,11 +159,62 @@
       "/app/arrangements/bouquets/ROSE-2/ROSE-2.1.jpg",
       "/app/arrangements/bouquets/ROSE-2/ROSE-2.2.jpg"
     ],
-    "description": "10pcs Rose",
+    "description": "3pcs Rose",
     "price": 700,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": ["carnation"]
+  },
+  {
+    "id": "IROSE-3",
+    "title": "IROSE-3 ",
+    "mainImage": "/app/arrangements/bouquets/IROSE-3/IROSE-3.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/IROSE-3/IROSE-3.1.jpg",
+      "/app/arrangements/bouquets/IROSE-3/IROSE-3.2.jpg"
+    ],
+    "description": "20pcs Imported Rose",
+    "price": 3500,
+    "showPrice": true,
+    "flowers": ["ROSE"]
+  },
+  {
+    "id": "ROSE-4",
+    "title": "ROSE-4",
+    "mainImage": "/app/arrangements/bouquets/ROSE-4/ROSE-4.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/ROSE-4/ROSE-4.1.jpg"
+    ],
+    "description": "15pcs Rose",
+    "price": 2200,
+    "showPrice": true,
+    "flowers": ["ROSE"]
+  },
+  {
+    "id": "IROSE-1",
+    "title": "IROSE-1",
+    "mainImage": "/app/arrangements/bouquets/IROSE-1/IROSE-1.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/IROSE-1/IROSE-1.1.jpg",
+      "/app/arrangements/bouquets/IROSE-1/IROSE-1.2.jpg",
+      "/app/arrangements/bouquets/IROSE-1/IROSE-1.3.jpg"
+    ],
+    "description": "10pcs Imported Rose",
+    "price": 2200,
+    "showPrice": true,
+    "flowers": ["ROSE"]
+  },
+  {
+    "id": "IROSE-2",
+    "title": "IROSE-2",
+    "mainImage": "/app/arrangements/bouquets/IROSE-2/IROSE-2.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/IROSE-2/IROSE-2.1.jpg"
+    ],
+    "description": "20pcs Imported Rose",
+    "price": 3500,
+    "showPrice": true,
+    "flowers": ["ROSE"]
   },
   {
     "id": "ROSE3-1",
@@ -174,7 +225,7 @@
       "/app/arrangements/bouquets/ROSE3-1/ROSE3-1.2.jpg"
     ],
     "description": "3pcs Roses",
-    "price": 500,
+    "price": 550,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": ["rose"]
@@ -188,7 +239,7 @@
       "/app/arrangements/bouquets/ROSE3-2/ROSE3-2.2.jpg"
     ],
     "description": "3pcs Roses",
-    "price": 500,
+    "price": 550,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": ["rose"]
@@ -230,7 +281,7 @@
     ],
     "description": "7pcs Roses",
     "price": 1400,
-    "discountPrice": 100,
+    "discountPrice": 0,
     "showPrice": true,
     "flowers": ["rose"]
   },
@@ -244,7 +295,7 @@
     ],
     "description": "7pcs Roses",
     "price": 1400,
-    "discountPrice": 100,
+    "discountPrice": 0,
     "showPrice": true,
     "flowers": ["rose"]
   },
@@ -269,7 +320,7 @@
       "/app/arrangements/bouquets/ROSE7-5/ROSE7-5.1.jpg"
     ],
     "description": "7pcs Roses",
-    "price": 1200,
+    "price": 1300,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": ["rose"]
