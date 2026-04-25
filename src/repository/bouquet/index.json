@@ -118,7 +118,7 @@
       "/app/arrangements/bouquets/ROSE-PC3-5/ROSE-PC3-5.2.jpg"
     ],
     "description": "3pcs Rose",
-    "price": 550,
+    "price": 650,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": ["rose"]
@@ -185,7 +185,7 @@
     "images": [
       "/app/arrangements/bouquets/ROSE-4/ROSE-4.1.jpg"
     ],
-    "description": "15pcs Rose",
+    "description": "15pcs Local Rose",
     "price": 2200,
     "showPrice": true,
     "flowers": ["ROSE"]
@@ -239,7 +239,7 @@
       "/app/arrangements/bouquets/ROSE3-2/ROSE3-2.2.jpg"
     ],
     "description": "3pcs Roses",
-    "price": 550,
+    "price": 650,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": ["rose"]
