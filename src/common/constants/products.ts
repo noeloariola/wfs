@@ -12,7 +12,8 @@ export const Boquets: ArrangementData[] = [
     ],
     description: 'Price: available soon',
     price: 5000,
-    showPrice: false
+    showPrice: false,
+    wrappers: ['red', 'pink', 'white', 'gold']
   },
   {
     id: 'spring-bouquet',
@@ -23,7 +24,8 @@ export const Boquets: ArrangementData[] = [
     ],
     description: 'Price: available soon',
     price: 5000,
-    showPrice: false
+    showPrice: false,
+    wrappers: ['red', 'pink', 'white']
   },
   {
     id: 'tropical-paradise',
@@ -34,7 +36,8 @@ export const Boquets: ArrangementData[] = [
     ],
     description: 'Price: available soon',
     price: 2600,
-    showPrice: true
+    showPrice: true,
+    wrappers: ['gold', 'black', 'white']
   },
   {
     id: 'tulipt31',

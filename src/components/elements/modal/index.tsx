@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import WrapperSelector from '../wrapper-selector';
+import { useCart } from '@/context/CartContext';
+import { WrapperColor, WrapperVariant } from '@/types/cart';
+import wrapperData from '@/repository/bouquet/wrappers.json';
+import bouquetData from '@/repository/bouquet/index.json';
 
 interface ModalProps {
   isOpen: boolean;
@@ -9,12 +14,30 @@ interface ModalProps {
   arrangementImages: string[];
   arrangementTitle: string;
   arrangementDescription?: string;
+  productId?: string;
+  productPrice?: number;
+  hasWrappers?: boolean;
 }
 
-export default function ArrangementModal({ isOpen, onClose, arrangementImages, arrangementTitle, arrangementDescription }: ModalProps) {
+export default function ArrangementModal({ 
+  isOpen, 
+  onClose, 
+  arrangementImages, 
+  arrangementTitle, 
+  arrangementDescription,
+  productId,
+  productPrice,
+  hasWrappers = false
+}: ModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [selectedColorKey, setSelectedColorKey] = useState<string | undefined>();
+  const [selectedVariant, setSelectedVariant] = useState<WrapperVariant | undefined>();
+  const [selectedWrappers, setSelectedWrappers] = useState<{ color: string; variantId: string; variantImage: string }[]>([]);
+  const [quantity, setQuantity] = useState(1);
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const { addItem } = useCart();
 
   if (!isOpen) return null;
 
@@ -59,6 +82,34 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
       document.body.style.overflow = '';
     };
   }, [isFullscreen]);
+
+  const handleAddToCart = () => {
+    if (!productId || !productPrice) return;
+    
+    setIsAddingToCart(true);
+    const cartItemId = selectedVariant 
+      ? `${productId}-${selectedVariant.id}-${quantity}`
+      : `${productId}-${quantity}`;
+
+    addItem({
+      id: cartItemId,
+      productId,
+      productTitle: arrangementTitle,
+      productPrice,
+      productImage: arrangementImages[0],
+      quantity,
+      wrapperColor: selectedColorKey,
+      wrapperVariantId: selectedVariant?.id,
+      wrapperVariantImage: selectedVariant?.image,
+      wrapperSelections: selectedWrappers,
+      addedAt: Date.now(),
+    });
+
+    setTimeout(() => {
+      setIsAddingToCart(false);
+      onClose();
+    }, 500);
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 h-screen overflow-auto">
@@ -117,8 +168,8 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
             </div>
           </div>
 
-          {/* Details area (title, description, indicators) */}
-          <div className="w-full md:w-1/2 flex flex-col justify-start">
+          {/* Details area (title, description, indicators, wrappers, cart) */}
+          <div className="w-full md:w-1/2 flex flex-col justify-start overflow-y-auto max-h-[80vh]">
             <h2 className="md:text-2xl font-bold text-gray-800 mb-2 text-left">{arrangementTitle}</h2>
 
             {/* Image counter */}
@@ -130,6 +181,78 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
             ) : (
               <div className="text-gray-500 mb-4">No description available.</div>
             )}
+
+            {/* Price */}
+            {productPrice && (
+              <div className="text-lg font-semibold text-gray-800 mb-4">₱{productPrice.toLocaleString()}</div>
+            )}
+
+            {/* Wrapper Selector */}
+            {true && (
+              <WrapperSelector
+                colors={wrapperData.colors}
+                onSelectWrappers={(selections) => {
+                  setSelectedWrappers(selections);
+                  if (selections.length > 0) {
+                    setSelectedColorKey(selections[0].color);
+                    const variant = wrapperData.colors[selections[0].color].variants.find(v => v.id === selections[0].variantId);
+                    setSelectedVariant(variant);
+                  } else {
+                    setSelectedColorKey(undefined);
+                    setSelectedVariant(undefined);
+                  }
+                }}
+                selectedColorKey={selectedColorKey}
+                selectedVariant={selectedVariant}
+                maxSelections={(() => {
+                  // prefer explicit capacity field from bouquet data
+                  try {
+                    if (productId) {
+                      const found = (bouquetData as any[]).find((b) => b.id === productId);
+                      if (found && typeof found.capacity === 'number') return found.capacity;
+                    }
+                  } catch (e) {
+                    // ignore
+                  }
+                  return 2;
+                })()}
+              />
+            )}
+
+            {/* Quantity Selector */}
+            <div className="mb-4 flex items-center gap-2">
+              <label className="text-sm font-medium text-gray-700">Quantity:</label>
+              <div className="flex items-center border border-gray-300 rounded-lg">
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="px-3 py-1 hover:bg-gray-100"
+                >
+                  −
+                </button>
+                <input
+                  type="number"
+                  value={quantity}
+                  onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                  className="w-12 text-center border-l border-r border-gray-300 focus:outline-none"
+                  min="1"
+                />
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="px-3 py-1 hover:bg-gray-100"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            {/* Add to Cart Button */}
+            <button
+              onClick={handleAddToCart}
+              disabled={isAddingToCart || (hasWrappers && selectedWrappers.length === 0)}
+              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors mb-4"
+            >
+              {isAddingToCart ? 'Adding...' : 'Add to Cart'}
+            </button>
 
             {/* Image indicators */}
             <div className="flex items-center space-x-2 mt-auto">

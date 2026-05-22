@@ -110,6 +110,9 @@ export default function BouquetsPage() {
                     arrangementImages={selectedArrangement.images}
                     arrangementTitle={selectedArrangement.title}
                     arrangementDescription={selectedArrangement.description}
+                    productId={selectedArrangement.id}
+                    productPrice={(selectedArrangement.price || 0) - (selectedArrangement.discountPrice || 0)}
+                    hasWrappers={Boolean(selectedArrangement.wrappers)}
                 />
             )}
         </div>
