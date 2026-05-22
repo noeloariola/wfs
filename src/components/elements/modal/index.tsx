@@ -38,7 +38,7 @@ export default function ArrangementModal({
   const [notes, setNotes] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
-  const { addItem } = useCart();
+  const { cart, addItem } = useCart();
 
   if (!isOpen) return null;
 
@@ -86,11 +86,28 @@ export default function ArrangementModal({
 
   const handleAddToCart = () => {
     if (!productId || !productPrice) return;
-    
+
+    const normalizeSelections = [...selectedWrappers]
+      .sort((a, b) => (a.color.localeCompare(b.color) || a.variantId.localeCompare(b.variantId)))
+      .map((selection) => `${selection.color}:${selection.variantId}`)
+      .join('|');
+
+    const cartItemId = `${productId}|${normalizeSelections}|${notes?.trim() || ''}`;
+
+    const existingSameProductDifferentDetails = cart.items.some((item) => {
+      return item.productId === productId && item.id !== cartItemId;
+    });
+
+    if (existingSameProductDifferentDetails) {
+      const confirmAdd = window.confirm(
+        'This product is already in the cart with different customization details. Add as a separate order?'
+      );
+      if (!confirmAdd) {
+        return;
+      }
+    }
+
     setIsAddingToCart(true);
-    const cartItemId = selectedVariant 
-      ? `${productId}-${selectedVariant.id}-${quantity}`
-      : `${productId}-${quantity}`;
 
     addItem({
       id: cartItemId,
