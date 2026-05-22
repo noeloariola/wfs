@@ -8,6 +8,7 @@ interface CartContextType {
   addItem: (item: CartItem) => void;
   removeItem: (itemId: string) => void;
   updateItemQuantity: (itemId: string, quantity: number) => void;
+  updateItemDeliveryAddress: (itemId: string, address: string) => void;
   clearCart: () => void;
   getTotalPrice: () => number;
   getTotalItems: () => number;
@@ -26,6 +27,7 @@ const createDefaultContextValue = (): CartContextType => ({
   addItem: () => {},
   removeItem: () => {},
   updateItemQuantity: () => {},
+  updateItemDeliveryAddress: () => {},
   clearCart: () => {},
   getTotalPrice: () => 0,
   getTotalItems: () => 0,
@@ -93,6 +95,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }));
   };
 
+  const updateItemDeliveryAddress = (itemId: string, address: string) => {
+    setCart((prev) => ({
+      items: prev.items.map((item) =>
+        item.id === itemId ? { ...item, deliveryAddress: address } : item
+      ),
+      lastUpdated: Date.now(),
+    }));
+  };
+
   const clearCart = () => {
     setCart(defaultCart);
   };
@@ -110,6 +121,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     addItem,
     removeItem,
     updateItemQuantity,
+    updateItemDeliveryAddress,
     clearCart,
     getTotalPrice,
     getTotalItems,
