@@ -195,7 +195,8 @@ export default function ArrangementModal({
                   setSelectedWrappers(selections);
                   if (selections.length > 0) {
                     setSelectedColorKey(selections[0].color);
-                    const variant = wrapperData.colors[selections[0].color].variants.find(v => v.id === selections[0].variantId);
+                    const colorMap = wrapperData.colors as Record<string, WrapperColor>;
+                    const variant = colorMap[selections[0].color]?.variants.find(v => v.id === selections[0].variantId);
                     setSelectedVariant(variant);
                   } else {
                     setSelectedColorKey(undefined);
