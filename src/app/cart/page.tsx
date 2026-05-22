@@ -152,13 +152,14 @@ export default function CartPage() {
                 <span>Subtotal:</span>
                 <span>₱{getTotalPrice().toLocaleString()}</span>
               </div>
-              <div className="flex justify-between text-gray-600">
-                <span>Shipping:</span>
-                <span>TBD</span>
-              </div>
-              <div className="flex justify-between text-gray-600">
-                <span>Tax:</span>
-                <span>TBD</span>
+              <div className="flex flex-col text-gray-600">
+                <div className="flex justify-between">
+                  <span>Shipping:</span>
+                  <span>Message us on our Facebook page to know the shipping fee</span>
+                </div>
+                <div className="text-sm text-right text-gray-500 mt-1">
+                  Shipping fee depends on the dropoff location.
+                </div>
               </div>
             </div>
 
