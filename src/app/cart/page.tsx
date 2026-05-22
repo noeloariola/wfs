@@ -95,6 +95,14 @@ export default function CartPage() {
                         </p>
                       </div>
                     ) : null}
+                    {item.notes && (
+                      <div className="mt-2 text-sm text-gray-600">
+                        <p>
+                          <span className="font-semibold">Notes:</span>{' '}
+                          {item.notes}
+                        </p>
+                      </div>
+                    )}
                     <p className="text-lg font-semibold text-gray-800 mt-2">
                       ₱{item.productPrice.toLocaleString()}
                     </p>

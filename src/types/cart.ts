@@ -14,6 +14,7 @@ export interface CartItem {
     variantId: string;
     variantImage: string;
   }[];
+  notes?: string;
   addedAt: number;
 }
 
