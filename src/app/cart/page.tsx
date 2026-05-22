@@ -1,11 +1,14 @@
 'use client';
 
+import { useRef, useState } from 'react';
 import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function CartPage() {
   const { cart, removeItem, updateItemQuantity, clearCart, getTotalPrice, getTotalItems } = useCart();
+  const cartRef = useRef<HTMLDivElement | null>(null);
+  const [isCopying, setIsCopying] = useState(false);
 
   if (cart.items.length === 0) {
     return (
@@ -24,7 +27,7 @@ export default function CartPage() {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 py-12">
+    <div ref={cartRef} className="w-full max-w-7xl mx-auto px-4 py-12">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Shopping Cart</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -69,7 +72,18 @@ export default function CartPage() {
                     <h2 className="text-lg font-semibold text-gray-800">
                       {item.productTitle}
                     </h2>
-                    {item.wrapperColor && item.wrapperVariantId && (
+                    {item.wrapperSelections && item.wrapperSelections.length > 0 ? (
+                      <div className="mt-2 text-sm text-gray-600">
+                        <p className="font-semibold">Selected Wrappers:</p>
+                        <ul className="list-disc ml-5">
+                          {item.wrapperSelections.map((w, idx) => (
+                            <li key={idx}>
+                              <span className="font-semibold">Color:</span> {w.color} — <span className="font-semibold">Variant:</span> {w.variantId}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : item.wrapperColor && item.wrapperVariantId ? (
                       <div className="mt-2 text-sm text-gray-600">
                         <p>
                           <span className="font-semibold">Wrapper Color:</span>{' '}
@@ -80,7 +94,7 @@ export default function CartPage() {
                           {item.wrapperVariantId}
                         </p>
                       </div>
-                    )}
+                    ) : null}
                     <p className="text-lg font-semibold text-gray-800 mt-2">
                       ₱{item.productPrice.toLocaleString()}
                     </p>
@@ -170,8 +184,90 @@ export default function CartPage() {
               </span>
             </div>
 
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg mb-3 transition-colors">
-              Proceed to Checkout
+            <button
+              onClick={async () => {
+                if (!cartRef.current) return;
+                setIsCopying(true);
+                try {
+                  const htmlToImage = await import('html-to-image');
+
+                  // Clone the cart node and inline images/background-images to avoid CORS/remote loading issues
+                  const original = cartRef.current!;
+                  const clone = original.cloneNode(true) as HTMLElement;
+
+                  const toDataUrl = async (url: string) => {
+                    try {
+                      const resolved = url.startsWith('/') ? window.location.origin + url : url;
+                      const res = await fetch(resolved);
+                      const blob = await res.blob();
+                      return await new Promise<string>((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onloadend = () => resolve(reader.result as string);
+                        reader.onerror = reject;
+                        reader.readAsDataURL(blob);
+                      });
+                    } catch (e) {
+                      console.warn('Failed to fetch image for inlining:', url, e);
+                      return null;
+                    }
+                  };
+
+                  // Inline <img> elements
+                  const imgs = Array.from(clone.querySelectorAll('img')) as HTMLImageElement[];
+                  await Promise.all(imgs.map(async (img) => {
+                    if (!img.src) return;
+                    const data = await toDataUrl(img.src);
+                    if (data) img.src = data;
+                  }));
+
+                  // Inline CSS background-images
+                  const elements = Array.from(clone.querySelectorAll<HTMLElement>('*'));
+                  await Promise.all(elements.map(async (el) => {
+                    const bg = getComputedStyle(el).backgroundImage;
+                    if (bg && bg !== 'none') {
+                      // handle url("...") or url('...')
+                      const m = bg.match(/url\(["']?(.*?)["']?\)/);
+                      if (m && m[1]) {
+                        const data = await toDataUrl(m[1]);
+                        if (data) el.style.backgroundImage = `url(${data})`;
+                      }
+                    }
+                  }));
+
+                  const blob = await htmlToImage.toBlob(clone, { backgroundColor: '#ffffff' });
+                  if (!blob) throw new Error('Failed to render cart image');
+
+                  let copiedToClipboard = false;
+                  if (navigator.clipboard && (navigator.clipboard as any).write) {
+                    try {
+                      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+                      copiedToClipboard = true;
+                      alert('Cart image copied to clipboard. Paste into Facebook Messenger.');
+                    } catch (clipboardErr) {
+                      console.warn('Clipboard write failed, falling back to download:', clipboardErr);
+                    }
+                  }
+
+                  if (!copiedToClipboard) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'wfs-cart.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    URL.revokeObjectURL(url);
+                    alert('Clipboard copy not allowed — cart image downloaded as wfs-cart.png. Attach it to Messenger.');
+                  }
+                } catch (err: any) {
+                  console.error('Copy cart image failed', err);
+                  alert('Failed to create cart image: ' + (err?.message || err));
+                }
+                setIsCopying(false);
+              }}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg mb-3 transition-colors"
+            >
+              {isCopying ? 'Copying...' : 'Proceed to Checkout'}
             </button>
 
             <button

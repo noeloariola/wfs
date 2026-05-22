@@ -110,7 +110,7 @@ export default function WrapperSelector({
                 <div className="relative w-full h-24 bg-gray-200">
                   <Image
                     src={variant.image}
-                    alt={variant.name}
+                    alt={variant.id}
                     fill
                     className="object-cover"
                     onError={(e) => {
@@ -119,7 +119,7 @@ export default function WrapperSelector({
                   />
                 </div>
                 <p className="text-xs font-medium text-gray-800 p-2 text-center bg-white">
-                  {variant.name}
+                  {variant.id}
                 </p>
               </button>
             ))}
