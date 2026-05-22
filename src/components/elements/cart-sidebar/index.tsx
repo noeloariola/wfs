@@ -108,6 +108,11 @@ function CartSidebarContent() {
                         ) : item.wrapperColor ? (
                           <p className="text-xs text-gray-600">Wrapper: {item.wrapperColor}</p>
                         ) : null}
+                        {item.notes && (
+                          <p className="text-xs text-gray-600 line-clamp-2">
+                            Notes: {item.notes}
+                          </p>
+                        )}
                         <p className="text-sm font-semibold text-gray-800 mt-1">
                           ₱{item.productPrice.toLocaleString()}
                         </p>

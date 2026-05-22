@@ -35,6 +35,7 @@ export default function ArrangementModal({
   const [selectedColorKey, setSelectedColorKey] = useState<string | undefined>();
   const [selectedVariant, setSelectedVariant] = useState<WrapperVariant | undefined>();
   const [selectedWrappers, setSelectedWrappers] = useState<{ color: string; variantId: string; variantImage: string }[]>([]);
+  const [notes, setNotes] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const { addItem } = useCart();
@@ -102,6 +103,7 @@ export default function ArrangementModal({
       wrapperVariantId: selectedVariant?.id,
       wrapperVariantImage: selectedVariant?.image,
       wrapperSelections: selectedWrappers,
+      notes: notes || undefined,
       addedAt: Date.now(),
     });
 
@@ -187,8 +189,8 @@ export default function ArrangementModal({
               <div className="text-lg font-semibold text-gray-800 mb-4">₱{productPrice.toLocaleString()}</div>
             )}
 
-            {/* Wrapper Selector */}
-            {true && (
+            {/* Wrapper Selector (for bouquets) */}
+            {hasWrappers && (
               <WrapperSelector
                 colors={wrapperData.colors}
                 onSelectWrappers={(selections) => {
@@ -220,6 +222,18 @@ export default function ArrangementModal({
               />
             )}
 
+            {/* Notes (for all products) */}
+            <div className="mb-6 border rounded-lg p-4 bg-gray-50">
+              <label className="text-lg font-semibold text-gray-800 mb-2 block">Special Notes</label>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Enter any special requests or notes for this order..."
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
+                rows={4}
+              />
+            </div>
+
             {/* Quantity Selector */}
             <div className="mb-4 flex items-center gap-2">
               <label className="text-sm font-medium text-gray-700">Quantity:</label>
@@ -249,7 +263,7 @@ export default function ArrangementModal({
             {/* Add to Cart Button */}
             <button
               onClick={handleAddToCart}
-              disabled={isAddingToCart || (hasWrappers && selectedWrappers.length === 0)}
+              disabled={isAddingToCart || (hasWrappers && selectedWrappers.length === 0) || (!hasWrappers && !notes.trim())}
               className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors mb-4"
             >
               {isAddingToCart ? 'Adding...' : 'Add to Cart'}
