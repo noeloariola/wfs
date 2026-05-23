@@ -394,27 +394,6 @@ export default function CartPage() {
                     </div>
                   )}
 
-                  {item.groupItems && item.groupItems.length > 0 && (
-                    <div className="mt-3 text-xs text-gray-500 bg-white p-3 rounded border border-gray-200">
-                      <p className="font-semibold mb-2">Group Item Details</p>
-                      <div className="space-y-2">
-                        {item.groupItems.map((groupItem, idx) => (
-                          <div key={idx} className="flex gap-2 items-start">
-                            <div className="w-10 h-10 relative rounded overflow-hidden border">
-                              <Image src={groupItem.image} alt={groupItem.title} fill className="object-cover" />
-                            </div>
-                            <div className="flex-1">
-                              <p className="font-semibold text-gray-800">{groupItem.title}</p>
-                              <p>Color: {groupItem.color || 'N/A'}</p>
-                              <p>Qty: {groupItem.qty} {groupItem.qtyType}</p>
-                              {groupItem.description && <p>Note: {groupItem.description}</p>}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
                   {itemAddresses[item.id] && (
                     <p className="mt-2 text-xs text-gray-500"><span className="font-semibold">Delivery Address:</span> {itemAddresses[item.id]}</p>
                   )}

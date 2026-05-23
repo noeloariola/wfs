@@ -46,7 +46,6 @@ export default function CustomBouquetPage() {
   const [groups, setGroups] = useState<Group[]>([]);
   const [groupName, setGroupName] = useState("");
   const [groupDesc, setGroupDesc] = useState("");
-  const [quantity, setQuantity] = useState(1);
   const [wrapper, setWrapper] = useState('white');
   const [wrapperSelections, setWrapperSelections] = useState<{ color: string; variantId: string; variantImage: string }[]>([]);
   const { addItem } = useCart();
@@ -88,18 +87,19 @@ export default function CustomBouquetPage() {
       description: groupDesc,
       items,
       wrapper: wrapperSelections[0]?.variantId || wrapper,
+      wrapperSelections: wrapperSelections.length > 0 ? wrapperSelections : undefined,
       pricePerUnit: computedPrice,
-      quantity,
+      quantity: 1,
     };
     setGroups((prev) => [...prev, g]);
     setSelections([]);
     setGroupName("");
     setGroupDesc("");
-    setQuantity(1);
     setWrapperSelections([]);
   };
 
   const addGroupToCart = (g: Group) => {
+    const selectedWrapper = g.wrapperSelections?.[0];
     const cartItem = {
       id: `CUSTOM|${g.id}|${Date.now()}`,
       productId: `CUSTOM-${g.id}`,
@@ -108,8 +108,10 @@ export default function CustomBouquetPage() {
       productImage: g.items[0]?.item.mainImage || '',
       quantity: g.quantity,
       wrapperId: g.wrapper,
-      wrapperColor: g.wrapper,
-      wrapperSelections: wrapperSelections,
+      wrapperColor: selectedWrapper?.color,
+      wrapperVariantId: selectedWrapper?.variantId,
+      wrapperVariantImage: selectedWrapper?.variantImage,
+      wrapperSelections: g.wrapperSelections,
       notes: g.description,
       groupItems: g.items.map(it => ({ id: it.item.id, title: it.item.title, image: it.item.mainImage, qty: it.qty, qtyType: it.qtyType, description: it.description || '', color: it.color || '' })),
       addedAt: Date.now(),
@@ -199,8 +201,8 @@ export default function CustomBouquetPage() {
               <WrapperSelector colors={(wrapperData as any).colors} onSelectWrappers={(s)=>setWrapperSelections(s)} maxSelections={1} />
             </div>
 
-            <div className="flex gap-2 mb-2">
-              <input type="number" className="border p-2 w-32" min={1} value={quantity} onChange={(e)=>setQuantity(parseInt(e.target.value||'1'))} />
+            <div className="mb-3 text-sm text-gray-600">
+              Default quantity per group: 1
             </div>
             <div className="flex gap-2">
               <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={createGroup}>Create Group</button>
@@ -225,7 +227,19 @@ export default function CustomBouquetPage() {
                     </div>
                     <p className="text-sm text-gray-500">{g.description}</p>
                     <p className="text-sm mt-2">Items: {g.items.map(i=>i.item.title).join(', ')}</p>
-                    <p className="text-sm">Wrapper: {g.wrapper}</p>
+                    {g.wrapperSelections && g.wrapperSelections.length > 0 ? (
+                      <div className="mt-2 flex items-center gap-2 text-sm text-gray-600">
+                        <div className="w-10 h-10 relative rounded overflow-hidden border">
+                          <Image src={g.wrapperSelections[0].variantImage} alt={g.wrapperSelections[0].variantId} fill className="object-cover" />
+                        </div>
+                        <div>
+                          <p><span className="font-semibold">Wrapper:</span> {g.wrapperSelections[0].color}</p>
+                          <p className="text-xs">{g.wrapperSelections[0].variantId}</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-sm">Wrapper: {g.wrapper}</p>
+                    )}
                   </div>
                 </div>
                 <div className="mt-3 flex gap-2">
