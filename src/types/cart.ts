@@ -15,6 +15,15 @@ export interface CartItem {
     variantImage: string;
   }[];
   notes?: string;
+  groupItems?: {
+    id: string;
+    title: string;
+    image: string;
+    qty: number;
+    qtyType: 'piece' | 'bundle';
+    description?: string;
+    color?: string;
+  }[];
   deliveryAddress?: string;
   addedAt: number;
 }

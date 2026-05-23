@@ -73,16 +73,26 @@ function CartSidebarContent() {
                       {/* Product Image + selected wrappers below */}
                       <div className="flex-shrink-0">
                         <div className="relative w-20 h-20 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
-                          <Image
-                            src={item.productImage}
-                            alt={item.productTitle}
-                            fill
-                            className="object-cover rounded"
-                          />
+                          {item.groupItems && item.groupItems.length > 0 ? (
+                            <Image src={item.groupItems[0].image} alt={item.productTitle} fill className="object-cover rounded" />
+                          ) : (
+                            <Image
+                              src={item.productImage}
+                              alt={item.productTitle}
+                              fill
+                              className="object-cover rounded"
+                            />
+                          )}
                         </div>
 
-                        <div className="mt-2 flex gap-2">
-                          {item.wrapperSelections && item.wrapperSelections.length > 0 ? (
+                        <div className="mt-2 flex gap-2 overflow-x-auto">
+                          {item.groupItems && item.groupItems.length > 0 ? (
+                            item.groupItems.map((gi, i) => (
+                              <div key={i} className="w-8 h-8 relative rounded overflow-hidden border flex-shrink-0">
+                                <Image src={gi.image} alt={gi.title} fill className="object-cover" />
+                              </div>
+                            ))
+                          ) : item.wrapperSelections && item.wrapperSelections.length > 0 ? (
                             item.wrapperSelections.map((w, i) => (
                               <div key={i} className="w-8 h-8 relative rounded overflow-hidden border">
                                 <Image src={w.variantImage} alt={w.variantId} fill className="object-cover" />

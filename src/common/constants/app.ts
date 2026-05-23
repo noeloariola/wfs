@@ -9,6 +9,10 @@ export const headerLinks: {title: string, href: string}[] = [
     href: '/bouquets'
   },
   {
+    title: 'Custom Bouquet',
+    href: '/custom-bouquet'
+  },
+  {
     title: 'Add-ons',
     href: '/add-ons'
   },

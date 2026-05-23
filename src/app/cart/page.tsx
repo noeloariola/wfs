@@ -216,6 +216,26 @@ export default function CartPage() {
                         <p><span className="font-semibold">Notes:</span> {item.notes}</p>
                       </div>
                     )}
+                    {item.groupItems && item.groupItems.length > 0 && (
+                      <div className="mt-4 text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200">
+                        <p className="font-semibold mb-2">Group Items</p>
+                        <div className="space-y-3">
+                          {item.groupItems.map((groupItem, gi) => (
+                            <div key={gi} className="flex gap-3">
+                              <div className="w-16 h-16 relative rounded overflow-hidden bg-white border">
+                                <Image src={groupItem.image} alt={groupItem.title} fill className="object-cover" />
+                              </div>
+                              <div className="flex-1">
+                                <p className="font-semibold text-gray-800">{groupItem.title}</p>
+                                <p className="text-xs text-gray-600">Qty: {groupItem.qty} {groupItem.qtyType}</p>
+                                {groupItem.color && <p className="text-xs text-gray-600">Color: {groupItem.color}</p>}
+                                {groupItem.description && <p className="text-xs text-gray-600">Note: {groupItem.description}</p>}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     <p className="text-lg font-semibold text-gray-800 mt-2">₱{item.productPrice.toLocaleString()}</p>
                   </div>
 
@@ -351,6 +371,48 @@ export default function CartPage() {
 
                   {item.notes && (
                     <p className="mt-2 text-xs text-gray-500"><span className="font-semibold">Notes:</span> {item.notes}</p>
+                  )}
+
+                  {item.groupItems && item.groupItems.length > 0 && (
+                    <div className="mt-3 text-xs text-gray-500 bg-white p-3 rounded border border-gray-200">
+                      <p className="font-semibold mb-2">Group Item Details</p>
+                      <div className="space-y-2">
+                        {item.groupItems.map((groupItem, idx) => (
+                          <div key={idx} className="flex gap-2 items-start">
+                            <div className="w-10 h-10 relative rounded overflow-hidden border">
+                              <Image src={groupItem.image} alt={groupItem.title} fill className="object-cover" />
+                            </div>
+                            <div className="flex-1">
+                              <p className="font-semibold text-gray-800">{groupItem.title}</p>
+                              <p>Color: {groupItem.color || 'N/A'}</p>
+                              <p>Qty: {groupItem.qty} {groupItem.qtyType}</p>
+                              {groupItem.description && <p>Note: {groupItem.description}</p>}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {item.groupItems && item.groupItems.length > 0 && (
+                    <div className="mt-3 text-xs text-gray-500 bg-white p-3 rounded border border-gray-200">
+                      <p className="font-semibold mb-2">Group Item Details</p>
+                      <div className="space-y-2">
+                        {item.groupItems.map((groupItem, idx) => (
+                          <div key={idx} className="flex gap-2 items-start">
+                            <div className="w-10 h-10 relative rounded overflow-hidden border">
+                              <Image src={groupItem.image} alt={groupItem.title} fill className="object-cover" />
+                            </div>
+                            <div className="flex-1">
+                              <p className="font-semibold text-gray-800">{groupItem.title}</p>
+                              <p>Color: {groupItem.color || 'N/A'}</p>
+                              <p>Qty: {groupItem.qty} {groupItem.qtyType}</p>
+                              {groupItem.description && <p>Note: {groupItem.description}</p>}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   )}
 
                   {itemAddresses[item.id] && (
