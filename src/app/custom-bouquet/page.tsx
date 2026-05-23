@@ -214,7 +214,7 @@ export default function CustomBouquetPage() {
                             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                               <div>
                                 <p className="text-lg font-semibold text-slate-100">{item.title}</p>
-                                <p className="text-sm text-slate-400">{sel.qtyType === 'bundle' ? 'Bundle' : 'Piece'}</p>
+                                <p className="text-sm text-slate-400">{sel.qtyType === 'bundle' ? `Bundle (${BUNDLE_SIZE} stems)` : 'Piece (1 stem)'}</p>
                               </div>
                               <div className="text-right">
                                 <p className="text-sm text-slate-400">Unit price</p>
@@ -239,8 +239,8 @@ export default function CustomBouquetPage() {
                             </div>
                             <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
                               <select value={sel.qtyType} onChange={(e) => updateSelection(sel.tempId, { qtyType: e.target.value as 'piece' | 'bundle' })} className="rounded-3xl border border-slate-700/80 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/50">
-                                <option value="piece">Per piece</option>
-                                <option value="bundle">Per bundle</option>
+                                <option value="piece">Piece (1 stem)</option>
+                                <option value="bundle">Bundle (10 stems)</option>
                               </select>
                               <button onClick={() => removeSelection(sel.tempId)} className="rounded-3xl bg-rose-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-rose-500/20 hover:bg-rose-400">
                                 Remove
