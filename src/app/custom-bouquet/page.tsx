@@ -123,132 +123,226 @@ export default function CustomBouquetPage() {
   const removeGroup = (id: string) => setGroups((prev) => prev.filter(g => g.id !== id));
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-6">
-      <h2 className="text-2xl font-bold mb-4">Custom Bouquet</h2>
+    <div className="min-h-screen bg-slate-950 py-10 text-slate-100">
+      <div className="mx-auto max-w-7xl px-4">
+        <section className="mb-8 overflow-hidden rounded-[2rem] border border-slate-700/70 bg-slate-900/80 p-8 shadow-[0_30px_80px_-30px_rgba(15,23,42,0.9)] backdrop-blur-xl">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-sm uppercase tracking-[0.3em] text-sky-300/90">Custom Bouquet</p>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-50">Build a premium bouquet with fresh stems and modern wrapping.</h1>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400">
+                Select stems, choose colors, pick a wrapper and create a crafted group ready for checkout. Designed with Fluent 2-inspired surfaces, depth, and soft typography.
+              </p>
+            </div>
+            <div className="grid w-full gap-4 sm:grid-cols-2 lg:w-auto">
+              <div className="rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-5">
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Group quantity</p>
+                <p className="mt-3 text-3xl font-semibold text-slate-100">1</p>
+                <p className="mt-2 text-sm text-slate-400">Fixed by design for curated custom bouquets.</p>
+              </div>
+              <div className="rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-5">
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Selected stems</p>
+                <p className="mt-3 text-3xl font-semibold text-slate-100">{selections.length}</p>
+                <p className="mt-2 text-sm text-slate-400">Add at least one item to start.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="col-span-2">
-          <div className="grid grid-cols-3 gap-4">
-            {rawItems.map((r) => (
-              <div key={r.id} className="border rounded p-2 text-center">
-                <div className="w-full h-40 relative mb-2">
-                  <Image src={r.mainImage} alt={r.title} fill className="object-cover rounded" />
+        <div className="grid gap-6 xl:grid-cols-[1.85fr_1.15fr]">
+          <div className="grid gap-6">
+            <section className="rounded-[2rem] border border-slate-700/70 bg-slate-900/80 p-6 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.8)]">
+              <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 className="text-xl font-semibold text-slate-50">Raw stem selection</h2>
+                  <p className="mt-1 text-sm text-slate-400">Choose premium blooms and greens for your bouquet.</p>
                 </div>
-                <h3 className="font-semibold">{r.title}</h3>
-                <p className="text-sm text-gray-500">₱{r.pricePiece} / ₱{r.priceBundle}</p>
-                <button
-                  className="mt-2 px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700"
-                  onClick={() => addSelection(r.id)}
-                >
-                  Add
+                <div className="inline-flex items-center rounded-full border border-slate-700/70 bg-slate-950/80 px-4 py-2 text-sm text-slate-300">
+                  {rawItems.length} items available
+                </div>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {rawItems.map((r) => (
+                  <div key={r.id} className="group overflow-hidden rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-4 transition duration-300 hover:-translate-y-0.5 hover:bg-slate-900/90">
+                    <div className="relative h-44 overflow-hidden rounded-[1.75rem] bg-slate-800">
+                      <Image src={r.mainImage} alt={r.title} fill className="object-cover transition duration-500 group-hover:scale-105" />
+                    </div>
+                    <div className="mt-4 flex items-start justify-between gap-4">
+                      <div>
+                        <h3 className="text-lg font-semibold text-slate-100">{r.title}</h3>
+                        <p className="mt-1 text-sm text-slate-400">{r.description || 'Premium stem'}</p>
+                      </div>
+                      <span className="rounded-full bg-slate-800 px-3 py-1 text-xs uppercase tracking-[0.24em] text-sky-300/90">{r.id}</span>
+                    </div>
+                    <div className="mt-5 flex items-center justify-between gap-3">
+                      <div className="text-sm text-slate-300">₱{r.pricePiece} / ₱{r.priceBundle}</div>
+                      <button type="button" onClick={() => addSelection(r.id)} className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400">
+                        Add
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="rounded-[2rem] border border-slate-700/70 bg-slate-900/80 p-6 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.8)]">
+              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 className="text-xl font-semibold text-slate-50">Selected items</h2>
+                  <p className="mt-1 text-sm text-slate-400">Configure colors, quantities, and notes per stem.</p>
+                </div>
+                <div className="rounded-full border border-slate-700/70 bg-slate-950/80 px-3 py-1 text-xs uppercase tracking-[0.24em] text-slate-400">
+                  {selections.length} selected
+                </div>
+              </div>
+
+              {selections.length === 0 ? (
+                <div className="rounded-[1.75rem] border border-dashed border-slate-700/70 bg-slate-950/80 p-8 text-center text-slate-400">
+                  Add a stem to start building your group.
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {selections.map((sel) => {
+                    const item = rawItems.find((r) => r.id === sel.itemId)!;
+                    return (
+                      <div key={sel.tempId} className="rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-4 shadow-[inset_0_1px_0_rgba(148,163,184,0.08)]">
+                        <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
+                          <div className="relative h-24 w-full overflow-hidden rounded-[1.75rem] bg-slate-800 lg:w-24">
+                            <Image src={item.mainImage} alt={item.title} fill className="object-cover" />
+                          </div>
+                          <div className="flex-1 space-y-3">
+                            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                              <div>
+                                <p className="text-lg font-semibold text-slate-100">{item.title}</p>
+                                <p className="text-sm text-slate-400">{sel.qtyType === 'bundle' ? 'Bundle' : 'Piece'}</p>
+                              </div>
+                              <div className="text-right">
+                                <p className="text-sm text-slate-400">Unit price</p>
+                                <p className="text-lg font-semibold text-slate-100">₱{sel.qtyType === 'bundle' ? item.priceBundle : item.pricePiece}</p>
+                              </div>
+                            </div>
+                            <div className="grid gap-3 sm:grid-cols-2">
+                              <div className="space-y-2">
+                                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Color</p>
+                                <div className="flex flex-wrap gap-2">
+                                  {item.colors?.map((color) => (
+                                    <button key={color} onClick={() => updateSelection(sel.tempId, { color })} className={`rounded-full border px-3 py-1 text-xs font-semibold transition ${sel.color === color ? 'border-sky-400 bg-sky-500/15 text-sky-300' : 'border-slate-700 bg-slate-950 text-slate-300 hover:border-slate-400'}`}>
+                                      {color}
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                              <div className="space-y-2">
+                                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Quantity</p>
+                                <input type="number" min={1} value={sel.qty} onChange={(e) => updateSelection(sel.tempId, { qty: parseInt(e.target.value || '1') })} className="w-full rounded-3xl border border-slate-700/80 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/50" />
+                              </div>
+                            </div>
+                            <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
+                              <select value={sel.qtyType} onChange={(e) => updateSelection(sel.tempId, { qtyType: e.target.value as 'piece' | 'bundle' })} className="rounded-3xl border border-slate-700/80 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/50">
+                                <option value="piece">Per piece</option>
+                                <option value="bundle">Per bundle</option>
+                              </select>
+                              <button onClick={() => removeSelection(sel.tempId)} className="rounded-3xl bg-rose-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-rose-500/20 hover:bg-rose-400">
+                                Remove
+                              </button>
+                            </div>
+                            <textarea placeholder="Item note" value={sel.description} onChange={(e) => updateSelection(sel.tempId, { description: e.target.value })} className="w-full rounded-3xl border border-slate-700/80 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/50 resize-none" rows={3} />
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </section>
+          </div>
+
+          <aside className="space-y-6">
+            <section className="rounded-[2rem] border border-slate-700/70 bg-slate-900/80 p-6 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.8)]">
+              <div className="mb-4">
+                <h2 className="text-xl font-semibold text-slate-50">Group Builder</h2>
+                <p className="mt-1 text-sm text-slate-400">Finalize your custom bouquet for checkout.</p>
+              </div>
+              <div className="space-y-4">
+                <div className="rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-4">
+                  <label className="text-sm text-slate-400">Group notes</label>
+                  <textarea value={groupDesc} onChange={(e) => setGroupDesc(e.target.value)} placeholder="Describe aroma, message or style" className="mt-2 w-full rounded-3xl border border-slate-700/80 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/50 resize-none" rows={4} />
+                </div>
+                <div className="rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-4">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Wrapper selection</h3>
+                  <WrapperSelector colors={(wrapperData as any).colors} onSelectWrappers={(s) => setWrapperSelections(s)} maxSelections={1} />
+                </div>
+                <div className="rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-sm font-semibold text-slate-100">Group quantity</h3>
+                      <p className="text-xs text-slate-500">Fixed to 1 for Fluent-style curated groups.</p>
+                    </div>
+                    <div className="rounded-full bg-slate-950 px-3 py-2 text-sm text-slate-300 border border-slate-700/70">1</div>
+                  </div>
+                </div>
+                <button disabled={selections.length === 0} onClick={createGroup} className="w-full rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:bg-slate-700">
+                  Create Group
                 </button>
               </div>
-            ))}
-          </div>
+            </section>
 
-          <div className="mt-6 p-4 border rounded">
-            <h4 className="font-semibold mb-2">Create Group from Selected Items ({selections.length})</h4>
-            <textarea className="border p-2 w-full mb-2" placeholder="Group description / notes" value={groupDesc} onChange={(e)=>setGroupDesc(e.target.value)} />
-
-            {/* Selected items editor */}
-            {selections.length > 0 && (
-              <div className="mb-4 space-y-3">
-                {selections.map((sel) => {
-                  const item = rawItems.find(r => r.id === sel.itemId)!;
-                  return (
-                    <div key={sel.tempId} className="flex gap-2 items-start border p-2 rounded">
-                      <div className="w-16 h-16 relative">
-                        <Image src={item.mainImage} alt={item.title} fill className="object-cover rounded" />
+            <section className="rounded-[2rem] border border-slate-700/70 bg-slate-900/80 p-6 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.8)]">
+              <div className="mb-4 flex items-center justify-between">
+                <div>
+                  <h2 className="text-xl font-semibold text-slate-50">Pending groups</h2>
+                  <p className="mt-1 text-sm text-slate-400">Review before adding to cart.</p>
+                </div>
+                <span className="rounded-full bg-slate-950 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-400">{groups.length}</span>
+              </div>
+              <div className="space-y-4">
+                {groups.length === 0 ? (
+                  <div className="rounded-[1.75rem] border border-dashed border-slate-700/70 bg-slate-950/80 p-8 text-center text-slate-500">
+                    No groups created yet.
+                  </div>
+                ) : (
+                  groups.map((g) => (
+                    <div key={g.id} className="rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="relative h-20 w-20 overflow-hidden rounded-[1.75rem] bg-slate-800">
+                          <Image src={g.items[0].item.mainImage} alt={g.name} fill className="object-cover" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between gap-3">
+                            <p className="text-base font-semibold text-slate-100">{g.name}</p>
+                            <p className="text-sm text-slate-400">₱{g.pricePerUnit}</p>
+                          </div>
+                          <p className="mt-2 text-sm text-slate-400">{g.description || 'No description added'}</p>
+                          <p className="mt-3 text-xs uppercase tracking-[0.2em] text-slate-500">Wrapper</p>
+                          {g.wrapperSelections && g.wrapperSelections.length > 0 ? (
+                            <div className="mt-2 flex items-center gap-2">
+                              <div className="relative h-10 w-10 overflow-hidden rounded-[1.25rem] border border-slate-700/70">
+                                <Image src={g.wrapperSelections[0].variantImage} alt={g.wrapperSelections[0].variantId} fill className="object-cover" />
+                              </div>
+                              <div className="text-sm text-slate-300">
+                                <p>{g.wrapperSelections[0].color}</p>
+                                <p className="text-xs text-slate-500">{g.wrapperSelections[0].variantId}</p>
+                              </div>
+                            </div>
+                          ) : (
+                            <p className="mt-2 text-sm text-slate-400">Wrapper: {g.wrapper}</p>
+                          )}
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between">
-                          <div className="font-medium">{item.title}</div>
-                          <div className="text-sm text-gray-600 font-semibold">₱{sel.qtyType === 'bundle' ? item.priceBundle : item.pricePiece}</div>
-                        </div>
-                        {item.colors && item.colors.length > 0 && (
-                          <div className="mt-1 flex gap-1 flex-wrap">
-                            {item.colors.map(color => (
-                              <button
-                                key={color}
-                                onClick={() => updateSelection(sel.tempId, { color })}
-                                className={`text-xs px-2 py-1 rounded capitalize ${sel.color === color ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
-                              >
-                                {color}
-                              </button>
-                            ))}
-                          </div>
-                        )}
-                        <div className="mt-2 flex gap-2">
-                          <input type="number" min={1} value={sel.qty} onChange={(e)=>updateSelection(sel.tempId, {qty:parseInt(e.target.value||'1')})} className="border p-1 w-20" />
-                          <select value={sel.qtyType} onChange={(e)=>updateSelection(sel.tempId, {qtyType: e.target.value as 'piece' | 'bundle'})} className="border p-1">
-                            <option value="piece">per piece</option>
-                            <option value="bundle">per bundle</option>
-                          </select>
-                          <div className="text-xs text-gray-500 self-center">
-                            {sel.qtyType === 'bundle' ? `1 bundle = ${BUNDLE_SIZE} stems` : 'per piece = 1 stem'}
-                          </div>
-                          <input placeholder="Item note" value={sel.description} onChange={(e)=>updateSelection(sel.tempId, {description: e.target.value})} className="border p-1 flex-1" />
-                          <button onClick={() => removeSelection(sel.tempId)} className="text-red-600 text-sm font-semibold hover:bg-red-50 px-2 rounded">Remove</button>
-                        </div>
+                      <div className="mt-4 flex gap-2">
+                        <button className="flex-1 rounded-full bg-emerald-500 px-3 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 hover:bg-emerald-400" onClick={()=>addGroupToCart(g)}>
+                          Add to Cart
+                        </button>
+                        <button className="rounded-full bg-slate-800 px-3 py-2 text-sm font-semibold text-slate-300 border border-slate-700/70 hover:bg-slate-700" onClick={()=>removeGroup(g.id)}>
+                          Remove
+                        </button>
                       </div>
                     </div>
-                  );
-                })}
+                  ))
+                )}
               </div>
-            )}
-
-            <div className="mb-4">
-              <WrapperSelector colors={(wrapperData as any).colors} onSelectWrappers={(s)=>setWrapperSelections(s)} maxSelections={1} />
-            </div>
-
-            <div className="mb-3 text-sm text-gray-600">
-              Default quantity per group: 1
-            </div>
-            <div className="flex gap-2">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded" onClick={createGroup}>Create Group</button>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-semibold mb-2">Groups</h4>
-          <div className="space-y-4">
-            {groups.length === 0 && (<p className="text-sm text-gray-500">No groups yet. Select items and create a group.</p>)}
-            {groups.map((g) => (
-              <div key={g.id} className="border rounded p-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-20 h-20 relative">
-                    <Image src={g.items[0].item.mainImage} alt={g.name} fill className="object-cover rounded" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-center">
-                      <h5 className="font-semibold">{g.name}</h5>
-                      <div className="text-sm">₱{g.pricePerUnit} x {g.quantity}</div>
-                    </div>
-                    <p className="text-sm text-gray-500">{g.description}</p>
-                    <p className="text-sm mt-2">Items: {g.items.map(i=>i.item.title).join(', ')}</p>
-                    {g.wrapperSelections && g.wrapperSelections.length > 0 ? (
-                      <div className="mt-2 flex items-center gap-2 text-sm text-gray-600">
-                        <div className="w-10 h-10 relative rounded overflow-hidden border">
-                          <Image src={g.wrapperSelections[0].variantImage} alt={g.wrapperSelections[0].variantId} fill className="object-cover" />
-                        </div>
-                        <div>
-                          <p><span className="font-semibold">Wrapper:</span> {g.wrapperSelections[0].color}</p>
-                          <p className="text-xs">{g.wrapperSelections[0].variantId}</p>
-                        </div>
-                      </div>
-                    ) : (
-                      <p className="text-sm">Wrapper: {g.wrapper}</p>
-                    )}
-                  </div>
-                </div>
-                <div className="mt-3 flex gap-2">
-                  <button className="bg-green-600 text-white px-3 py-1 rounded" onClick={()=>addGroupToCart(g)}>Add to Cart</button>
-                  <button className="bg-gray-200 px-3 py-1 rounded" onClick={()=>removeGroup(g.id)}>Remove</button>
-                </div>
-              </div>
-            ))}
-          </div>
+            </section>
+          </aside>
         </div>
       </div>
     </div>

@@ -13,77 +13,60 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-header text-white py-6 sm:py-4 relative min-h-[80px] flex items-center">
-      {/* Logo/Image floating on the left */}
-      <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10">
-        <Image
-          src="/app/cropted_logo.png"
-          alt="Logo"
-          width={120}
-          height={30}
-          className="h-10 sm:h-12 w-auto duration-300 hover:scale-110 drop-shadow-lg"
-        />
+    <header className="bg-header border-b border-slate-700/70 text-slate-100 py-4 relative">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
+        <Link href="/" className="inline-flex items-center gap-3 rounded-3xl border border-slate-700/70 bg-slate-900/80 px-4 py-3 text-sm font-semibold text-slate-100 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.8)] transition hover:bg-slate-800">
+          <Image
+            src="/app/cropted_logo.png"
+            alt="Logo"
+            width={120}
+            height={40}
+            className="h-10 w-auto"
+          />
+        </Link>
+
+        <nav className="hidden md:flex items-center gap-4">
+          {headerLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-full px-4 py-2 text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-slate-50"
+            >
+              {link.title}
+            </Link>
+          ))}
+        </nav>
+
+        <button
+          onClick={toggleMenu}
+          className="md:hidden rounded-full border border-slate-700/70 bg-slate-900/80 p-3 text-slate-200 shadow-lg shadow-black/40"
+          aria-label="Toggle menu"
+        >
+          <div className="w-6 space-y-1">
+            <span className={`block h-0.5 w-full rounded-full bg-slate-200 transition ${isMenuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+            <span className={`block h-0.5 w-full rounded-full bg-slate-200 transition ${isMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block h-0.5 w-full rounded-full bg-slate-200 transition ${isMenuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+          </div>
+        </button>
       </div>
 
-      {/* Burger Menu Button - Mobile Only */}
-      <button
-        onClick={toggleMenu}
-        className="md:hidden absolute right-4 top-1/2 transform -translate-y-1/2 z-20 p-3"
-        aria-label="Toggle menu"
+      <nav
+        className={`md:hidden fixed inset-0 z-40 flex flex-col items-center justify-center bg-slate-950/95 p-8 backdrop-blur-xl transition-transform duration-300 ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
       >
-        <div className="w-7 h-7 flex flex-col justify-center items-center">
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 ${
-              isMenuOpen ? "rotate-45 translate-y-1" : ""
-            }`}
-          ></span>
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 mt-1 ${
-              isMenuOpen ? "opacity-0" : ""
-            }`}
-          ></span>
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 mt-1 ${
-              isMenuOpen ? "-rotate-45 -translate-y-1" : ""
-            }`}
-          ></span>
-        </div>
-      </button>
-
-      {/* Desktop Navigation - Hidden on Mobile */}
-      <nav className="hidden md:flex justify-center w-full">
-        <ul className="flex space-x-8">
+        <button onClick={toggleMenu} className="absolute right-6 top-6 rounded-full border border-slate-700/70 bg-slate-900/80 p-3 text-slate-200">
+          ×
+        </button>
+        <ul className="flex flex-col items-center gap-6 text-lg font-semibold text-slate-100">
           {headerLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="hover:text-gray-300 transition-colors">
+              <Link href={link.href} onClick={() => setIsMenuOpen(false)} className="hover:text-sky-300">
                 {link.title}
               </Link>
             </li>
           ))}
         </ul>
-      </nav>
-
-      {/* Mobile Navigation Menu */}
-      <nav
-        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-header z-10 transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full">
-          <ul className="flex flex-col space-y-8 text-center">
-            {headerLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-xl hover:text-gray-300 transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
       </nav>
     </header>
   );

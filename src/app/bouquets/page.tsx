@@ -43,29 +43,29 @@ export default function BouquetsPage() {
     };
 
     return (
-        <div className="w-full max-w-7xl mx-auto px-4 py-4">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
-                <h2 className="text-3xl font-bold text-gray-800">Bouquets</h2>
-                <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
-                <input
-                    type="text"
-                    placeholder="Search by name or code"
-                    className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-64"
-                    // value={searchTerm}
-                    // onChange={handleSearchChange}
-                />
-                <select
-                    className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 md:w-48"
-                    value={priceFilter}
-                    onChange={handlePriceFilterChange}
-                >
-                    <option value="">Sort by price</option>
-                    <option value="high">High to Low</option>
-                    <option value="low">Low to High</option>
-                </select>
+        <div className="mx-auto max-w-7xl px-4 py-10">
+            <div className="mb-8 rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8 shadow-[0_30px_80px_-30px_rgba(15,23,42,0.8)]">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <h2 className="text-4xl font-semibold text-slate-100">Bouquets</h2>
+                    <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+                        <input
+                            type="text"
+                            placeholder="Search by name or code"
+                            className="w-full rounded-3xl border border-slate-700/70 bg-slate-950/70 px-4 py-3 text-slate-100 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-500/20 md:w-64"
+                        />
+                        <select
+                            className="w-full rounded-3xl border border-slate-700/70 bg-slate-950/70 px-4 py-3 text-slate-100 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-500/20 md:w-48"
+                            value={priceFilter}
+                            onChange={handlePriceFilterChange}
+                        >
+                            <option value="">Sort by price</option>
+                            <option value="high">High to Low</option>
+                            <option value="low">Low to High</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {products.map((arrangement) => (
                     <LazyLoad 
@@ -74,11 +74,11 @@ export default function BouquetsPage() {
                         rootMargin="100px"
                         placeholder={<Placeholder />}
                     >
-                        <div 
-                            className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200" 
+                        <button 
+                            className="group flex flex-col items-start overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950/80 p-4 text-left transition hover:-translate-y-1 hover:border-sky-400/40 hover:bg-slate-900/95" 
                             onClick={() => openModal(arrangement)}
                         >
-                            <div className="w-full h-64 bg-gray-200 rounded-lg mb-4">
+                            <div className="relative w-full h-64 overflow-hidden rounded-[1.5rem] bg-slate-800 mb-4">
                                 <Image
                                     src={arrangement.mainImage}
                                     alt={arrangement.title}
@@ -90,14 +90,14 @@ export default function BouquetsPage() {
                                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                                 />
                             </div>
-                            <h3 className="text-lg font-semibold text-gray-800 mb-2">{arrangement.title}</h3>
+                            <h3 className="text-lg font-semibold text-slate-100 mb-2">{arrangement.title}</h3>
                             {arrangement.description && (
-                                <p className="text-sm text-gray-500 text-center mb-2 px-2">{arrangement.description}</p>
+                                <p className="text-sm text-slate-400 mb-2">{arrangement.description}</p>
                             )}
                             {
-                                arrangement.showPrice && (<p className="text-sm text-gray-600 text-center"> ₱{(arrangement.price || 0) - (arrangement.discountPrice || 0)} &nbsp; <s>{arrangement.discountPrice && arrangement.discountPrice > 0 ? `₱` + arrangement.price : '' }</s></p> )
-                            } 
-                        </div>
+                                arrangement.showPrice && (<p className="text-sm text-slate-300">₱{(arrangement.price || 0) - (arrangement.discountPrice || 0)}{arrangement.discountPrice && arrangement.discountPrice > 0 ? <span className="ml-2 text-xs line-through text-slate-500">₱{arrangement.price}</span> : null}</p> )
+                            }
+                        </button>
                     </LazyLoad>
                 ))}
             </div>
