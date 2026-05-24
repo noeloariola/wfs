@@ -5,8 +5,8 @@
     "mainImage": "/app/arrangements/raw_items/carnation.jpg",
     "images": ["/app/arrangements/raw_items/carnation.jpg"],
     "description": "Fresh carnation stems",
-    "pricePiece": 50,
-    "priceBundle": 400,
+    "pricePiece": 110,
+    "priceBundle": 1000,
     "showPrice": true,
     "colors": ["red", "pink", "white", "yellow"]
   },
@@ -15,20 +15,20 @@
     "title": "Lily",
     "mainImage": "/app/arrangements/raw_items/lily.jpg",
     "images": ["/app/arrangements/raw_items/lily.jpg"],
-    "description": "Elegant lily stems",
-    "pricePiece": 80,
+    "description": "3 to 4 flowers or buds per stem",
+    "pricePiece": 390,
     "priceBundle": 700,
     "showPrice": true,
     "colors": ["white", "pink", "orange"]
   },
   {
-    "id": "ROSE-CHINA",
+    "id": "china-rose",
     "title": "Rose (China)",
     "mainImage": "/app/arrangements/raw_items/rose-china.jpg",
     "images": ["/app/arrangements/raw_items/rose-china.jpg"],
-    "description": "Classic rose stems",
-    "pricePiece": 120,
-    "priceBundle": 1000,
+    "description": "Imported China Rose",
+    "pricePiece": 190,
+    "priceBundle": 1800,
     "showPrice": true,
     "colors": ["red", "white", "pink", "yellow", "purple"]
   }
