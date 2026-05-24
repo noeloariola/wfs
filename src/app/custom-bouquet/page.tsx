@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { GetRawItems } from "@/repository/raw_items";
 import ArrangementModal from "@/components/elements/modal";
 import WrapperSelector from '@/components/elements/wrapper-selector';
@@ -35,6 +35,9 @@ export default function CustomBouquetPage() {
   const [groupDesc, setGroupDesc] = useState("");
   const [wrapper, setWrapper] = useState('white');
   const [wrapperSelections, setWrapperSelections] = useState<{ color: string; variantId: string; variantImage: string }[]>([]);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [justAddedId, setJustAddedId] = useState<string | null>(null);
+  const clickTimerRef = useRef<number | null>(null);
   const { addItem } = useCart();
 
   const addSelection = (itemId: string) => {
@@ -48,7 +51,21 @@ export default function CustomBouquetPage() {
       color: item?.colors?.[0] || '',
     };
     setSelections((prev) => [...prev, newSelection]);
+    if (item) setToastMessage(`${item.title} added to custom bouquet`);
+    // visual feedback for the Add button
+    setJustAddedId(itemId);
+    if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
+    clickTimerRef.current = window.setTimeout(() => {
+      setJustAddedId(null);
+      clickTimerRef.current = null;
+    }, 800);
   };
+
+  useEffect(() => {
+    if (!toastMessage) return;
+    const t = setTimeout(() => setToastMessage(null), 3000);
+    return () => clearTimeout(t);
+  }, [toastMessage]);
 
   const updateSelection = (tempId: string, updates: Partial<Selection>) => {
     setSelections((prev) => prev.map(s => s.tempId === tempId ? { ...s, ...updates } : s));
@@ -115,12 +132,7 @@ export default function CustomBouquetPage() {
                 Choose your preferred flower, color, and wrapper to create a crafted bouquet ready for checkout. Fresh stems, seasonal blooms, and elegant finishing touches for every special moment.
               </p>
             </div>
-            <div className="grid w-full gap-4 sm:grid-cols-2 lg:w-auto">
-              <div className="rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-5">
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Group quantity</p>
-                <p className="mt-3 text-3xl font-semibold text-slate-100">1</p>
-                <p className="mt-2 text-sm text-slate-400">Fixed by design for curated custom bouquets.</p>
-              </div>
+            <div className="grid w-full gap-4 sm:grid-cols-1 lg:w-auto">
               <div className="rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-5">
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Selected stems</p>
                 <p className="mt-3 text-3xl font-semibold text-slate-100">{selections.length}</p>
@@ -129,6 +141,23 @@ export default function CustomBouquetPage() {
             </div>
           </div>
         </section>
+        {toastMessage && (
+          <div role="status" aria-live="polite" className="fixed right-6 bottom-6 z-50 flex max-w-md items-center gap-4 rounded-2xl bg-emerald-600/95 px-5 py-3 shadow-2xl border border-emerald-400/40 ring-2 ring-emerald-400/20 transform transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white animate-pulse" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <div className="text-sm font-medium text-white">{toastMessage}</div>
+            </div>
+            <button aria-label="Dismiss notification" onClick={() => setToastMessage(null)} className="-mr-1 rounded-full bg-white/10 p-1 text-white hover:bg-white/20">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        )}
 
         <div className="grid gap-6 xl:grid-cols-[1.85fr_1.15fr]">
           <div className="grid gap-6">
@@ -157,8 +186,12 @@ export default function CustomBouquetPage() {
                     </div>
                     <div className="mt-5 flex items-center justify-between gap-3">
                       <div className="text-sm text-slate-300">₱{r.pricePiece} / ₱{r.priceBundle}</div>
-                      <button type="button" onClick={() => addSelection(r.id)} className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400">
-                        Add
+                      <button
+                        type="button"
+                        onClick={() => addSelection(r.id)}
+                        className={`rounded-full px-4 py-2 text-sm font-semibold text-white shadow-lg transition transform ${justAddedId === r.id ? 'bg-emerald-500 shadow-2xl scale-95' : 'bg-sky-500 shadow-sky-500/20 hover:bg-sky-400'}`}
+                      >
+                        {justAddedId === r.id ? 'Added' : 'Add'}
                       </button>
                     </div>
                   </div>
