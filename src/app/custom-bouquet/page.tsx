@@ -19,17 +19,6 @@ type RawItem = {
   colors?: string[];
 };
 
-type Group = {
-  id: string;
-  name: string;
-  description?: string;
-  items: { item: RawItem; qty: number; qtyType: 'piece' | 'bundle'; description?: string; color: string }[];
-  wrapper?: string;
-  wrapperSelections?: { color: string; variantId: string; variantImage: string }[];
-  pricePerUnit: number;
-  quantity: number;
-};
-
 type Selection = {
   tempId: string;
   itemId: string;
@@ -43,8 +32,6 @@ export default function CustomBouquetPage() {
   const rawItems = GetRawItems() as RawItem[];
   const BUNDLE_SIZE = 10;
   const [selections, setSelections] = useState<Selection[]>([]);
-  const [groups, setGroups] = useState<Group[]>([]);
-  const [groupName, setGroupName] = useState("");
   const [groupDesc, setGroupDesc] = useState("");
   const [wrapper, setWrapper] = useState('white');
   const [wrapperSelections, setWrapperSelections] = useState<{ color: string; variantId: string; variantImage: string }[]>([]);
@@ -81,9 +68,9 @@ export default function CustomBouquetPage() {
       const unitPrice = it.qtyType === 'bundle' ? (it.item.priceBundle || 0) : (it.item.pricePiece || 0);
       return s + unitPrice * it.qty;
     }, 0);
-    const g: Group = {
-      id: `group-${groups.length + 1}`,
-      name: `group-${groups.length + 1}`,
+    const newGroup = {
+      id: `group-${Date.now()}`,
+      name: `Custom bouquet`,
       description: groupDesc,
       items,
       wrapper: wrapperSelections[0]?.variantId || wrapper,
@@ -91,36 +78,30 @@ export default function CustomBouquetPage() {
       pricePerUnit: computedPrice,
       quantity: 1,
     };
-    setGroups((prev) => [...prev, g]);
-    setSelections([]);
-    setGroupName("");
-    setGroupDesc("");
-    setWrapperSelections([]);
-  };
 
-  const addGroupToCart = (g: Group) => {
-    const selectedWrapper = g.wrapperSelections?.[0];
+    const selectedWrapper = newGroup.wrapperSelections?.[0];
     const cartItem = {
-      id: `CUSTOM|${g.id}|${Date.now()}`,
-      productId: `CUSTOM-${g.id}`,
-      productTitle: g.name,
-      productPrice: g.pricePerUnit,
-      productImage: g.items[0]?.item.mainImage || '',
-      quantity: g.quantity,
-      wrapperId: g.wrapper,
+      id: `CUSTOM|${newGroup.id}|${Date.now()}`,
+      productId: `CUSTOM-${newGroup.id}`,
+      productTitle: newGroup.name,
+      productPrice: newGroup.pricePerUnit,
+      productImage: newGroup.items[0]?.item.mainImage || '',
+      quantity: newGroup.quantity,
+      wrapperId: newGroup.wrapper,
       wrapperColor: selectedWrapper?.color,
       wrapperVariantId: selectedWrapper?.variantId,
       wrapperVariantImage: selectedWrapper?.variantImage,
-      wrapperSelections: g.wrapperSelections,
-      notes: g.description,
-      groupItems: g.items.map(it => ({ id: it.item.id, title: it.item.title, image: it.item.mainImage, qty: it.qty, qtyType: it.qtyType, description: it.description || '', color: it.color || '' })),
+      wrapperSelections: newGroup.wrapperSelections,
+      notes: newGroup.description,
+      groupItems: newGroup.items.map(it => ({ id: it.item.id, title: it.item.title, image: it.item.mainImage, qty: it.qty, qtyType: it.qtyType, description: it.description || '', color: it.color || '' })),
       addedAt: Date.now(),
     };
-    addItem(cartItem as any);
-    setGroups((prev) => prev.filter(group => group.id !== g.id));
-  };
 
-  const removeGroup = (id: string) => setGroups((prev) => prev.filter(g => g.id !== id));
+    addItem(cartItem as any);
+    setSelections([]);
+    setGroupDesc("");
+    setWrapperSelections([]);
+  };
 
   return (
     <div className="min-h-screen bg-slate-950 py-10 text-slate-100">
@@ -129,9 +110,9 @@ export default function CustomBouquetPage() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
               <p className="text-sm uppercase tracking-[0.3em] text-sky-300/90">Custom Bouquet</p>
-              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-50">Build a premium bouquet with fresh stems and modern wrapping.</h1>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-50">Choose your preferred flower, color, and wrapper for a premium bouquet.</h1>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400">
-                Select stems, choose colors, pick a wrapper and create a crafted group ready for checkout. Designed with Fluent 2-inspired surfaces, depth, and soft typography.
+                Choose your preferred flower, color, and wrapper to create a crafted bouquet ready for checkout. Fresh stems, seasonal blooms, and elegant finishing touches for every special moment.
               </p>
             </div>
             <div className="grid w-full gap-4 sm:grid-cols-2 lg:w-auto">
@@ -260,7 +241,7 @@ export default function CustomBouquetPage() {
           <aside className="space-y-6">
             <section className="rounded-[2rem] border border-slate-700/70 bg-slate-900/80 p-6 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.8)]">
               <div className="mb-4">
-                <h2 className="text-xl font-semibold text-slate-50">Group Builder</h2>
+                <h2 className="text-xl font-semibold text-slate-50">Custom Builder</h2>
                 <p className="mt-1 text-sm text-slate-400">Finalize your custom bouquet for checkout.</p>
               </div>
               <div className="space-y-4">
@@ -281,67 +262,12 @@ export default function CustomBouquetPage() {
                     <div className="rounded-full bg-slate-950 px-3 py-2 text-sm text-slate-300 border border-slate-700/70">1</div>
                   </div>
                 </div>
-                <button disabled={selections.length === 0} onClick={createGroup} className="w-full rounded-full bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:bg-slate-700">
-                  Create Group
+                <button disabled={selections.length === 0} onClick={createGroup} className="w-full rounded-full bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:bg-slate-700">
+                  Add to Cart
                 </button>
               </div>
             </section>
 
-            <section className="rounded-[2rem] border border-slate-700/70 bg-slate-900/80 p-6 shadow-[0_20px_45px_-20px_rgba(15,23,42,0.8)]">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <h2 className="text-xl font-semibold text-slate-50">Pending groups</h2>
-                  <p className="mt-1 text-sm text-slate-400">Review before adding to cart.</p>
-                </div>
-                <span className="rounded-full bg-slate-950 px-3 py-1 text-xs uppercase tracking-[0.2em] text-slate-400">{groups.length}</span>
-              </div>
-              <div className="space-y-4">
-                {groups.length === 0 ? (
-                  <div className="rounded-[1.75rem] border border-dashed border-slate-700/70 bg-slate-950/80 p-8 text-center text-slate-500">
-                    No groups created yet.
-                  </div>
-                ) : (
-                  groups.map((g) => (
-                    <div key={g.id} className="rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="relative h-20 w-20 overflow-hidden rounded-[1.75rem] bg-slate-800">
-                          <Image src={g.items[0].item.mainImage} alt={g.name} fill className="object-cover" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between gap-3">
-                            <p className="text-base font-semibold text-slate-100">{g.name}</p>
-                            <p className="text-sm text-slate-400">₱{g.pricePerUnit}</p>
-                          </div>
-                          <p className="mt-2 text-sm text-slate-400">{g.description || 'No description added'}</p>
-                          <p className="mt-3 text-xs uppercase tracking-[0.2em] text-slate-500">Wrapper</p>
-                          {g.wrapperSelections && g.wrapperSelections.length > 0 ? (
-                            <div className="mt-2 flex items-center gap-2">
-                              <div className="relative h-10 w-10 overflow-hidden rounded-[1.25rem] border border-slate-700/70">
-                                <Image src={g.wrapperSelections[0].variantImage} alt={g.wrapperSelections[0].variantId} fill className="object-cover" />
-                              </div>
-                              <div className="text-sm text-slate-300">
-                                <p>{g.wrapperSelections[0].color}</p>
-                                <p className="text-xs text-slate-500">{g.wrapperSelections[0].variantId}</p>
-                              </div>
-                            </div>
-                          ) : (
-                            <p className="mt-2 text-sm text-slate-400">Wrapper: {g.wrapper}</p>
-                          )}
-                        </div>
-                      </div>
-                      <div className="mt-4 flex gap-2">
-                        <button className="flex-1 rounded-full bg-emerald-500 px-3 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 hover:bg-emerald-400" onClick={()=>addGroupToCart(g)}>
-                          Add to Cart
-                        </button>
-                        <button className="rounded-full bg-slate-800 px-3 py-2 text-sm font-semibold text-slate-300 border border-slate-700/70 hover:bg-slate-700" onClick={()=>removeGroup(g.id)}>
-                          Remove
-                        </button>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-            </section>
           </aside>
         </div>
       </div>
