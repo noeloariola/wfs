@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { GetRawItems } from "@/repository/raw_items";
-import ArrangementModal from "@/components/elements/modal";
 import WrapperSelector from '@/components/elements/wrapper-selector';
 import wrapperData from '@/repository/bouquet/wrappers.json';
 import { useCart } from "@/context/CartContext";
@@ -23,20 +22,20 @@ type Selection = {
   tempId: string;
   itemId: string;
   qty: number;
-  qtyType: 'piece' | 'bundle';
   description: string;
   color: string;
 };
 
 export default function CustomBouquetPage() {
   const rawItems = GetRawItems() as RawItem[];
-  const BUNDLE_SIZE = 10;
   const [selections, setSelections] = useState<Selection[]>([]);
   const [groupDesc, setGroupDesc] = useState("");
   const [wrapper, setWrapper] = useState('white');
   const [wrapperSelections, setWrapperSelections] = useState<{ color: string; variantId: string; variantImage: string }[]>([]);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [justAddedId, setJustAddedId] = useState<string | null>(null);
+  const [selectedRawItem, setSelectedRawItem] = useState<RawItem | null>(null);
+  const [isRawItemModalOpen, setIsRawItemModalOpen] = useState(false);
   const clickTimerRef = useRef<number | null>(null);
   const { addItem } = useCart();
 
@@ -46,7 +45,6 @@ export default function CustomBouquetPage() {
       tempId: `${itemId}-${Date.now()}-${Math.random()}`,
       itemId,
       qty: 1,
-      qtyType: 'piece',
       description: '',
       color: item?.colors?.[0] || '',
     };
@@ -59,6 +57,16 @@ export default function CustomBouquetPage() {
       setJustAddedId(null);
       clickTimerRef.current = null;
     }, 800);
+  };
+
+  const openRawItemModal = (item: RawItem) => {
+    setSelectedRawItem(item);
+    setIsRawItemModalOpen(true);
+  };
+
+  const closeRawItemModal = () => {
+    setIsRawItemModalOpen(false);
+    setSelectedRawItem(null);
   };
 
   useEffect(() => {
@@ -79,10 +87,10 @@ export default function CustomBouquetPage() {
     if (selections.length === 0) return;
     const items = selections.map((sel) => {
       const item = rawItems.find(r => r.id === sel.itemId) as RawItem;
-      return { item, qty: sel.qty, qtyType: sel.qtyType, description: sel.description, color: sel.color };
+      return { item, qty: sel.qty, description: sel.description, color: sel.color };
     });
     const computedPrice = items.reduce((s, it) => {
-      const unitPrice = it.qtyType === 'bundle' ? (it.item.priceBundle || 0) : (it.item.pricePiece || 0);
+      const unitPrice = it.item.pricePiece || 0;
       return s + unitPrice * it.qty;
     }, 0);
     const newGroup = {
@@ -110,7 +118,7 @@ export default function CustomBouquetPage() {
       wrapperVariantImage: selectedWrapper?.variantImage,
       wrapperSelections: newGroup.wrapperSelections,
       notes: newGroup.description,
-      groupItems: newGroup.items.map(it => ({ id: it.item.id, title: it.item.title, image: it.item.mainImage, qty: it.qty, qtyType: it.qtyType, description: it.description || '', color: it.color || '' })),
+      groupItems: newGroup.items.map(it => ({ id: it.item.id, title: it.item.title, image: it.item.mainImage, qty: it.qty, description: it.description || '', color: it.color || '' })),
       addedAt: Date.now(),
     };
 
@@ -174,9 +182,16 @@ export default function CustomBouquetPage() {
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 {rawItems.map((r) => (
                   <div key={r.id} className="group overflow-hidden rounded-[1.75rem] border border-slate-700/70 bg-slate-950/80 p-4 transition duration-300 hover:-translate-y-0.5 hover:bg-slate-900/90">
-                    <div className="relative h-44 overflow-hidden rounded-[1.75rem] bg-slate-800">
+                    <button
+                      type="button"
+                      onClick={() => openRawItemModal(r)}
+                      className="relative h-44 w-full overflow-hidden rounded-[1.75rem] bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                    >
                       <Image src={r.mainImage} alt={r.title} fill className="object-cover transition duration-500 group-hover:scale-105" />
-                    </div>
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition hover:bg-black/20">
+                        <span className="text-sm font-semibold text-slate-100 opacity-0 transition hover:opacity-100">View</span>
+                      </div>
+                    </button>
                     <div className="mt-4 flex items-start justify-between gap-4">
                       <div>
                         <h3 className="text-lg font-semibold text-slate-100">{r.title}</h3>
@@ -184,16 +199,8 @@ export default function CustomBouquetPage() {
                       </div>
                       <span className="rounded-full bg-slate-800 px-3 py-1 text-xs uppercase tracking-[0.24em] text-sky-300/90">{r.id}</span>
                     </div>
-                    <div className="mt-5 flex items-center justify-between gap-3">
-                      <div className="text-sm text-slate-300">₱{r.pricePiece} / ₱{r.priceBundle}</div>
-                      <button
-                        type="button"
-                        onClick={() => addSelection(r.id)}
-                        className={`rounded-full px-4 py-2 text-sm font-semibold text-white shadow-lg transition transform ${justAddedId === r.id ? 'bg-emerald-500 shadow-2xl scale-95' : 'bg-sky-500 shadow-sky-500/20 hover:bg-sky-400'}`}
-                      >
-                        {justAddedId === r.id ? 'Added' : 'Add'}
-                      </button>
-                    </div>
+                    <div className="mt-5 text-sm text-slate-300">₱{r.pricePiece}</div>
+                    <div className="mt-3 text-xs uppercase tracking-[0.24em] text-slate-500">Tap the image to view details and add this stem.</div>
                   </div>
                 ))}
               </div>
@@ -228,11 +235,11 @@ export default function CustomBouquetPage() {
                             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                               <div>
                                 <p className="text-lg font-semibold text-slate-100">{item.title}</p>
-                                <p className="text-sm text-slate-400">{sel.qtyType === 'bundle' ? `Bundle (${BUNDLE_SIZE} stems)` : 'Piece (1 stem)'}</p>
+                                <p className="text-sm text-slate-400">Piece (1 stem)</p>
                               </div>
                               <div className="text-right">
                                 <p className="text-sm text-slate-400">Unit price</p>
-                                <p className="text-lg font-semibold text-slate-100">₱{sel.qtyType === 'bundle' ? item.priceBundle : item.pricePiece}</p>
+                                <p className="text-lg font-semibold text-slate-100">₱{item.pricePiece}</p>
                               </div>
                             </div>
                             <div className="grid gap-3 sm:grid-cols-2">
@@ -248,14 +255,14 @@ export default function CustomBouquetPage() {
                               </div>
                               <div className="space-y-2">
                                 <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Quantity</p>
-                                <input type="number" min={1} value={sel.qty} onChange={(e) => updateSelection(sel.tempId, { qty: parseInt(e.target.value || '1') })} className="w-full rounded-3xl border border-slate-700/80 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/50" />
+                                <div className="flex items-center rounded-3xl border border-slate-700/80 bg-slate-950/70">
+                                  <button type="button" onClick={() => updateSelection(sel.tempId, { qty: Math.max(1, sel.qty - 1) })} className="px-4 py-2 text-slate-100 hover:bg-slate-800">−</button>
+                                  <input type="number" min={1} value={sel.qty} onChange={(e) => updateSelection(sel.tempId, { qty: Math.max(1, parseInt(e.target.value || '1')) })} className="w-20 text-center border-x border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 focus:outline-none" />
+                                  <button type="button" onClick={() => updateSelection(sel.tempId, { qty: sel.qty + 1 })} className="px-4 py-2 text-slate-100 hover:bg-slate-800">+</button>
+                                </div>
                               </div>
                             </div>
                             <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
-                              <select value={sel.qtyType} onChange={(e) => updateSelection(sel.tempId, { qtyType: e.target.value as 'piece' | 'bundle' })} className="rounded-3xl border border-slate-700/80 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/50">
-                                <option value="piece">Piece (1 stem)</option>
-                                <option value="bundle">Bundle (10 stems)</option>
-                              </select>
                               <button onClick={() => removeSelection(sel.tempId)} className="rounded-3xl bg-rose-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-rose-500/20 hover:bg-rose-400">
                                 Remove
                               </button>
@@ -304,6 +311,53 @@ export default function CustomBouquetPage() {
           </aside>
         </div>
       </div>
+
+      {selectedRawItem && isRawItemModalOpen && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/70 px-4 py-6 backdrop-blur-sm">
+          <div className="relative mx-auto w-full max-w-[95vw] rounded-[2rem] bg-slate-950/95 border border-slate-800 p-4 sm:p-6 shadow-[0_35px_80px_-30px_rgba(0,0,0,0.65)]">
+            <button
+              onClick={closeRawItemModal}
+              className="absolute right-4 top-4 z-10 rounded-full border border-slate-700/60 bg-slate-900/90 p-2 text-slate-100 shadow-lg shadow-black/40 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-400"
+              aria-label="Close preview"
+            >
+              ×
+            </button>
+
+            <div className="relative w-full overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-900">
+              <div className="relative h-[55vh] min-h-[320px] w-full">
+                <Image
+                  src={selectedRawItem.images.length > 0 ? selectedRawItem.images[0] : selectedRawItem.mainImage}
+                  alt={selectedRawItem.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="mt-5 space-y-4">
+              <div>
+                <h2 className="text-2xl font-semibold text-slate-100">{selectedRawItem.title}</h2>
+                <p className="mt-2 text-sm text-slate-400">{selectedRawItem.description || 'Premium stem'}</p>
+              </div>
+
+              <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-4">
+                <p className="text-sm text-slate-400">Price</p>
+                <p className="mt-2 text-2xl font-semibold text-slate-100">₱{selectedRawItem.pricePiece?.toLocaleString() ?? '0'}</p>
+              </div>
+
+              <button
+                onClick={() => {
+                  addSelection(selectedRawItem.id);
+                  closeRawItemModal();
+                }}
+                className="w-full rounded-3xl bg-sky-500 px-4 py-3 text-white font-semibold shadow-sm transition hover:bg-sky-400"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

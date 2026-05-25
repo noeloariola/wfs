@@ -1455,6 +1455,23 @@
     ]
   },
   {
+    "id": "CRNTION-PC12-3",
+    "title": "CRNTION-PC12-3",
+    "mainImage": "/app/arrangements/bouquets/CRNTION-PC12-3/CRNTION-PC12-3.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/CRNTION-PC12-3/CRNTION-PC12-3.1.jpg"
+    ],
+    "description": "Price: available soon",
+    "price": 5000,
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
+  },
+  {
     "id": "GERB8ROSE-1",
     "title": "GERB8ROSE-1",
     "mainImage": "/app/arrangements/bouquets/GERB8ROSE-1/GERB8ROSE-1.1.jpg",

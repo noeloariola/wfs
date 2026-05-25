@@ -20,7 +20,6 @@ export interface CartItem {
     title: string;
     image: string;
     qty: number;
-    qtyType: 'piece' | 'bundle';
     description?: string;
     color?: string;
   }[];

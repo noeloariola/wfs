@@ -131,36 +131,36 @@ export default function ArrangementModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-      <div className="rounded-[2rem] border border-slate-800 bg-slate-950/95 p-6 max-w-6xl w-full mx-4 relative shadow-[0_35px_80px_-30px_rgba(0,0,0,0.65)]">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 px-3 py-6 backdrop-blur-sm">
+      <div className="relative mx-auto w-full max-w-[95vw] rounded-[2rem] border border-slate-800 bg-slate-950/95 p-4 sm:p-6 shadow-[0_35px_80px_-30px_rgba(0,0,0,0.65)]">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 rounded-full border border-slate-700/60 bg-slate-900/80 p-2 text-slate-100 hover:bg-slate-800"
+          className="absolute right-4 top-4 z-10 rounded-full border border-slate-700/60 bg-slate-900/90 p-2 text-slate-100 shadow-lg shadow-black/40 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-400"
           aria-label="Close modal"
         >
           ×
         </button>
 
-        {/* Main content: image left, title/labels right on md+ */}
-        <div className="flex flex-col md:flex-row gap-6">
-          {/* Image area (square on md+) */}
+        {/* Main content: image top, title/labels below on mobile; side-by-side on md+ */}
+        <div className="flex flex-col gap-6 md:flex-row md:items-start">
+          {/* Image area */}
           <div className="w-full md:w-1/2">
-            <div className="w-full aspect-square relative overflow-hidden rounded-[1.5rem] bg-slate-900 border border-slate-800">
-              <div className="w-full h-full cursor-zoom-in" onClick={openFullscreen}>
+            <div className="relative w-full overflow-hidden rounded-[1.5rem] border border-slate-800 bg-slate-900">
+              <div className="relative h-[55vh] min-h-[340px] w-full cursor-zoom-in sm:h-[60vh] md:aspect-square" onClick={openFullscreen}>
                 <Image
                   src={arrangementImages[currentImageIndex]}
                   alt={`${arrangementTitle} - Image ${currentImageIndex + 1}`}
                   fill={true}
-                  className="relative object-contain"
+                  className="relative object-cover"
                   onLoad={() => setIsImageLoading(false)}
                 />
               </div>
 
               {/* Loading overlay */}
               {isImageLoading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-slate-900/60">
-                  <div className="w-12 h-12 rounded-full border-4 border-slate-700 border-t-transparent animate-spin " aria-hidden="true" />
+                <div className="absolute inset-0 flex items-center justify-center bg-slate-900/70">
+                  <div className="w-12 h-12 rounded-full border-4 border-slate-700 border-t-transparent animate-spin" aria-hidden="true" />
                   <span className="sr-only">Loading image</span>
                 </div>
               )}
@@ -168,7 +168,7 @@ export default function ArrangementModal({
               {/* Navigation buttons (overlay) */}
               <button
                 onClick={prevImage}
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all duration-200"
+                className="absolute left-3 top-1/2 z-10 transform -translate-y-1/2 rounded-full bg-white bg-opacity-90 p-2 shadow-lg transition hover:bg-opacity-100"
                 aria-label="Previous image"
               >
                 <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -178,7 +178,7 @@ export default function ArrangementModal({
 
               <button
                 onClick={nextImage}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all duration-200"
+                className="absolute right-3 top-1/2 z-10 transform -translate-y-1/2 rounded-full bg-white bg-opacity-90 p-2 shadow-lg transition hover:bg-opacity-100"
                 aria-label="Next image"
               >
                 <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -308,8 +308,9 @@ export default function ArrangementModal({
         <div className="fixed inset-0 z-60 bg-black/90 flex items-center justify-center p-6">
           <button
             onClick={closeFullscreen}
-            className="absolute top-6 right-6 rounded-full border border-slate-700 bg-slate-900/80 p-3 text-slate-100 z-50"
             aria-label="Close fullscreen"
+            className="absolute rounded-full border border-white/20 bg-white/10 p-3 text-slate-100 shadow-xl shadow-black/50 backdrop-blur-sm transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-sky-400"
+            style={{ top: 'calc(env(safe-area-inset-top, 1rem) + 0.5rem)', right: 'calc(env(safe-area-inset-right, 1rem) + 0.5rem)' }}
           >
             ×
           </button>

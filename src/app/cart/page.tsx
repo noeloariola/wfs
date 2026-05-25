@@ -227,7 +227,7 @@ export default function CartPage() {
                               </div>
                               <div className="flex-1">
                                 <p className="font-semibold text-slate-100">{groupItem.title}</p>
-                                <p className="text-xs text-slate-400">Qty: {groupItem.qty} {groupItem.qtyType}</p>
+                                <p className="text-xs text-slate-400">Qty: {groupItem.qty}</p>
                                 {groupItem.color && <p className="text-xs text-slate-400">Color: {groupItem.color}</p>}
                                 {groupItem.description && <p className="text-xs text-slate-400">Note: {groupItem.description}</p>}
                               </div>
@@ -385,7 +385,7 @@ export default function CartPage() {
                             <div className="flex-1">
                               <p className="font-semibold text-slate-100">{groupItem.title}</p>
                               <p>Color: {groupItem.color || 'N/A'}</p>
-                              <p>Qty: {groupItem.qty} {groupItem.qtyType}</p>
+                              <p>Qty: {groupItem.qty}</p>
                               {groupItem.description && <p>Note: {groupItem.description}</p>}
                             </div>
                           </div>
