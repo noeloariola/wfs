@@ -75,16 +75,16 @@ export default function BouquetsPage() {
                         placeholder={<Placeholder />}
                     >
                         <button 
-                            className="group flex flex-col items-start overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950/80 p-4 text-left transition hover:-translate-y-1 hover:border-sky-400/40 hover:bg-slate-900/95" 
+                            className="group flex w-full flex-col items-start overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950/80 p-4 text-left transition hover:-translate-y-1 hover:border-sky-400/40 hover:bg-slate-900/95" 
                             onClick={() => openModal(arrangement)}
                         >
                             <div className="relative w-full h-64 overflow-hidden rounded-[1.5rem] bg-slate-800 mb-4">
                                 <Image
                                     src={arrangement.mainImage}
                                     alt={arrangement.title}
-                                    width={400}
-                                    height={400}
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    sizes="100vw"
+                                    className="object-cover"
                                     loading="lazy"
                                     placeholder="blur"
                                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
