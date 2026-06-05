@@ -132,11 +132,11 @@ export default function ArrangementModal({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 px-3 py-6 backdrop-blur-sm">
-      <div className="relative mx-auto w-full max-w-[95vw] rounded-[2rem] border border-slate-800 bg-slate-950/95 p-4 sm:p-6 shadow-[0_35px_80px_-30px_rgba(0,0,0,0.65)]">
+      <div className="relative mx-auto w-full max-w-[95vw] rounded-[2rem] border border-pink-200 bg-white/98 p-4 sm:p-6 shadow-[0_35px_80px_-30px_rgba(251,113,133,0.15)]">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full border border-slate-700/60 bg-slate-900/90 p-2 text-slate-100 shadow-lg shadow-black/40 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-400"
+          className="absolute right-4 top-4 z-10 rounded-full border border-pink-200 bg-pink-50 p-2 text-blue-950 shadow-lg shadow-rose-100/40 hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
           aria-label="Close modal"
         >
           ×
@@ -146,7 +146,7 @@ export default function ArrangementModal({
         <div className="flex flex-col gap-6 md:flex-row md:items-start">
           {/* Image area */}
           <div className="w-full md:w-1/2">
-            <div className="relative w-full overflow-hidden rounded-[1.5rem] border border-slate-800 bg-slate-900">
+            <div className="relative w-full overflow-hidden rounded-[1.5rem] border border-pink-200 bg-gray-100">
               <div className="relative h-[55vh] min-h-[340px] w-full cursor-zoom-in sm:h-[60vh] md:aspect-square" onClick={openFullscreen}>
                 <Image
                   src={arrangementImages[currentImageIndex]}
@@ -159,8 +159,8 @@ export default function ArrangementModal({
 
               {/* Loading overlay */}
               {isImageLoading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-slate-900/70">
-                  <div className="w-12 h-12 rounded-full border-4 border-slate-700 border-t-transparent animate-spin" aria-hidden="true" />
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-200/70">
+                  <div className="w-12 h-12 rounded-full border-4 border-gray-400 border-t-transparent animate-spin" aria-hidden="true" />
                   <span className="sr-only">Loading image</span>
                 </div>
               )}
@@ -190,21 +190,21 @@ export default function ArrangementModal({
 
           {/* Details area (title, description, indicators, wrappers, cart) */}
           <div className="w-full md:w-1/2 flex flex-col justify-start overflow-y-auto max-h-[80vh]">
-            <h2 className="md:text-2xl font-semibold text-slate-100 mb-2 text-left">{arrangementTitle}</h2>
+            <h2 className="md:text-2xl font-semibold text-blue-950 mb-2 text-left">{arrangementTitle}</h2>
 
             {/* Image counter */}
-            <div className="text-sm text-slate-400 mb-4">{currentImageIndex + 1} of {arrangementImages.length}</div>
+            <div className="text-sm text-gray-500 mb-4">{currentImageIndex + 1} of {arrangementImages.length}</div>
 
             {/* Description */}
             {arrangementDescription ? (
-              <div className="text-slate-300 mb-4">{arrangementDescription}</div>
+              <div className="text-gray-700 mb-4">{arrangementDescription}</div>
             ) : (
-              <div className="text-slate-400 mb-4">No description available.</div>
+              <div className="text-gray-500 mb-4">No description available.</div>
             )}
 
             {/* Price */}
             {productPrice && (
-              <div className="text-lg font-semibold text-slate-100 mb-4">₱{productPrice.toLocaleString()}</div>
+              <div className="text-lg font-semibold text-blue-950 mb-4">₱{productPrice.toLocaleString()}</div>
             )}
 
             {/* Wrapper Selector (for bouquets) */}
@@ -241,24 +241,24 @@ export default function ArrangementModal({
             )}
 
             {/* Notes (for all products) */}
-            <div className="mb-6 rounded-3xl p-4 bg-slate-950/70 border border-slate-800">
-              <label className="text-lg font-semibold text-slate-100 mb-2 block">Special Notes</label>
+            <div className="mb-6 rounded-3xl p-4 bg-pink-50 border border-pink-200">
+              <label className="text-lg font-semibold text-blue-950 mb-2 block">Special Notes</label>
               <textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Enter any special requests or notes for this order..."
-                className="w-full rounded-3xl border border-slate-700 bg-slate-900 p-3 text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 resize-none"
+                className="w-full rounded-3xl border border-pink-300 bg-white p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                 rows={4}
               />
             </div>
 
             {/* Quantity Selector */}
             <div className="mb-4 flex items-center gap-3">
-              <label className="text-sm font-medium text-slate-200">Quantity:</label>
-              <div className="flex items-center border border-slate-700 rounded-3xl overflow-hidden bg-slate-900">
+              <label className="text-sm font-medium text-gray-700">Quantity:</label>
+              <div className="flex items-center border border-pink-300 rounded-3xl overflow-hidden bg-white">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 py-2 text-slate-100 hover:bg-slate-800"
+                  className="px-4 py-2 text-gray-900 hover:bg-pink-100"
                 >
                   −
                 </button>
@@ -266,12 +266,12 @@ export default function ArrangementModal({
                   type="number"
                   value={quantity}
                   onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-14 text-center border-l border-r border-slate-700 bg-slate-950 text-slate-100 focus:outline-none"
+                  className="w-14 text-center border-l border-r border-pink-300 bg-pink-50 text-gray-900 focus:outline-none"
                   min="1"
                 />
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="px-4 py-2 text-slate-100 hover:bg-slate-800"
+                  className="px-4 py-2 text-gray-900 hover:bg-pink-100"
                 >
                   +
                 </button>
@@ -282,7 +282,7 @@ export default function ArrangementModal({
             <button
               onClick={handleAddToCart}
               disabled={isAddingToCart || (hasWrappers && selectedWrappers.length === 0) || (!hasWrappers && !notes.trim())}
-              className="w-full rounded-3xl bg-sky-500 px-4 py-3 text-white font-semibold shadow-sm transition hover:bg-sky-400 disabled:bg-slate-700 mb-4"
+              className="w-full rounded-3xl bg-blue-600 px-4 py-3 text-white font-semibold shadow-sm transition hover:bg-blue-700 disabled:bg-gray-400 mb-4"
             >
               {isAddingToCart ? 'Adding...' : 'Add to Cart'}
             </button>
@@ -294,7 +294,7 @@ export default function ArrangementModal({
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                    index === currentImageIndex ? 'bg-slate-200' : 'bg-slate-500/40 hover:bg-slate-400'
+                    index === currentImageIndex ? 'bg-rose-500' : 'bg-pink-300 hover:bg-rose-300'
                   }`}
                   aria-label={`Go to image ${index + 1}`}
                 />
@@ -305,11 +305,11 @@ export default function ArrangementModal({
       </div>
       {/* Fullscreen viewer */}
       {isFullscreen && (
-        <div className="fixed inset-0 z-60 bg-black/90 flex items-center justify-center p-6">
+        <div className="fixed inset-0 z-60 bg-black/85 flex items-center justify-center p-6">
           <button
             onClick={closeFullscreen}
             aria-label="Close fullscreen"
-            className="absolute rounded-full border border-white/20 bg-white/10 p-3 text-slate-100 shadow-xl shadow-black/50 backdrop-blur-sm transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-sky-400"
+            className="absolute rounded-full border border-white/30 bg-white/20 p-3 text-white shadow-xl shadow-black/50 backdrop-blur-sm transition hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-blue-400"
             style={{ top: 'calc(env(safe-area-inset-top, 1rem) + 0.5rem)', right: 'calc(env(safe-area-inset-right, 1rem) + 0.5rem)' }}
           >
             ×

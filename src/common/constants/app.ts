@@ -8,10 +8,10 @@ export const headerLinks: {title: string, href: string}[] = [
     title: 'Bouquet',
     href: '/bouquets'
   },
-  {
-    title: 'Custom Bouquet',
-    href: '/custom-bouquet'
-  },
+  // {
+  //   title: 'Custom Bouquet',
+  //   href: '/custom-bouquet'
+  // },
   {
     title: 'Add-ons',
     href: '/add-ons'
@@ -39,6 +39,10 @@ export const headerLinks: {title: string, href: string}[] = [
   {
     title: 'Videos',
     href: '/videos'
+  },
+  {
+    title: 'About',
+    href: '/about'
   }
 ]
 

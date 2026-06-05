@@ -48,80 +48,80 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
-      <section className="grid gap-10 overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8 shadow-[0_30px_80px_-30px_rgba(15,23,42,0.8)] lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+      <section className="grid gap-10 overflow-hidden rounded-[2rem] border border-[var(--surface-border)] bg-[var(--accent-strong)] p-8 shadow-[0_10px_30px_-10px_rgba(31,58,94,0.18)] lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
         <div className="space-y-6">
-          <span className="inline-flex rounded-full bg-sky-500/15 px-4 py-2 text-sm font-semibold text-sky-200 ring-1 ring-sky-400/20">
+          <span className="inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/20">
             Wel&#39;s Flower Shop
           </span>
-          <h1 className="text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl">
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             Premium custom bouquets with modern floral design.
           </h1>
-          <p className="max-w-2xl text-slate-400 leading-8">
-            Create a unique arrangement with fresh stems, vibrant colors and premium wrappers. Our Fluent-inspired interface brings elegant depth, rounded panels, and a polished shopping experience.
+          <p className="max-w-2xl text-[#dbe3ef] leading-8">
+            Create a unique arrangement with fresh stems, elegant palettes, and thoughtful finishing touches. Our floral experience blends artisanal craftsmanship with a refined modern look.
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-[1.75rem] bg-slate-950/80 p-5 ring-1 ring-slate-700/50">
-              <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Featured</p>
-              <p className="mt-3 text-2xl font-semibold text-slate-100">Curated blooms</p>
+            <div className="rounded-[1.75rem] bg-[var(--surface)] p-5 ring-1 ring-[var(--surface-border)]">
+              <p className="text-sm uppercase tracking-[0.3em] text-[#6c7a91]">Featured</p>
+              <p className="mt-3 text-2xl font-semibold text-[var(--accent-strong)]">Curated blooms</p>
             </div>
-            <div className="rounded-[1.75rem] bg-slate-950/80 p-5 ring-1 ring-slate-700/50">
-              <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Design videos</p>
-              <p className="mt-3 text-2xl font-semibold text-slate-100">Inspiration and tutorials</p>
+            <div className="rounded-[1.75rem] bg-[var(--surface)] p-5 ring-1 ring-[var(--surface-border)]">
+              <p className="text-sm uppercase tracking-[0.3em] text-[#6c7a91]">Design videos</p>
+              <p className="mt-3 text-2xl font-semibold text-[var(--accent-strong)]">Inspiration and tutorials</p>
             </div>
           </div>
         </div>
-        <div className="relative overflow-hidden rounded-[2rem] border border-slate-800 bg-slate-950/80 shadow-[inset_0_0_0_1px_rgba(148,163,184,0.08)]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.18),_transparent_32%),radial-gradient(circle_at_bottom_right,_rgba(168,85,247,0.12),_transparent_28%)]" />
+        <div className="relative overflow-hidden rounded-[2rem] border border-[var(--surface-border)] bg-[var(--surface)] shadow-[inset_0_0_0_1px_rgba(31,58,94,0.05)]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(31,58,94,0.14),_transparent_24%),radial-gradient(circle_at_bottom_right,_rgba(138,151,120,0.12),_transparent_30%)]" />
           <div className="relative h-[420px] w-full">
             <Image src="/app/home-banner.jpg" alt="Wel's Flower Shop Banner" fill className="object-cover" />
-            <div className="absolute inset-0 bg-slate-950/30" />
-            <div className="absolute bottom-8 left-8 z-10 rounded-[1.5rem] border border-slate-700/70 bg-slate-900/90 p-6 backdrop-blur-xl">
-              <p className="text-sm uppercase tracking-[0.3em] text-slate-400">Fresh Arrangements</p>
-              <h2 className="mt-3 text-3xl font-semibold text-white">Bloom with confidence</h2>
+            <div className="absolute inset-0 bg-[#1f3a5e]/20" />
+            <div className="absolute bottom-8 left-8 z-10 rounded-[1.5rem] border border-[var(--surface-border)] bg-white/95 p-6 backdrop-blur-xl">
+              <p className="text-sm uppercase tracking-[0.3em] text-[var(--accent)]">Fresh Arrangements</p>
+              <h2 className="mt-3 text-3xl font-semibold text-[var(--accent-strong)]">Bloom with confidence</h2>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mt-10 rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8 shadow-[0_30px_80px_-30px_rgba(15,23,42,0.8)]">
+      <section className="mt-10 rounded-[2rem] border border-[var(--surface-border)] bg-[var(--surface-muted)] p-8 shadow-[0_10px_30px_-10px_rgba(31,58,94,0.12)]">
         <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Featured Arrangements</p>
-            <h2 className="mt-3 text-3xl font-semibold text-slate-100">Discover our best sellers</h2>
+            <p className="text-sm uppercase tracking-[0.3em] text-[#6c7a91]">Featured Arrangements</p>
+            <h2 className="mt-3 text-3xl font-semibold text-[var(--foreground)]">Discover our best sellers</h2>
           </div>
-          <div className="rounded-full border border-slate-700/70 bg-slate-950/80 px-4 py-2 text-sm text-slate-300">
+          <div className="rounded-full border border-[var(--surface-border)] bg-[var(--surface)] px-4 py-2 text-sm text-[var(--foreground)]">
             {featuredArrangements.length} arrangements
           </div>
         </div>
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {featuredArrangements.map((arrangement) => (
-            <button key={arrangement.id} onClick={() => openModal(arrangement)} className="group overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950/80 p-4 text-left transition hover:-translate-y-1 hover:border-sky-400/40 hover:bg-slate-900/95">
-              <div className="relative h-64 overflow-hidden rounded-[1.5rem] bg-slate-800">
+            <button key={arrangement.id} onClick={() => openModal(arrangement)} className="group overflow-hidden rounded-[1.75rem] border border-[var(--surface-border)] bg-[var(--surface)] p-4 text-left transition hover:-translate-y-1 hover:border-[var(--accent)] hover:bg-[var(--surface-muted)]">
+              <div className="relative h-64 overflow-hidden rounded-[1.5rem] bg-gray-200">
                 <Image src={arrangement.mainImage} alt={arrangement.title} fill className="object-cover transition duration-500 group-hover:scale-105" />
               </div>
               <div className="mt-4">
-                <p className="text-lg font-semibold text-slate-100">{arrangement.title}</p>
-                <p className="mt-2 text-sm text-slate-400">{arrangement.description}</p>
+                <p className="text-lg font-semibold text-[var(--accent-strong)]">{arrangement.title}</p>
+                <p className="mt-2 text-sm text-gray-600">{arrangement.description}</p>
               </div>
             </button>
           ))}
         </div>
       </section>
 
-      <section className="mt-10 rounded-[2rem] border border-slate-800 bg-slate-900/80 p-8 shadow-[0_30px_80px_-30px_rgba(15,23,42,0.8)]">
+      <section className="mt-10 rounded-[2rem] border border-[var(--surface-border)] bg-[var(--surface-muted)] p-8 shadow-[0_10px_30px_-10px_rgba(31,58,94,0.12)]">
         <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Floral Design Videos</p>
-            <h2 className="mt-3 text-3xl font-semibold text-slate-100">Watch our latest designs</h2>
+            <p className="text-sm uppercase tracking-[0.3em] text-[#6c7a91]">Floral Design Videos</p>
+            <h2 className="mt-3 text-3xl font-semibold text-[var(--foreground)]">Watch our latest designs</h2>
           </div>
-          <div className="rounded-full border border-slate-700/70 bg-slate-950/80 px-4 py-2 text-sm text-slate-300">
+          <div className="rounded-full border border-[var(--surface-border)] bg-[var(--surface)] px-4 py-2 text-sm text-[var(--foreground)]">
             {youtubeVideos.length} videos
           </div>
         </div>
         <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
           {youtubeVideos.map((video) => (
-            <div key={video.id} className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-950/80 shadow-[0_8px_30px_-15px_rgba(15,23,42,0.7)]">
-              <div className="relative h-64 overflow-hidden bg-slate-800">
+            <div key={video.id} className="overflow-hidden rounded-[1.75rem] border border-[var(--surface-border)] bg-[var(--surface)] shadow-[0_8px_30px_-15px_rgba(31,58,94,0.08)]">
+              <div className="relative h-64 overflow-hidden bg-gray-200">
                 <iframe
                   src={`https://www.youtube.com/embed/${video.id}`}
                   title={video.title}
@@ -132,8 +132,8 @@ export default function Home() {
                 />
               </div>
               <div className="p-5">
-                <h3 className="text-xl font-semibold text-slate-100">{video.title}</h3>
-                <p className="mt-2 text-sm text-slate-400">{video.description}</p>
+                <h3 className="text-xl font-semibold text-[var(--accent-strong)]">{video.title}</h3>
+                <p className="mt-2 text-sm text-gray-600">{video.description}</p>
               </div>
             </div>
           ))}
