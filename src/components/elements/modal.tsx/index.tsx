@@ -26,29 +26,30 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 max-w-4xl w-full mx-4 relative">
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+      <div className="rounded-[1.5rem] border border-[var(--surface-border)] bg-white/98 p-6 max-w-4xl w-full mx-4 relative shadow-[0_30px_60px_-20px_rgba(0,0,0,0.12)]">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold"
+          className="absolute top-4 right-4 rounded-full border border-green-200/60 bg-green-50/90 p-2 text-[var(--accent-strong)] hover:bg-green-100"
+          aria-label="Close modal"
         >
           ×
         </button>
 
         {/* Title */}
-        <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+        <h2 className="text-2xl font-semibold text-[var(--accent-strong)] mb-4 text-center">
           {arrangementTitle}
         </h2>
 
         {/* Image carousel */}
         <div className="relative">
-          <div className="w-full h-96 relative overflow-hidden rounded-lg">
+          <div className="w-full h-96 relative overflow-hidden rounded-[1rem] bg-gray-100 border border-green-200">
             <Image
               src={arrangementImages[currentImageIndex]}
               alt={`${arrangementTitle} - Image ${currentImageIndex + 1}`}
               fill
-              className="object-cover"
+              className="object-contain"
             />
           </div>
 
@@ -79,8 +80,8 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
                 onClick={() => setCurrentImageIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
                   index === currentImageIndex 
-                    ? 'bg-white' 
-                    : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+                    ? 'bg-[var(--accent)]' 
+                    : 'bg-green-200 hover:bg-green-300'
                 }`}
               />
             ))}

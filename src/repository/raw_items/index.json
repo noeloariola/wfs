@@ -1,0 +1,102 @@
+[
+  {
+    "id": "CARNATION",
+    "title": "Carnation",
+    "mainImage": "/app/arrangements/raw_items/carnation.jpg",
+    "images": ["/app/arrangements/raw_items/carnation.jpg"],
+    "description": "Fresh carnation stems",
+    "pricePiece": 110,
+    "priceBundle": 1000,
+    "showPrice": true,
+    "colors": ["red", "pink", "white", "yellow"]
+  },
+  {
+    "id": "LILY",
+    "title": "Lily",
+    "mainImage": "/app/arrangements/raw_items/lily.jpg",
+    "images": ["/app/arrangements/raw_items/lily.jpg"],
+    "description": "3 to 4 flowers or buds per stem",
+    "pricePiece": 390,
+    "priceBundle": 700,
+    "showPrice": true,
+    "colors": ["white", "pink", "orange"]
+  },
+  {
+    "id": "china-rose",
+    "title": "Rose (China)",
+    "mainImage": "/app/arrangements/raw_items/rose-china.jpg",
+    "images": ["/app/arrangements/raw_items/rose-china.jpg"],
+    "description": "Imported China Rose",
+    "pricePiece": 190,
+    "priceBundle": 1800,
+    "showPrice": true,
+    "colors": ["red", "white", "pink", "yellow", "purple"]
+  }
+  ,
+  {
+    "id": "GYPSO",
+    "title": "Gypsophila",
+    "mainImage": "/app/arrangements/raw_items/gypso.jpg",
+    "images": ["/app/arrangements/raw_items/gypso.jpg"],
+    "description": "Delicate filler flowers",
+    "pricePiece": 0,
+    "priceBundle": 0,
+    "showPrice": false,
+    "colors": ["white", "pink"]
+  },
+  {
+    "id": "MISTY-BLUE",
+    "title": "Misty Blue",
+    "mainImage": "/app/arrangements/raw_items/misty-blue.jpg",
+    "images": ["/app/arrangements/raw_items/misty-blue.jpg"],
+    "description": "Misty blue filler stems",
+    "pricePiece": 0,
+    "priceBundle": 0,
+    "showPrice": false,
+    "colors": ["blue", "purple"]
+  },
+  {
+    "id": "MISTY-WHITE",
+    "title": "Misty White",
+    "mainImage": "/app/arrangements/raw_items/misty-white.jpg",
+    "images": ["/app/arrangements/raw_items/misty-white.jpg"],
+    "description": "White filler stems",
+    "pricePiece": 0,
+    "priceBundle": 0,
+    "showPrice": false,
+    "colors": ["white"]
+  },
+  {
+    "id": "PINK-MUMS",
+    "title": "Pink Mums",
+    "mainImage": "/app/arrangements/raw_items/pink-mums.jpg",
+    "images": ["/app/arrangements/raw_items/pink-mums.jpg"],
+    "description": "Pink chrysanthemum stems",
+    "pricePiece": 0,
+    "priceBundle": 0,
+    "showPrice": false,
+    "colors": ["pink"]
+  },
+  {
+    "id": "RADUS",
+    "title": "Radus",
+    "mainImage": "/app/arrangements/raw_items/radus.jpg",
+    "images": ["/app/arrangements/raw_items/radus.jpg"],
+    "description": "Assorted raw stems",
+    "pricePiece": 0,
+    "priceBundle": 0,
+    "showPrice": false,
+    "colors": ["mixed"]
+  },
+  {
+    "id": "STATICE",
+    "title": "Statice",
+    "mainImage": "/app/arrangements/raw_items/statice.jpg",
+    "images": ["/app/arrangements/raw_items/statice.jpg"],
+    "description": "Statice filler flowers",
+    "pricePiece": 0,
+    "priceBundle": 0,
+    "showPrice": false,
+    "colors": ["purple", "white"]
+  }
+]

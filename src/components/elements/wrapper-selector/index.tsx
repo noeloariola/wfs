@@ -54,13 +54,13 @@ export default function WrapperSelector({
   };
 
   return (
-    <div className="mb-6 border rounded-lg p-4 bg-gray-50">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">Select Wrapper Color</h3>
+    <div className="mb-6 rounded-[1.25rem] border border-pink-200 p-4 bg-pink-50/90">
+      <h3 className="text-lg font-semibold text-blue-950 mb-4">Select Wrapper Color</h3>
 
       <div className="text-sm text-gray-600 mb-2">Selected: {selections.length} / {maxSelections}</div>
 
       {/* Color buttons */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
         {Object.entries(colors).map(([colorKey, colorData]) => {
           const isSelected = selections.some((s) => s.color === colorKey);
           return (
@@ -69,10 +69,10 @@ export default function WrapperSelector({
                 onClick={() => {
                   toggleColorExpand(colorKey);
                 }}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`px-4 py-2 rounded-2xl font-medium transition-all text-sm ${
                   isSelected
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white text-gray-800 border border-gray-300 hover:border-blue-400'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'bg-white text-blue-950 border border-pink-300 hover:border-blue-500'
                 }`}
               >
                 {colorData.name}
@@ -80,7 +80,7 @@ export default function WrapperSelector({
               {isSelected && (
                 <button
                   onClick={() => removeSelection(colorKey)}
-                  className="text-xs text-red-600 mt-1"
+                  className="text-xs text-rose-400 mt-1"
                 >
                   Remove
                 </button>
@@ -93,7 +93,7 @@ export default function WrapperSelector({
       {/* Variant selector for expanded color */}
       {expanded && (
         <div className="mt-4">
-          <p className="text-sm font-medium text-gray-700 mb-3">
+          <p className="text-sm font-medium text-gray-600 mb-3">
             Variants for {colors[expanded].name}:
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -101,26 +101,24 @@ export default function WrapperSelector({
               <button
                 key={variant.id}
                 onClick={() => handleSelectVariant(expanded as string, variant)}
-                className={`relative overflow-hidden rounded-lg border-2 transition-all ${
+                className={`relative overflow-hidden rounded-2xl border-2 transition-all ${
                   selections.find((s) => s.variantId === variant.id && s.color === expanded)
-                    ? 'border-blue-600 shadow-lg scale-105'
-                    : 'border-gray-300 hover:border-blue-400'
+                    ? 'border-blue-500 shadow-md scale-105'
+                    : 'border-pink-300 hover:border-blue-500'
                 }`}
               >
-                <div className="relative w-full h-24 bg-gray-200">
+                <div className="relative w-full h-24 bg-pink-100">
                   <Image
                     src={variant.image}
                     alt={variant.id}
                     fill
                     className="object-cover"
                     onError={(e) => {
-                      e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect fill="%23E5E7EB" width="100" height="100"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" fill="%23999" font-size="12"%3ENot Available%3C/text%3E%3C/svg%3E';
+                      e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect fill="%231e293b" width="100" height="100"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" fill="%23777" font-size="12"%3ENot Available%3C/text%3E%3C/svg%3E';
                     }}
                   />
                 </div>
-                <p className="text-xs font-medium text-gray-800 p-2 text-center bg-white">
-                  {variant.id}
-                </p>
+                <p className="text-xs font-medium text-blue-950 p-2 text-center bg-white">{variant.id}</p>
               </button>
             ))}
           </div>
@@ -129,17 +127,17 @@ export default function WrapperSelector({
 
       {/* Selected wrapper previews */}
       {selections.length > 0 && (
-        <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-          <p className="text-sm text-gray-700 font-semibold mb-2">Selected:</p>
+        <div className="mt-4 p-3 bg-white/80 rounded-2xl border border-pink-200">
+          <p className="text-sm text-gray-600 font-semibold mb-2">Selected:</p>
           <div className="flex gap-2 overflow-x-auto">
             {selections.map((s) => (
-              <div key={s.color} className="flex items-center gap-2 bg-white p-2 rounded-md border">
+              <div key={s.color} className="flex items-center gap-2 bg-white p-2 rounded-lg border border-pink-200">
                 <div className="w-10 h-10 relative rounded overflow-hidden">
                   <Image src={s.variantImage} alt={s.variantId} fill className="object-cover" />
                 </div>
-                <div className="text-xs">
+                <div className="text-xs text-gray-600">
                   <div className="font-medium">{colors[s.color].name}</div>
-                  <div className="text-gray-600">{s.variantId}</div>
+                  <div className="text-gray-500">{s.variantId}</div>
                 </div>
               </div>
             ))}

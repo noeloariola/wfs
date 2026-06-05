@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ING-1",
+    "title": "ING-1",
+    "mainImage": "/app/arrangements/funeral_and_sympathy/ing-1.1.jpg",
+    "images": [
+      "/app/arrangements/funeral_and_sympathy/ing-1.1.jpg",
+      "/app/arrangements/funeral_and_sympathy/ing-1.2.jpg"
+    ],
+    "description": "Funeral and Sympathy Arrangement",
+    "price": 3500,
+    "discountPrice": 0,
+    "showPrice": true,
+    "flowers": ["carnation"]
+  }
+]

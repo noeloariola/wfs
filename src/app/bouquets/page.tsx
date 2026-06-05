@@ -43,29 +43,29 @@ export default function BouquetsPage() {
     };
 
     return (
-        <div className="w-full max-w-7xl mx-auto px-4 py-4">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
-                <h2 className="text-3xl font-bold text-gray-800">Bouquets</h2>
-                <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
-                <input
-                    type="text"
-                    placeholder="Search by name or code"
-                    className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-64"
-                    // value={searchTerm}
-                    // onChange={handleSearchChange}
-                />
-                <select
-                    className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 md:w-48"
-                    value={priceFilter}
-                    onChange={handlePriceFilterChange}
-                >
-                    <option value="">Sort by price</option>
-                    <option value="high">High to Low</option>
-                    <option value="low">Low to High</option>
-                </select>
+        <div className="mx-auto max-w-7xl px-4 py-10">
+            <div className="mb-8 rounded-[2rem] border surface-muted-card p-8 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.12)]">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <h2 className="text-4xl font-semibold text-[var(--foreground)]">Bouquets</h2>
+                    <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+                        <input
+                            type="text"
+                            placeholder="Search by name or code"
+                            className="w-full rounded-3xl border border-[var(--surface-border)] bg-[var(--surface)] px-4 py-3 text-[var(--foreground)] outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20 md:w-64"
+                        />
+                        <select
+                            className="w-full rounded-3xl border border-[var(--surface-border)] bg-[var(--surface)] px-4 py-3 text-[var(--foreground)] outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20 md:w-48"
+                            value={priceFilter}
+                            onChange={handlePriceFilterChange}
+                        >
+                            <option value="">Sort by price</option>
+                            <option value="high">High to Low</option>
+                            <option value="low">Low to High</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {products.map((arrangement) => (
                     <LazyLoad 
@@ -74,30 +74,30 @@ export default function BouquetsPage() {
                         rootMargin="100px"
                         placeholder={<Placeholder />}
                     >
-                        <div 
-                            className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform duration-200" 
+                        <button 
+                            className="group flex w-full flex-col items-start overflow-hidden rounded-[1.75rem] border border-[var(--surface-border)] bg-[var(--surface)] p-4 text-left transition hover:-translate-y-1 hover:border-[var(--accent)] hover:bg-[var(--surface-muted)]" 
                             onClick={() => openModal(arrangement)}
                         >
-                            <div className="w-full h-64 bg-gray-200 rounded-lg mb-4">
+                            <div className="relative w-full h-64 overflow-hidden rounded-[1.5rem] bg-[var(--surface-border)] mb-4">
                                 <Image
                                     src={arrangement.mainImage}
                                     alt={arrangement.title}
-                                    width={400}
-                                    height={400}
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    sizes="100vw"
+                                    className="object-cover"
                                     loading="lazy"
                                     placeholder="blur"
                                     blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                                 />
                             </div>
-                            <h3 className="text-lg font-semibold text-gray-800 mb-2">{arrangement.title}</h3>
+                            <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">{arrangement.title}</h3>
                             {arrangement.description && (
-                                <p className="text-sm text-gray-500 text-center mb-2 px-2">{arrangement.description}</p>
+                                <p className="text-sm text-gray-600 mb-2">{arrangement.description}</p>
                             )}
                             {
-                                arrangement.showPrice && (<p className="text-sm text-gray-600 text-center"> ₱{(arrangement.price || 0) - (arrangement.discountPrice || 0)} &nbsp; <s>{arrangement.discountPrice && arrangement.discountPrice > 0 ? `₱` + arrangement.price : '' }</s></p> )
-                            } 
-                        </div>
+                                arrangement.showPrice && (<p className="text-sm text-gray-700">₱{(arrangement.price || 0) - (arrangement.discountPrice || 0)}{arrangement.discountPrice && arrangement.discountPrice > 0 ? <span className="ml-2 text-xs line-through text-gray-400">₱{arrangement.price}</span> : null}</p> )
+                            }
+                        </button>
                     </LazyLoad>
                 ))}
             </div>
