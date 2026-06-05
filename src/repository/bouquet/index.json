@@ -7,8 +7,8 @@
       "/app/arrangements/bouquets/ROSE-PC3-4/ROSE-PC3-4.1.jpg"
     ],
     "description": "3pcs Roses",
-    "price": 750,
-    "discountPrice": 100,
+    "price": 850,
+    "discountPrice": 0,
     "showPrice": true,
     "flowers": [
       "rose"
@@ -181,7 +181,7 @@
       "/app/arrangements/bouquets/ROSE-PC3-5/ROSE-PC3-5.2.jpg"
     ],
     "description": "3pcs Rose",
-    "price": 550,
+    "price": 750,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": [
@@ -203,7 +203,7 @@
       "/app/arrangements/bouquets/ROSE5-1/ROSE5-1.2.jpg"
     ],
     "description": "5pcs Rose",
-    "price": 900,
+    "price": 1050,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": [
@@ -247,7 +247,7 @@
       "/app/arrangements/bouquets/ROSE-2/ROSE-2.2.jpg"
     ],
     "description": "3pcs Rose",
-    "price": 700,
+    "price": 750,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": [
@@ -344,50 +344,6 @@
     ]
   },
   {
-    "id": "ROSE3-1",
-    "title": "ROSE3-1",
-    "mainImage": "/app/arrangements/bouquets/ROSE3-1/ROSE3-1.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE3-1/ROSE3-1.1.jpg",
-      "/app/arrangements/bouquets/ROSE3-1/ROSE3-1.2.jpg"
-    ],
-    "description": "3pcs Roses",
-    "price": 550,
-    "discountPrice": 0,
-    "showPrice": true,
-    "flowers": [
-      "rose"
-    ],
-    "wrappers": [
-      "red",
-      "pink",
-      "white",
-      "blue"
-    ]
-  },
-  {
-    "id": "ROSE3-2",
-    "title": "ROSE3-2",
-    "mainImage": "/app/arrangements/bouquets/ROSE3-2/ROSE3-2.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE3-2/ROSE3-2.1.jpg",
-      "/app/arrangements/bouquets/ROSE3-2/ROSE3-2.2.jpg"
-    ],
-    "description": "3pcs Roses",
-    "price": 550,
-    "discountPrice": 0,
-    "showPrice": true,
-    "flowers": [
-      "rose"
-    ],
-    "wrappers": [
-      "red",
-      "pink",
-      "white",
-      "blue"
-    ]
-  },
-  {
     "id": "ROSE-PC6-1",
     "title": "ROSE-PC6-1",
     "mainImage": "/app/arrangements/bouquets/ROSE-PC6-1/ROSE-PC6-1.1.jpg",
@@ -410,71 +366,6 @@
     ]
   },
   {
-    "id": "ROSE7-1",
-    "title": "ROSE7-1",
-    "mainImage": "/app/arrangements/bouquets/ROSE7-1/ROSE7-1.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE7-1/ROSE7-1.1.jpg"
-    ],
-    "description": "7pcs Roses",
-    "price": 1300,
-    "discountPrice": 100,
-    "showPrice": true,
-    "flowers": [
-      "rose"
-    ],
-    "wrappers": [
-      "red",
-      "pink",
-      "white",
-      "blue"
-    ]
-  },
-  {
-    "id": "ROSE7-2",
-    "title": "ROSE7-2",
-    "mainImage": "/app/arrangements/bouquets/ROSE7-2/ROSE7-2.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE7-2/ROSE7-2.1.jpg",
-      "/app/arrangements/bouquets/ROSE7-2/ROSE7-2.2.jpg"
-    ],
-    "description": "7pcs Roses",
-    "price": 1400,
-    "discountPrice": 0,
-    "showPrice": true,
-    "flowers": [
-      "rose"
-    ],
-    "wrappers": [
-      "red",
-      "pink",
-      "white",
-      "blue"
-    ]
-  },
-  {
-    "id": "ROSE7-3",
-    "title": "ROSE7-3",
-    "mainImage": "/app/arrangements/bouquets/ROSE7-3/ROSE7-3.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE7-3/ROSE7-3.1.jpg",
-      "/app/arrangements/bouquets/ROSE7-3/ROSE7-3.2.jpg"
-    ],
-    "description": "7pcs Roses",
-    "price": 1400,
-    "discountPrice": 0,
-    "showPrice": true,
-    "flowers": [
-      "rose"
-    ],
-    "wrappers": [
-      "red",
-      "pink",
-      "white",
-      "blue"
-    ]
-  },
-  {
     "id": "ROSE7-4",
     "title": "ROSE7-4",
     "mainImage": "/app/arrangements/bouquets/ROSE7-4/ROSE7-4.1.jpg",
@@ -484,27 +375,6 @@
     "description": "7pcs Roses",
     "price": 1400,
     "discountPrice": 100,
-    "showPrice": true,
-    "flowers": [
-      "rose"
-    ],
-    "wrappers": [
-      "red",
-      "pink",
-      "white",
-      "blue"
-    ]
-  },
-  {
-    "id": "ROSE7-5",
-    "title": "ROSE7-5",
-    "mainImage": "/app/arrangements/bouquets/ROSE7-5/ROSE7-5.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE7-5/ROSE7-5.1.jpg"
-    ],
-    "description": "7pcs Roses",
-    "price": 1300,
-    "discountPrice": 0,
     "showPrice": true,
     "flowers": [
       "rose"
@@ -1135,8 +1005,8 @@
       "/app/arrangements/bouquets/ROSE36-1/ROSE36-1.1.jpg"
     ],
     "description": "24 PCS Roses",
-    "price": 3300,
-    "discountPrice": 750,
+    "price": 3500,
+    "discountPrice": 0,
     "showPrice": true,
     "flowers": [
       "roses"
@@ -1298,7 +1168,7 @@
       "/app/arrangements/bouquets/LILY1-4/LILY1-4.1.jpg"
     ],
     "description": "Double Petals Lily and 10pcs Roses",
-    "price": 1750,
+    "price": 2100,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": [
@@ -1406,7 +1276,7 @@
       "/app/arrangements/bouquets/ROSE-G1-1/ROSE-G1-1.1.jpg",
       "/app/arrangements/bouquets/ROSE-G1-1/ROSE-G1-1.2.jpg"
     ],
-    "description": "Price: available soon",
+    "description": "12pcs Roses",
     "price": 1900,
     "discountPrice": 0,
     "showPrice": true,
@@ -1428,7 +1298,7 @@
       "/app/arrangements/bouquets/ROSE6-1/ROSE6-1.1.jpg"
     ],
     "description": "6pcs Roses",
-    "price": 900,
+    "price": 1100,
     "showPrice": true,
     "wrappers": [
       "red",
@@ -1598,7 +1468,7 @@
       "/app/arrangements/bouquets/ROSE12-1/ROSE12-1.2.jpg"
     ],
     "description": "12 PCS Roses",
-    "price": 1500,
+    "price": 1700,
     "showPrice": true,
     "flowers": [
       "rose"

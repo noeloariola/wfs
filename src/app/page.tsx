@@ -66,7 +66,7 @@ export default function Home() {
             </div>
             <div className="rounded-[1.75rem] bg-[var(--surface)] p-5 ring-1 ring-[var(--surface-border)]">
               <p className="text-sm uppercase tracking-[0.3em] text-[#6c7a91]">Design videos</p>
-              <p className="mt-3 text-2xl font-semibold text-[var(--accent-strong)]">Inspiration and tutorials</p>
+              <p className="mt-3 text-2xl font-semibold text-[var(--accent-strong)]">Inspiration</p>
             </div>
           </div>
         </div>
