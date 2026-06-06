@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import WrapperSelector from '../wrapper-selector';
+import { useCart } from '@/context/CartContext';
+import { WrapperColor, WrapperVariant } from '@/types/cart';
+import wrapperData from '@/repository/bouquet/wrappers.json';
+import bouquetData from '@/repository/bouquet/index.json';
 
 interface ModalProps {
   isOpen: boolean;
@@ -9,12 +14,31 @@ interface ModalProps {
   arrangementImages: string[];
   arrangementTitle: string;
   arrangementDescription?: string;
+  productId?: string;
+  productPrice?: number;
+  hasWrappers?: boolean;
 }
 
-export default function ArrangementModal({ isOpen, onClose, arrangementImages, arrangementTitle, arrangementDescription }: ModalProps) {
+export default function ArrangementModal({ 
+  isOpen, 
+  onClose, 
+  arrangementImages, 
+  arrangementTitle, 
+  arrangementDescription,
+  productId,
+  productPrice,
+  hasWrappers = false
+}: ModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [selectedColorKey, setSelectedColorKey] = useState<string | undefined>();
+  const [selectedVariant, setSelectedVariant] = useState<WrapperVariant | undefined>();
+  const [selectedWrappers, setSelectedWrappers] = useState<{ color: string; variantId: string; variantImage: string }[]>([]);
+  const [notes, setNotes] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const { cart, addItem } = useCart();
 
   if (!isOpen) return null;
 
@@ -60,36 +84,83 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
     };
   }, [isFullscreen]);
 
+  const handleAddToCart = () => {
+    if (!productId || !productPrice) return;
+
+    const normalizeSelections = [...selectedWrappers]
+      .sort((a, b) => (a.color.localeCompare(b.color) || a.variantId.localeCompare(b.variantId)))
+      .map((selection) => `${selection.color}:${selection.variantId}`)
+      .join('|');
+
+    const cartItemId = `${productId}|${normalizeSelections}|${notes?.trim() || ''}`;
+
+    const existingSameProductDifferentDetails = cart.items.some((item) => {
+      return item.productId === productId && item.id !== cartItemId;
+    });
+
+    if (existingSameProductDifferentDetails) {
+      const confirmAdd = window.confirm(
+        'This product is already in the cart with different customization details. Add as a separate order?'
+      );
+      if (!confirmAdd) {
+        return;
+      }
+    }
+
+    setIsAddingToCart(true);
+
+    addItem({
+      id: cartItemId,
+      productId,
+      productTitle: arrangementTitle,
+      productPrice,
+      productImage: arrangementImages[0],
+      quantity,
+      wrapperColor: selectedColorKey,
+      wrapperVariantId: selectedVariant?.id,
+      wrapperVariantImage: selectedVariant?.image,
+      wrapperSelections: selectedWrappers,
+      notes: notes || undefined,
+      addedAt: Date.now(),
+    });
+
+    setTimeout(() => {
+      setIsAddingToCart(false);
+      onClose();
+    }, 500);
+  };
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 h-screen overflow-auto">
-      <div className="bg-white rounded-lg p-4 max-w-6xl w-full mx-4 relative">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 px-3 py-6 backdrop-blur-sm">
+      <div className="relative mx-auto w-full max-w-[95vw] rounded-[2rem] border border-pink-200 bg-white/98 p-4 sm:p-6 shadow-[0_35px_80px_-30px_rgba(251,113,133,0.15)]">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="fixed top-4 right-4 text-gray-500 hover:text-gray-700 text-5xl font-bold"
+          className="absolute right-4 top-4 z-10 rounded-full border border-pink-200 bg-pink-50 p-2 text-blue-950 shadow-lg shadow-rose-100/40 hover:bg-pink-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          aria-label="Close modal"
         >
           ×
         </button>
 
-        {/* Main content: image left, title/labels right on md+ */}
-        <div className="flex flex-col md:flex-row gap-6">
-          {/* Image area (square on md+) */}
+        {/* Main content: image top, title/labels below on mobile; side-by-side on md+ */}
+        <div className="flex flex-col gap-6 md:flex-row md:items-start">
+          {/* Image area */}
           <div className="w-full md:w-1/2">
-            <div className="w-full aspect-square relative overflow-hidden rounded-lg bg-gray-100">
-              <div className="w-full h-full cursor-zoom-in" onClick={openFullscreen}>
+            <div className="relative w-full overflow-hidden rounded-[1.5rem] border border-pink-200 bg-gray-100">
+              <div className="relative h-[55vh] min-h-[340px] w-full cursor-zoom-in sm:h-[60vh] md:aspect-square" onClick={openFullscreen}>
                 <Image
                   src={arrangementImages[currentImageIndex]}
                   alt={`${arrangementTitle} - Image ${currentImageIndex + 1}`}
                   fill={true}
-                  className="relative object-contain"
+                  className="relative object-cover"
                   onLoad={() => setIsImageLoading(false)}
                 />
               </div>
 
               {/* Loading overlay */}
               {isImageLoading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-white/50">
-                  <div className="w-12 h-12 rounded-full border-4 border-gray-300 border-t-transparent animate-spin " aria-hidden="true" />
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-200/70">
+                  <div className="w-12 h-12 rounded-full border-4 border-gray-400 border-t-transparent animate-spin" aria-hidden="true" />
                   <span className="sr-only">Loading image</span>
                 </div>
               )}
@@ -97,7 +168,7 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
               {/* Navigation buttons (overlay) */}
               <button
                 onClick={prevImage}
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all duration-200"
+                className="absolute left-3 top-1/2 z-10 transform -translate-y-1/2 rounded-full bg-white bg-opacity-90 p-2 shadow-lg transition hover:bg-opacity-100"
                 aria-label="Previous image"
               >
                 <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,7 +178,7 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
 
               <button
                 onClick={nextImage}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all duration-200"
+                className="absolute right-3 top-1/2 z-10 transform -translate-y-1/2 rounded-full bg-white bg-opacity-90 p-2 shadow-lg transition hover:bg-opacity-100"
                 aria-label="Next image"
               >
                 <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,12 +188,12 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
             </div>
           </div>
 
-          {/* Details area (title, description, indicators) */}
-          <div className="w-full md:w-1/2 flex flex-col justify-start">
-            <h2 className="md:text-2xl font-bold text-gray-800 mb-2 text-left">{arrangementTitle}</h2>
+          {/* Details area (title, description, indicators, wrappers, cart) */}
+          <div className="w-full md:w-1/2 flex flex-col justify-start overflow-y-auto max-h-[80vh]">
+            <h2 className="md:text-2xl font-semibold text-blue-950 mb-2 text-left">{arrangementTitle}</h2>
 
             {/* Image counter */}
-            <div className="text-sm text-gray-600 mb-4">{currentImageIndex + 1} of {arrangementImages.length}</div>
+            <div className="text-sm text-gray-500 mb-4">{currentImageIndex + 1} of {arrangementImages.length}</div>
 
             {/* Description */}
             {arrangementDescription ? (
@@ -131,6 +202,91 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
               <div className="text-gray-500 mb-4">No description available.</div>
             )}
 
+            {/* Price */}
+            {productPrice && (
+              <div className="text-lg font-semibold text-blue-950 mb-4">₱{productPrice.toLocaleString()}</div>
+            )}
+
+            {/* Wrapper Selector (for bouquets) */}
+            {hasWrappers && (
+              <WrapperSelector
+                colors={wrapperData.colors}
+                onSelectWrappers={(selections) => {
+                  setSelectedWrappers(selections);
+                  if (selections.length > 0) {
+                    setSelectedColorKey(selections[0].color);
+                    const colorMap = wrapperData.colors as Record<string, WrapperColor>;
+                    const variant = colorMap[selections[0].color]?.variants.find(v => v.id === selections[0].variantId);
+                    setSelectedVariant(variant);
+                  } else {
+                    setSelectedColorKey(undefined);
+                    setSelectedVariant(undefined);
+                  }
+                }}
+                selectedColorKey={selectedColorKey}
+                selectedVariant={selectedVariant}
+                maxSelections={(() => {
+                  // prefer explicit capacity field from bouquet data
+                  try {
+                    if (productId) {
+                      const found = (bouquetData as any[]).find((b) => b.id === productId);
+                      if (found && typeof found.capacity === 'number') return found.capacity;
+                    }
+                  } catch (e) {
+                    // ignore
+                  }
+                  return 2;
+                })()}
+              />
+            )}
+
+            {/* Notes (for all products) */}
+            <div className="mb-6 rounded-3xl p-4 bg-pink-50 border border-pink-200">
+              <label className="text-lg font-semibold text-blue-950 mb-2 block">Special Notes</label>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Enter any special requests or notes for this order..."
+                className="w-full rounded-3xl border border-pink-300 bg-white p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                rows={4}
+              />
+            </div>
+
+            {/* Quantity Selector */}
+            <div className="mb-4 flex items-center gap-3">
+              <label className="text-sm font-medium text-gray-700">Quantity:</label>
+              <div className="flex items-center border border-pink-300 rounded-3xl overflow-hidden bg-white">
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="px-4 py-2 text-gray-900 hover:bg-pink-100"
+                >
+                  −
+                </button>
+                <input
+                  type="number"
+                  value={quantity}
+                  onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                  className="w-14 text-center border-l border-r border-pink-300 bg-pink-50 text-gray-900 focus:outline-none"
+                  min="1"
+                />
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="px-4 py-2 text-gray-900 hover:bg-pink-100"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            {/* Add to Cart Button */}
+            <button
+              onClick={handleAddToCart}
+              disabled={isAddingToCart || (hasWrappers && selectedWrappers.length === 0) || (!hasWrappers && !notes.trim())}
+              className="w-full rounded-3xl bg-blue-600 px-4 py-3 text-white font-semibold shadow-sm transition hover:bg-blue-700 disabled:bg-gray-400 mb-4"
+            >
+              {isAddingToCart ? 'Adding...' : 'Add to Cart'}
+            </button>
+
             {/* Image indicators */}
             <div className="flex items-center space-x-2 mt-auto">
               {arrangementImages.map((_, index) => (
@@ -138,7 +294,7 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                    index === currentImageIndex ? 'bg-gray-800' : 'bg-gray-300 hover:bg-gray-400'
+                    index === currentImageIndex ? 'bg-rose-500' : 'bg-pink-300 hover:bg-rose-300'
                   }`}
                   aria-label={`Go to image ${index + 1}`}
                 />
@@ -149,55 +305,54 @@ export default function ArrangementModal({ isOpen, onClose, arrangementImages, a
       </div>
       {/* Fullscreen viewer */}
       {isFullscreen && (
-        <div className="fixed inset-0 z-60 bg-black bg-opacity-90 flex items-center justify-center">
+        <div className="fixed inset-0 z-60 bg-black/85 flex items-center justify-center p-6">
           <button
             onClick={closeFullscreen}
-            className="absolute top-4 right-4 text-white text-4xl z-70"
             aria-label="Close fullscreen"
+            className="absolute rounded-full border border-white/30 bg-white/20 p-3 text-white shadow-xl shadow-black/50 backdrop-blur-sm transition hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            style={{ top: 'calc(env(safe-area-inset-top, 1rem) + 0.5rem)', right: 'calc(env(safe-area-inset-right, 1rem) + 0.5rem)' }}
           >
             ×
           </button>
 
           <div className="relative w-full h-full flex items-center justify-center">
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="relative max-w-[100vw] max-h-[100vh] w-full h-full">
-                <Image
-                  src={arrangementImages[currentImageIndex]}
-                  alt={`${arrangementTitle} - Image ${currentImageIndex + 1}`}
-                  fill
-                  className="object-contain"
-                  onLoadingComplete={() => setIsImageLoading(false)}
-                />
+            <div className="relative max-w-[100vw] max-h-[100vh] w-full h-full">
+              <Image
+                src={arrangementImages[currentImageIndex]}
+                alt={`${arrangementTitle} - Image ${currentImageIndex + 1}`}
+                fill
+                className="object-contain"
+                onLoadingComplete={() => setIsImageLoading(false)}
+              />
 
-                {/* Loading overlay for fullscreen */}
-                {isImageLoading && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/50">
-                    <div className="w-16 h-16 rounded-full border-4 border-white border-t-transparent animate-spin" aria-hidden="true" />
-                    <span className="sr-only">Loading image</span>
-                  </div>
-                )}
+              {/* Loading overlay for fullscreen */}
+              {isImageLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                  <div className="w-16 h-16 rounded-full border-4 border-white border-t-transparent animate-spin" aria-hidden="true" />
+                  <span className="sr-only">Loading image</span>
+                </div>
+              )}
 
-                {/* Prev/Next in fullscreen */}
-                <button
-                  onClick={() => { setIsImageLoading(true); prevImage(); }}
-                  className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-10 hover:bg-opacity-30 rounded-full p-3 text-white"
-                  aria-label="Previous image"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
+              {/* Prev/Next in fullscreen */}
+              <button
+                onClick={() => { setIsImageLoading(true); prevImage(); }}
+                className="absolute left-6 top-1/2 transform -translate-y-1/2 rounded-full p-3 text-white bg-white/10 hover:bg-white/20"
+                aria-label="Previous image"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
 
-                <button
-                  onClick={() => { setIsImageLoading(true); nextImage(); }}
-                  className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-10 hover:bg-opacity-30 rounded-full p-3 text-white"
-                  aria-label="Next image"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
+              <button
+                onClick={() => { setIsImageLoading(true); nextImage(); }}
+                className="absolute right-6 top-1/2 transform -translate-y-1/2 rounded-full p-3 text-white bg-white/10 hover:bg-white/20"
+                aria-label="Next image"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>

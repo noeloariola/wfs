@@ -1,0 +1,15 @@
+[
+  {
+    "id": "WEDDING-ARCH-1",
+    "title": "WEDDING-ARCH-1",
+    "mainImage": "/app/arrangements/weddings/477599180_122224719206021217_4323923414810502662_n.jpg",
+    "images": [
+      "/app/arrangements/weddings/477599180_122224719206021217_4323923414810502662_n.jpg"
+    ],
+    "description": "Wedding Arch Arrangement",
+    "price": 5000,
+    "discountPrice": 0,
+    "showPrice": true,
+    "flowers": ["rose"]
+  }
+]

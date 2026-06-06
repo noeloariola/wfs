@@ -1,0 +1,104 @@
+{
+  "colors": {
+    "red": {
+      "name": "Red",
+      "variants": [
+        {
+          "id": "red-1",
+          "name": "Classic Red",
+          "image": "/app/wrappers/red/red-1.jpg"
+        },
+        {
+          "id": "red-2",
+          "name": "Deep Red",
+          "image": "/app/wrappers/red/red-2.jpg"
+        },
+        {
+          "id": "red-3",
+          "name": "Bright Red",
+          "image": "/app/wrappers/red/red-3.jpg"
+        }
+      ]
+    },
+    "pink": {
+      "name": "Pink",
+      "variants": [
+        {
+          "id": "pink-1",
+          "name": "Light Pink",
+          "image": "/app/wrappers/pink/pink-1.jpg"
+        },
+        {
+          "id": "pink-2",
+          "name": "Hot Pink",
+          "image": "/app/wrappers/pink/pink-2.jpg"
+        },
+        {
+          "id": "pink-3",
+          "name": "Rose Pink",
+          "image": "/app/wrappers/pink/pink-3.jpg"
+        }
+      ]
+    },
+    "white": {
+      "name": "White",
+      "variants": [
+        {
+          "id": "white-1",
+          "name": "Pure White",
+          "image": "/app/wrappers/white/white-1.jpg"
+        },
+        {
+          "id": "white-2",
+          "name": "Cream White",
+          "image": "/app/wrappers/white/white-2.jpg"
+        }
+      ]
+    },
+    "gold": {
+      "name": "Gold",
+      "variants": [
+        {
+          "id": "gold-1",
+          "name": "Bright Gold",
+          "image": "/app/wrappers/gold/gold-1.jpg"
+        },
+        {
+          "id": "gold-2",
+          "name": "Matte Gold",
+          "image": "/app/wrappers/gold/gold-2.jpg"
+        }
+      ]
+    },
+    "black": {
+      "name": "Black",
+      "variants": [
+        {
+          "id": "black-1",
+          "name": "Glossy Black",
+          "image": "/app/wrappers/black/black-1.jpg"
+        },
+        {
+          "id": "black-2",
+          "name": "Matte Black",
+          "image": "/app/wrappers/black/black-2.jpg"
+        }
+      ]
+    },
+    "purple": {
+      "name": "Purple",
+      "variants": [
+        {
+          "id": "purple-1",
+          "name": "Royal Purple",
+          "image": "/app/wrappers/purple/purple-1.jpg"
+        },
+        {
+          "id": "purple-2",
+          "name": "Light Purple",
+          "image": "/app/wrappers/purple/purple-2.jpg"
+        }
+      ]
+    }
+  }
+}

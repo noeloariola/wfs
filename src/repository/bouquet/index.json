@@ -1,5 +1,96 @@
 [
   {
+    "id": "BQ-78",
+    "title": "BQ-78",
+    "mainImage": "/app/arrangements/bouquets/BQ-78/BQ-78.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/BQ-78/BQ-78.1.jpg",
+      "/app/arrangements/bouquets/BQ-78/BQ-78.2.jpg",
+      "/app/arrangements/bouquets/BQ-78/BQ-78.3.jpg"
+    ],
+    "description": "3pcs Roses and 3pcs Carnations",
+    "price": 1150,
+    "discountPrice": 151,
+    "showPrice": true,
+    "flowers": [
+      "rose", "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
+  },
+  {
+    "id": "BQ-79",
+    "title": "BQ-79",
+    "mainImage": "/app/arrangements/bouquets/BQ-79/BQ-79.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/BQ-79/BQ-79.1.jpg",
+      "/app/arrangements/bouquets/BQ-79/BQ-79.2.jpg",
+      "/app/arrangements/bouquets/BQ-79/BQ-79.3.jpg"
+    ],
+    "description": "3pcs Roses and 3pcs Carnations",
+    "price": 1150,
+    "discountPrice": 151,
+    "showPrice": true,
+    "flowers": [
+      "rose", "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
+  },
+  {
+    "id": "BQ-77",
+    "title": "BQ-77",
+    "mainImage": "/app/arrangements/bouquets/BQ-77/BQ-77.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/BQ-77/BQ-77.1.jpg",
+      "/app/arrangements/bouquets/BQ-77/BQ-77.2.jpg"
+    ],
+    "description": "6pcs Roses",
+    "price": 1050,
+    "discountPrice": 0,
+    "showPrice": true,
+    "flowers": [
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
+  },
+  {
+    "id": "BQ-76",
+    "title": "BQ-76",
+    "mainImage": "/app/arrangements/bouquets/BQ-76/BQ-76.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/BQ-76/BQ-76.1.jpg",
+      "/app/arrangements/bouquets/BQ-76/BQ-76.2.jpg",
+      "/app/arrangements/bouquets/BQ-76/BQ-76.3.jpg"
+    ],
+    "description": "12pcs Roses",
+    "price": 1500,
+    "discountPrice": 0,
+    "showPrice": true,
+    "flowers": [
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
+  },
+  {
     "id": "ROSE-PC3-4",
     "title": "ROSE-PC3-4",
     "mainImage": "/app/arrangements/bouquets/ROSE-PC3-4/ROSE-PC3-4.1.jpg",
@@ -7,10 +98,18 @@
       "/app/arrangements/bouquets/ROSE-PC3-4/ROSE-PC3-4.1.jpg"
     ],
     "description": "3pcs Roses",
-    "price": 750,
-    "discountPrice": 100,
+    "price": 850,
+    "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["rose"]
+    "flowers": [
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE-PC3-3",
@@ -24,7 +123,15 @@
     "price": 950,
     "discountPrice": 151,
     "showPrice": true,
-    "flowers": ["rose"]
+    "flowers": [
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION-PC3-2",
@@ -38,7 +145,15 @@
     "price": 380,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION-PC3-3",
@@ -51,7 +166,15 @@
     "price": 450,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION-PC3-4",
@@ -59,14 +182,21 @@
     "mainImage": "/app/arrangements/bouquets/CRNTION-PC3-4/CRNTION-PC3-4.1.jpg",
     "images": [
       "/app/arrangements/bouquets/CRNTION-PC3-4/CRNTION-PC3-4.1.jpg",
-      
       "/app/arrangements/bouquets/CRNTION-PC3-4/CRNTION-PC3-4.2.jpg"
     ],
     "description": "3 PCS Carnations",
     "price": 300,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION-PC5-1",
@@ -80,7 +210,15 @@
     "price": 550,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION-1",
@@ -94,7 +232,15 @@
     "price": 999,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION-2",
@@ -107,7 +253,15 @@
     "price": 999,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE-PC3-5",
@@ -118,10 +272,18 @@
       "/app/arrangements/bouquets/ROSE-PC3-5/ROSE-PC3-5.2.jpg"
     ],
     "description": "3pcs Rose",
-    "price": 550,
+    "price": 750,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["rose"]
+    "flowers": [
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE5-1",
@@ -132,10 +294,18 @@
       "/app/arrangements/bouquets/ROSE5-1/ROSE5-1.2.jpg"
     ],
     "description": "5pcs Rose",
-    "price": 900,
+    "price": 1050,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE-1",
@@ -149,7 +319,15 @@
     "price": 1500,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE-2",
@@ -160,10 +338,18 @@
       "/app/arrangements/bouquets/ROSE-2/ROSE-2.2.jpg"
     ],
     "description": "3pcs Rose",
-    "price": 700,
+    "price": 750,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "IROSE-3",
@@ -176,7 +362,15 @@
     "description": "20pcs Imported Rose",
     "price": 3500,
     "showPrice": true,
-    "flowers": ["ROSE"]
+    "flowers": [
+      "ROSE"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE-4",
@@ -188,7 +382,15 @@
     "description": "15pcs Rose",
     "price": 2200,
     "showPrice": true,
-    "flowers": ["ROSE"]
+    "flowers": [
+      "ROSE"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "IROSE-1",
@@ -202,7 +404,15 @@
     "description": "10pcs Imported Rose",
     "price": 2200,
     "showPrice": true,
-    "flowers": ["ROSE"]
+    "flowers": [
+      "ROSE"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "IROSE-2",
@@ -214,35 +424,15 @@
     "description": "20pcs Imported Rose",
     "price": 3500,
     "showPrice": true,
-    "flowers": ["ROSE"]
-  },
-  {
-    "id": "ROSE3-1",
-    "title": "ROSE3-1",
-    "mainImage": "/app/arrangements/bouquets/ROSE3-1/ROSE3-1.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE3-1/ROSE3-1.1.jpg",
-      "/app/arrangements/bouquets/ROSE3-1/ROSE3-1.2.jpg"
+    "flowers": [
+      "ROSE"
     ],
-    "description": "3pcs Roses",
-    "price": 550,
-    "discountPrice": 0,
-    "showPrice": true,
-    "flowers": ["rose"]
-  },
-  {
-    "id": "ROSE3-2",
-    "title": "ROSE3-2",
-    "mainImage": "/app/arrangements/bouquets/ROSE3-2/ROSE3-2.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE3-2/ROSE3-2.1.jpg",
-      "/app/arrangements/bouquets/ROSE3-2/ROSE3-2.2.jpg"
-    ],
-    "description": "3pcs Roses",
-    "price": 550,
-    "discountPrice": 0,
-    "showPrice": true,
-    "flowers": ["rose"]
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE-PC6-1",
@@ -256,48 +446,15 @@
     "price": 999,
     "discountPrice": 100,
     "showPrice": true,
-    "flowers": ["rose"]
-  },
-  {
-    "id": "ROSE7-1",
-    "title": "ROSE7-1",
-    "mainImage": "/app/arrangements/bouquets/ROSE7-1/ROSE7-1.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE7-1/ROSE7-1.1.jpg"
+    "flowers": [
+      "rose"
     ],
-    "description": "7pcs Roses",
-    "price": 1300,
-    "discountPrice": 100,
-    "showPrice": true,
-    "flowers": ["rose"]
-  },
-  {
-    "id": "ROSE7-2",
-    "title": "ROSE7-2",
-    "mainImage": "/app/arrangements/bouquets/ROSE7-2/ROSE7-2.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE7-2/ROSE7-2.1.jpg",
-      "/app/arrangements/bouquets/ROSE7-2/ROSE7-2.2.jpg"
-    ],
-    "description": "7pcs Roses",
-    "price": 1400,
-    "discountPrice": 0,
-    "showPrice": true,
-    "flowers": ["rose"]
-  },
-  {
-    "id": "ROSE7-3",
-    "title": "ROSE7-3",
-    "mainImage": "/app/arrangements/bouquets/ROSE7-3/ROSE7-3.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE7-3/ROSE7-3.1.jpg",
-      "/app/arrangements/bouquets/ROSE7-3/ROSE7-3.2.jpg"
-    ],
-    "description": "7pcs Roses",
-    "price": 1400,
-    "discountPrice": 0,
-    "showPrice": true,
-    "flowers": ["rose"]
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE7-4",
@@ -310,20 +467,15 @@
     "price": 1400,
     "discountPrice": 100,
     "showPrice": true,
-    "flowers": ["rose"]
-  },
-  {
-    "id": "ROSE7-5",
-    "title": "ROSE7-5",
-    "mainImage": "/app/arrangements/bouquets/ROSE7-5/ROSE7-5.1.jpg",
-    "images": [
-      "/app/arrangements/bouquets/ROSE7-5/ROSE7-5.1.jpg"
+    "flowers": [
+      "rose"
     ],
-    "description": "7pcs Roses",
-    "price": 1300,
-    "discountPrice": 0,
-    "showPrice": true,
-    "flowers": ["rose"]
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSEYLW14-1",
@@ -337,7 +489,16 @@
     "price": 2700,
     "discountPrice": 300,
     "showPrice": true,
-    "flowers": ["roses", "buttons"]
+    "flowers": [
+      "roses",
+      "buttons"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "spring-bouquet",
@@ -349,7 +510,15 @@
     "description": "20 PCS Roses",
     "price": 2600,
     "showPrice": true,
-    "flowers": ["roses"]
+    "flowers": [
+      "roses"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "tropical-paradise",
@@ -361,7 +530,15 @@
     "description": "9PCS Sunflowers",
     "price": 2600,
     "showPrice": true,
-    "flowers": ["sunflower"]
+    "flowers": [
+      "sunflower"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "tulipt31",
@@ -373,7 +550,15 @@
     "description": "3pcs Tulips",
     "price": 1900,
     "showPrice": true,
-    "flowers": ["tulips"]
+    "flowers": [
+      "tulips"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTROSE12-1",
@@ -386,7 +571,15 @@
     "price": 1700,
     "discountPrice": 200,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION12-1",
@@ -399,7 +592,15 @@
     "price": 2450,
     "discountPrice": 300,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION45-1",
@@ -413,7 +614,15 @@
     "price": 4500,
     "discountPrice": 700,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "POMPOM-1",
@@ -428,7 +637,15 @@
     "price": 2290,
     "discountPrice": 300,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "SUN14-1",
@@ -441,7 +658,15 @@
     "price": 2700,
     "discountPrice": 201,
     "showPrice": true,
-    "flowers": ["sunflower"]
+    "flowers": [
+      "sunflower"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "REDBLK-1",
@@ -454,7 +679,13 @@
     "description": "12pcs Red Roses",
     "price": 2250,
     "discountPrice": 350,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "REDBLK45-1",
@@ -468,7 +699,13 @@
     "description": "45pcs Red Roses",
     "price": 4500,
     "discountPrice": 0,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE25-1",
@@ -480,7 +717,13 @@
     "description": "25pcs Roses",
     "price": 3500,
     "discountPrice": 600,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION-PC1-1-1",
@@ -494,7 +737,13 @@
     "description": "1pc Carnation",
     "price": 190,
     "discountPrice": 0,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION-PC3-1-1",
@@ -507,7 +756,13 @@
     "description": "3pcs Carnations",
     "price": 450,
     "discountPrice": 0,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE-PC1-1-1",
@@ -520,7 +775,13 @@
     "description": "3pcs Roses",
     "price": 450,
     "discountPrice": 0,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE-PC3-2-1",
@@ -533,7 +794,13 @@
     "description": "3pcs Roses",
     "price": 600,
     "discountPrice": 0,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "SUNFLR-PC3-1-1",
@@ -546,7 +813,13 @@
     "description": "3pcs Sunflowers",
     "price": 2200,
     "discountPrice": 450,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "SUNFLR-PC5-1-#1",
@@ -559,7 +832,13 @@
     "description": "5pcs Sunflowers",
     "price": 2100,
     "discountPrice": 0,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION-G2",
@@ -571,7 +850,13 @@
     ],
     "description": "6pcs Rose + 6pcs Carnation",
     "price": 1500,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "REDPNK12-#2",
@@ -582,7 +867,13 @@
     ],
     "description": "12 PCS Red and Pink Roses",
     "price": 1900,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "SUN1-1",
@@ -593,7 +884,13 @@
     ],
     "description": "1pc Sunflower + 3pcs Roses",
     "price": 850,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "SUN1-2",
@@ -605,7 +902,13 @@
     "description": "1pc Sunflower + 3pcs Roses",
     "price": 750,
     "discountPrice": 150,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "PNK40",
@@ -616,7 +919,13 @@
     ],
     "description": "Price: available soon",
     "price": 5000,
-    "showPrice": false
+    "showPrice": false,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "GER-00",
@@ -627,7 +936,13 @@
     ],
     "description": "10pcs Gerbera",
     "price": 999,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "GER-1",
@@ -641,7 +956,13 @@
     "description": "10pcs Gerbera",
     "price": 1700,
     "discountPrice": 400,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "GERB6-1",
@@ -654,7 +975,16 @@
     "price": 1500,
     "discountPrice": 11,
     "showPrice": true,
-    "flowers": ["gerbera", "carnation"]
+    "flowers": [
+      "gerbera",
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "SUN3-1",
@@ -667,7 +997,15 @@
     "price": 2200,
     "discountPrice": 500,
     "showPrice": true,
-    "flowers": ["sunflower"]
+    "flowers": [
+      "sunflower"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "SUN3-2",
@@ -680,7 +1018,15 @@
     "price": 2200,
     "discountPrice": 450,
     "showPrice": true,
-    "flowers": ["sunflower"]
+    "flowers": [
+      "sunflower"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "REDGLD-1",
@@ -692,7 +1038,13 @@
     "description": "3 Dozen Red Rose with chamomile",
     "price": 4100,
     "discountPrice": 450,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "REDPNK10-1",
@@ -705,7 +1057,15 @@
     "price": 1900,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["roses"]
+    "flowers": [
+      "roses"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "REDWHT10-1",
@@ -718,7 +1078,15 @@
     "price": 1650,
     "discountPrice": 100,
     "showPrice": true,
-    "flowers": ["roses"]
+    "flowers": [
+      "roses"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE24-1",
@@ -728,10 +1096,18 @@
       "/app/arrangements/bouquets/ROSE36-1/ROSE36-1.1.jpg"
     ],
     "description": "24 PCS Roses",
-    "price": 3300,
-    "discountPrice": 750,
+    "price": 3500,
+    "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["roses"]
+    "flowers": [
+      "roses"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "SPRYPNK16-1",
@@ -747,7 +1123,15 @@
     "price": 2350,
     "discountPrice": 201,
     "showPrice": true,
-    "flowers": ["roses"]
+    "flowers": [
+      "roses"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "LLYASRT-1",
@@ -761,7 +1145,17 @@
     "price": 3100,
     "discountPrice": 450,
     "showPrice": true,
-    "flowers": ["lily", "rose", "sunflower"]
+    "flowers": [
+      "lily",
+      "rose",
+      "sunflower"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "LLYROSE-1",
@@ -775,26 +1169,45 @@
     "price": 1500,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["rose", "lily"]
+    "flowers": [
+      "rose",
+      "lily"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "LILY1-0",
     "title": "LILY1-0",
     "mainImage": "/app/arrangements/bouquets/LILY1-0/LILY1-0.1.jpg",
-    "images": [ 
+    "images": [
       "/app/arrangements/bouquets/LILY1-0/LILY1-0.1.jpg"
     ],
     "description": "Lilies and 10-pcs Roses",
     "price": 1750,
     "discountPrice": 100,
     "showPrice": true,
-    "flowers": ["rose", "lily", "stargazer"]
+    "flowers": [
+      "rose",
+      "lily",
+      "stargazer"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "LILY1-1",
     "title": "LILY1-1",
     "mainImage": "/app/arrangements/bouquets/LILY1-1/LILY1-1.1.jpg",
-    "images": [ 
+    "images": [
       "/app/arrangements/bouquets/LILY1-1/LILY1-1.1.jpg",
       "/app/arrangements/bouquets/LILY1-1/LILY1-1.2.jpg"
     ],
@@ -802,13 +1215,23 @@
     "price": 2450,
     "discountPrice": 250,
     "showPrice": true,
-    "flowers": ["rose", "lily", "stargazer"]
+    "flowers": [
+      "rose",
+      "lily",
+      "stargazer"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "LILY1-2",
     "title": "LILY1-2",
     "mainImage": "/app/arrangements/bouquets/LILY1-2/LILY1-2.1.jpg",
-    "images": [ 
+    "images": [
       "/app/arrangements/bouquets/LILY1-2/LILY1-2.1.jpg",
       "/app/arrangements/bouquets/LILY1-2/LILY1-2.2.jpg"
     ],
@@ -816,20 +1239,40 @@
     "price": 2450,
     "discountPrice": 250,
     "showPrice": true,
-    "flowers": ["rose", "lily", "stargazer"]
+    "flowers": [
+      "rose",
+      "lily",
+      "stargazer"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "LILY1-4",
     "title": "LILY1-4",
     "mainImage": "/app/arrangements/bouquets/LILY1-4/LILY1-4.1.jpg",
-    "images": [ 
+    "images": [
       "/app/arrangements/bouquets/LILY1-4/LILY1-4.1.jpg"
     ],
     "description": "Double Petals Lily and 10pcs Roses",
-    "price": 1750,
+    "price": 2100,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["rose", "lily", "stargazer"]
+    "flowers": [
+      "rose",
+      "lily",
+      "stargazer"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "T3-2",
@@ -842,7 +1285,15 @@
     "price": 1900,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["tulip"]
+    "flowers": [
+      "tulip"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "SUN4ROSE-1",
@@ -855,7 +1306,16 @@
     "price": 2350,
     "discountPrice": 251,
     "showPrice": true,
-    "flowers": ["sunflower", "rose"]
+    "flowers": [
+      "sunflower",
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "SUN1ROSE-1",
@@ -868,7 +1328,16 @@
     "price": 1550,
     "discountPrice": 100,
     "showPrice": true,
-    "flowers": ["sunflower", "rose"]
+    "flowers": [
+      "sunflower",
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRN10-1",
@@ -880,7 +1349,15 @@
     "description": "10 PCS Carnations",
     "price": 999,
     "showPrice": true,
-    "flowers": ["carnation"]
+    "flowers": [
+      "carnation"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE-G1-1",
@@ -890,11 +1367,19 @@
       "/app/arrangements/bouquets/ROSE-G1-1/ROSE-G1-1.1.jpg",
       "/app/arrangements/bouquets/ROSE-G1-1/ROSE-G1-1.2.jpg"
     ],
-    "description": "Price: available soon",
+    "description": "12pcs Roses",
     "price": 1900,
     "discountPrice": 0,
     "showPrice": true,
-    "flowers": ["rose"]
+    "flowers": [
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE6-1",
@@ -904,8 +1389,14 @@
       "/app/arrangements/bouquets/ROSE6-1/ROSE6-1.1.jpg"
     ],
     "description": "6pcs Roses",
-    "price": 900,
-    "showPrice": true
+    "price": 1100,
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "CRNTION12-2",
@@ -916,7 +1407,30 @@
     ],
     "description": "Price: available soon",
     "price": 5000,
-    "showPrice": false
+    "showPrice": false,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
+  },
+  {
+    "id": "CRNTION-PC12-3",
+    "title": "CRNTION-PC12-3",
+    "mainImage": "/app/arrangements/bouquets/CRNTION-PC12-3/CRNTION-PC12-3.1.jpg",
+    "images": [
+      "/app/arrangements/bouquets/CRNTION-PC12-3/CRNTION-PC12-3.1.jpg"
+    ],
+    "description": "Price: available soon",
+    "price": 5000,
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "GERB8ROSE-1",
@@ -928,7 +1442,13 @@
     "description": "9pcs Gergerba + 6pcs Roses",
     "price": 2150,
     "discountPrice": 300,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "GERB3MUMS-1",
@@ -939,7 +1459,13 @@
     ],
     "description": "Price: available soon",
     "price": 5000,
-    "showPrice": false
+    "showPrice": false,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSES-15-1",
@@ -950,7 +1476,13 @@
     ],
     "description": "15 PCS Roses",
     "price": 1800,
-    "showPrice": true
+    "showPrice": true,
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "T6-1",
@@ -965,7 +1497,15 @@
     "price": 2700,
     "discountPrice": 500,
     "showPrice": true,
-    "flowers": ["tulip"]
+    "flowers": [
+      "tulip"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "T12-2",
@@ -979,7 +1519,15 @@
     "price": 3100,
     "discountPrice": 400,
     "showPrice": true,
-    "flowers": ["tulip"]
+    "flowers": [
+      "tulip"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "T12-1",
@@ -992,7 +1540,15 @@
     "price": 3100,
     "discountPrice": 101,
     "showPrice": true,
-    "flowers": ["tulip"]
+    "flowers": [
+      "tulip"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE12-1",
@@ -1003,9 +1559,17 @@
       "/app/arrangements/bouquets/ROSE12-1/ROSE12-1.2.jpg"
     ],
     "description": "12 PCS Roses",
-    "price": 1500,
+    "price": 1700,
     "showPrice": true,
-    "flowers": ["rose"]
+    "flowers": [
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE12-2",
@@ -1018,7 +1582,15 @@
     "description": "12 PCS Roses",
     "price": 1900,
     "showPrice": true,
-    "flowers": ["rose"]
+    "flowers": [
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE14-1",
@@ -1031,7 +1603,15 @@
     "description": "14pcs Roses",
     "price": 2200,
     "showPrice": true,
-    "flowers": ["rose"]
+    "flowers": [
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   },
   {
     "id": "ROSE14-2",
@@ -1043,6 +1623,14 @@
     "description": "14pcs Roses",
     "price": 2200,
     "showPrice": true,
-    "flowers": ["rose"]
+    "flowers": [
+      "rose"
+    ],
+    "wrappers": [
+      "red",
+      "pink",
+      "white",
+      "blue"
+    ]
   }
 ]
