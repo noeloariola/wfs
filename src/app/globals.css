@@ -43,12 +43,12 @@
 
 /* Theme variants - add more themes here and switch by toggling the class on <body> */
 .theme-green {
-  --background: #F7FFFA;
-  --foreground: #123824;
+  --background: #ECFDF5;
+  --foreground: #064E3B;
   --surface: #FFFFFF;
-  --surface-muted: #F0FFF6;
-  --surface-border: #DFF6E9;
-  --accent: #34D399;
+  --surface-muted: #D1FAE5;
+  --surface-border: #86EFAC;
+  --accent: #10B981;
   --accent-strong: #047857;
   --accent-soft: #BBF7D0;
 }
