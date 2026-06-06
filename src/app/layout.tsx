@@ -1,19 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/elements/header";
 import { CartProvider } from "@/context/CartContext";
 import CartSidebar from "@/components/elements/cart-sidebar";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Wel's Flower Shop",
@@ -30,9 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--background)] text-[var(--foreground)] min-h-screen`}
-      >
+      <body className="antialiased bg-[var(--background)] text-[var(--foreground)] min-h-screen">
         <CartProvider>
           <Header />
           <CartSidebar />

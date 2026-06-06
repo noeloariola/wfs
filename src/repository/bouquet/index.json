@@ -2,11 +2,11 @@
   {
     "id": "BQ-78",
     "title": "BQ-78",
-    "mainImage": "/app/arrangements/bouquets/BQ-78/bq-78.1.jpg",
+    "mainImage": "/app/arrangements/bouquets/BQ-78/BQ-78.1.jpg",
     "images": [
-      "/app/arrangements/bouquets/BQ-78/bq-78.1.jpg",
-      "/app/arrangements/bouquets/BQ-78/bq-78.2.jpg",
-      "/app/arrangements/bouquets/BQ-78/bq-78.3.jpg"
+      "/app/arrangements/bouquets/BQ-78/BQ-78.1.jpg",
+      "/app/arrangements/bouquets/BQ-78/BQ-78.2.jpg",
+      "/app/arrangements/bouquets/BQ-78/BQ-78.3.jpg"
     ],
     "description": "3pcs Roses and 3pcs Carnations",
     "price": 1150,
@@ -25,11 +25,11 @@
   {
     "id": "BQ-79",
     "title": "BQ-79",
-    "mainImage": "/app/arrangements/bouquets/BQ-79/bq-79.1.jpg",
+    "mainImage": "/app/arrangements/bouquets/BQ-79/BQ-79.1.jpg",
     "images": [
-      "/app/arrangements/bouquets/BQ-79/bq-79.1.jpg",
-      "/app/arrangements/bouquets/BQ-79/bq-79.2.jpg",
-      "/app/arrangements/bouquets/BQ-79/bq-79.3.jpg"
+      "/app/arrangements/bouquets/BQ-79/BQ-79.1.jpg",
+      "/app/arrangements/bouquets/BQ-79/BQ-79.2.jpg",
+      "/app/arrangements/bouquets/BQ-79/BQ-79.3.jpg"
     ],
     "description": "3pcs Roses and 3pcs Carnations",
     "price": 1150,
@@ -48,10 +48,10 @@
   {
     "id": "BQ-77",
     "title": "BQ-77",
-    "mainImage": "/app/arrangements/bouquets/BQ-77/bq-77.1.jpg",
+    "mainImage": "/app/arrangements/bouquets/BQ-77/BQ-77.1.jpg",
     "images": [
-      "/app/arrangements/bouquets/BQ-77/bq-77.1.jpg",
-      "/app/arrangements/bouquets/BQ-77/bq-77.2.jpg"
+      "/app/arrangements/bouquets/BQ-77/BQ-77.1.jpg",
+      "/app/arrangements/bouquets/BQ-77/BQ-77.2.jpg"
     ],
     "description": "6pcs Roses",
     "price": 1050,
@@ -70,11 +70,11 @@
   {
     "id": "BQ-76",
     "title": "BQ-76",
-    "mainImage": "/app/arrangements/bouquets/BQ-76/bq-76.1.jpg",
+    "mainImage": "/app/arrangements/bouquets/BQ-76/BQ-76.1.jpg",
     "images": [
-      "/app/arrangements/bouquets/BQ-76/bq-76.1.jpg",
-      "/app/arrangements/bouquets/BQ-76/bq-76.2.jpg",
-      "/app/arrangements/bouquets/BQ-76/bq-76.3.jpg"
+      "/app/arrangements/bouquets/BQ-76/BQ-76.1.jpg",
+      "/app/arrangements/bouquets/BQ-76/BQ-76.2.jpg",
+      "/app/arrangements/bouquets/BQ-76/BQ-76.3.jpg"
     ],
     "description": "12pcs Roses",
     "price": 1500,
