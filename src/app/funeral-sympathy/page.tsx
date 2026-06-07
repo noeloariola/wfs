@@ -111,7 +111,6 @@ export default function FuneralAndSympathyPage() {
                     arrangementDescription={selectedArrangement.description}
                     productId={selectedArrangement.id}
                     productPrice={(selectedArrangement.price || 0) - (selectedArrangement.discountPrice || 0)}
-                    hasWrappers={Boolean(selectedArrangement.wrappers)}
                 />
             )}
         </div>

@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import WrapperSelector from '../wrapper-selector';
 import { useCart } from '@/context/CartContext';
-import { WrapperColor, WrapperVariant } from '@/types/cart';
-import wrapperData from '@/repository/bouquet/wrappers.json';
 import bouquetData from '@/repository/bouquet/index.json';
 
 interface ModalProps {
@@ -16,7 +13,6 @@ interface ModalProps {
   arrangementDescription?: string;
   productId?: string;
   productPrice?: number;
-  hasWrappers?: boolean;
 }
 
 export default function ArrangementModal({ 
@@ -27,14 +23,10 @@ export default function ArrangementModal({
   arrangementDescription,
   productId,
   productPrice,
-  hasWrappers = false
 }: ModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [selectedColorKey, setSelectedColorKey] = useState<string | undefined>();
-  const [selectedVariant, setSelectedVariant] = useState<WrapperVariant | undefined>();
-  const [selectedWrappers, setSelectedWrappers] = useState<{ color: string; variantId: string; variantImage: string }[]>([]);
   const [notes, setNotes] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
@@ -87,12 +79,7 @@ export default function ArrangementModal({
   const handleAddToCart = () => {
     if (!productId || !productPrice) return;
 
-    const normalizeSelections = [...selectedWrappers]
-      .sort((a, b) => (a.color.localeCompare(b.color) || a.variantId.localeCompare(b.variantId)))
-      .map((selection) => `${selection.color}:${selection.variantId}`)
-      .join('|');
-
-    const cartItemId = `${productId}|${normalizeSelections}|${notes?.trim() || ''}`;
+    const cartItemId = `${productId}|${notes?.trim() || ''}`;
 
     const existingSameProductDifferentDetails = cart.items.some((item) => {
       return item.productId === productId && item.id !== cartItemId;
@@ -116,10 +103,6 @@ export default function ArrangementModal({
       productPrice,
       productImage: arrangementImages[0],
       quantity,
-      wrapperColor: selectedColorKey,
-      wrapperVariantId: selectedVariant?.id,
-      wrapperVariantImage: selectedVariant?.image,
-      wrapperSelections: selectedWrappers,
       notes: notes || undefined,
       addedAt: Date.now(),
     });
@@ -207,39 +190,6 @@ export default function ArrangementModal({
               <div className="text-lg font-semibold text-[var(--accent)] mb-4">₱{productPrice.toLocaleString()}</div>
             )}
 
-            {/* Wrapper Selector (for bouquets) */}
-            {hasWrappers && (
-              <WrapperSelector
-                colors={wrapperData.colors}
-                onSelectWrappers={(selections) => {
-                  setSelectedWrappers(selections);
-                  if (selections.length > 0) {
-                    setSelectedColorKey(selections[0].color);
-                    const colorMap = wrapperData.colors as Record<string, WrapperColor>;
-                    const variant = colorMap[selections[0].color]?.variants.find(v => v.id === selections[0].variantId);
-                    setSelectedVariant(variant);
-                  } else {
-                    setSelectedColorKey(undefined);
-                    setSelectedVariant(undefined);
-                  }
-                }}
-                selectedColorKey={selectedColorKey}
-                selectedVariant={selectedVariant}
-                maxSelections={(() => {
-                  // prefer explicit capacity field from bouquet data
-                  try {
-                    if (productId) {
-                      const found = (bouquetData as any[]).find((b) => b.id === productId);
-                      if (found && typeof found.capacity === 'number') return found.capacity;
-                    }
-                  } catch (e) {
-                    // ignore
-                  }
-                  return 2;
-                })()}
-              />
-            )}
-
             {/* Notes (for all products) */}
             <div className="mb-6 rounded-3xl p-4 bg-[var(--surface-muted)] shadow-sm">
               <label className="text-lg font-semibold text-[var(--foreground)] mb-2 block">Special Notes</label>
@@ -281,7 +231,7 @@ export default function ArrangementModal({
             {/* Add to Cart Button */}
             <button
               onClick={handleAddToCart}
-              disabled={isAddingToCart || (hasWrappers && selectedWrappers.length === 0) || (!hasWrappers && !notes.trim())}
+              disabled={isAddingToCart}
               className="w-full rounded-3xl bg-[var(--accent)] px-4 py-3 text-[var(--surface)] font-semibold shadow-sm transition hover:bg-[var(--accent-strong)] disabled:bg-[var(--surface-border)] mb-4"
             >
               {isAddingToCart ? 'Adding...' : 'Add to Cart'}
