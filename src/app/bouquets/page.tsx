@@ -75,7 +75,7 @@ export default function BouquetsPage() {
                         placeholder={<Placeholder />}
                     >
                         <button 
-                            className="group flex w-full flex-col items-start overflow-hidden rounded-[1.75rem] border border-[var(--surface-border)] bg-[var(--surface)] p-4 text-left transition hover:-translate-y-1 hover:border-[var(--accent)] hover:bg-[var(--surface-muted)]" 
+                            className="group flex w-full flex-col items-start overflow-hidden rounded-[1.75rem] bg-[var(--surface)] p-4 text-left transition hover:-translate-y-1 hover:shadow-lg shadow-md" 
                             onClick={() => openModal(arrangement)}
                         >
                             <div className="relative w-full h-64 overflow-hidden rounded-[1.5rem] bg-[var(--surface-border)] mb-4">

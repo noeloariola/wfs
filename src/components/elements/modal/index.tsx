@@ -136,7 +136,7 @@ export default function ArrangementModal({
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full border border-[var(--surface-border)] bg-[var(--surface-muted)]/90 p-2 text-[var(--foreground)] shadow-lg shadow-black/10 hover:bg-[var(--surface)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+          className="absolute right-3 top-3 z-50 rounded-full border border-[var(--surface-border)] bg-[var(--surface-muted)] p-2 text-[var(--foreground)] shadow-lg hover:bg-[var(--surface)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] active:scale-95 transition-transform"
           aria-label="Close modal"
         >
           ×
@@ -146,7 +146,7 @@ export default function ArrangementModal({
         <div className="flex flex-col gap-6 md:flex-row md:items-start">
           {/* Image area */}
           <div className="w-full md:w-1/2">
-            <div className="relative w-full overflow-hidden rounded-[1.5rem] border border-[var(--surface-border)] bg-[var(--surface-muted)]">
+            <div className="relative w-full overflow-hidden rounded-[1.5rem] border border-[var(--surface-border)]/20 bg-[var(--surface-muted)]">
               <div className="relative h-[55vh] min-h-[340px] w-full cursor-zoom-in sm:h-[60vh] md:aspect-square" onClick={openFullscreen}>
                 <Image
                   src={arrangementImages[currentImageIndex]}
@@ -309,7 +309,7 @@ export default function ArrangementModal({
           <button
             onClick={closeFullscreen}
             aria-label="Close fullscreen"
-            className="absolute rounded-full border border-[var(--surface)]/30 bg-[var(--surface)]/20 p-3 text-[var(--surface)] shadow-xl shadow-black/50 backdrop-blur-sm transition hover:bg-[var(--surface)]/30 focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+            className="fixed z-[9999] rounded-full border border-[var(--surface-border)] bg-[var(--surface)] p-3 text-[var(--foreground)] shadow-xl shadow-black/60 backdrop-blur-sm transition hover:bg-[var(--surface)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] active:scale-95"
             style={{ top: 'calc(env(safe-area-inset-top, 1rem) + 0.5rem)', right: 'calc(env(safe-area-inset-right, 1rem) + 0.5rem)' }}
           >
             ×
