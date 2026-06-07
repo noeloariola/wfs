@@ -132,11 +132,11 @@ export default function ArrangementModal({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 px-3 py-6 backdrop-blur-sm">
-      <div className="relative mx-auto w-full max-w-[95vw] rounded-[2rem] border border-[var(--surface-border)] bg-[var(--surface)]/98 p-4 sm:p-6 shadow-[0_35px_80px_-30px_rgba(15,23,42,0.2)]">
+      <div className="relative mx-auto w-full max-w-[95vw] rounded-[2rem] bg-[var(--surface)]/98 p-4 sm:p-6 shadow-[0_30px_60px_-24px_rgba(15,23,42,0.18)]">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-3 top-3 z-50 rounded-full border border-[var(--surface-border)] bg-[var(--surface-muted)] p-2 text-[var(--foreground)] shadow-lg hover:bg-[var(--surface)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] active:scale-95 transition-transform"
+          className="absolute right-3 top-3 z-50 rounded-full bg-[var(--surface-muted)] p-2 text-[var(--foreground)] shadow-lg hover:bg-[var(--surface)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] active:scale-95 transition-transform"
           aria-label="Close modal"
         >
           ×
@@ -146,7 +146,7 @@ export default function ArrangementModal({
         <div className="flex flex-col gap-6 md:flex-row md:items-start">
           {/* Image area */}
           <div className="w-full md:w-1/2">
-            <div className="relative w-full overflow-hidden rounded-[1.5rem] border border-[var(--surface-border)]/20 bg-[var(--surface-muted)]">
+            <div className="relative w-full overflow-hidden rounded-[1.5rem] bg-[var(--surface-muted)] shadow-sm">
               <div className="relative h-[55vh] min-h-[340px] w-full cursor-zoom-in sm:h-[60vh] md:aspect-square" onClick={openFullscreen}>
                 <Image
                   src={arrangementImages[currentImageIndex]}
@@ -159,8 +159,8 @@ export default function ArrangementModal({
 
               {/* Loading overlay */}
               {isImageLoading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-[var(--surface)]/70">
-                  <div className="w-12 h-12 rounded-full border-4 border-[var(--surface-border)] border-t-transparent animate-spin" aria-hidden="true" />
+                <div className="absolute inset-0 flex items-center justify-center bg-[var(--surface)]/60">
+                  <div className="w-12 h-12 rounded-full border-4 border-[var(--surface-border)]/40 border-t-transparent animate-spin" aria-hidden="true" />
                   <span className="sr-only">Loading image</span>
                 </div>
               )}
@@ -189,7 +189,7 @@ export default function ArrangementModal({
           </div>
 
           {/* Details area (title, description, indicators, wrappers, cart) */}
-          <div className="w-full md:w-1/2 flex flex-col justify-start overflow-y-auto max-h-[80vh]">
+            <div className="w-full md:w-1/2 flex flex-col justify-start overflow-y-auto max-h-[80vh]">
             <h2 className="md:text-2xl font-semibold text-[var(--foreground)] mb-2 text-left">{arrangementTitle}</h2>
 
             {/* Image counter */}
@@ -241,21 +241,21 @@ export default function ArrangementModal({
             )}
 
             {/* Notes (for all products) */}
-            <div className="mb-6 rounded-3xl p-4 bg-[var(--surface-muted)] border border-[var(--surface-border)]">
+            <div className="mb-6 rounded-3xl p-4 bg-[var(--surface-muted)] shadow-sm">
               <label className="text-lg font-semibold text-[var(--foreground)] mb-2 block">Special Notes</label>
               <textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Enter any special requests or notes for this order..."
-                className="w-full rounded-3xl border border-[var(--surface-border)] bg-[var(--surface)] p-3 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] resize-none"
+                className="w-full rounded-3xl bg-[var(--surface)] p-3 text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] resize-none"
                 rows={4}
               />
             </div>
 
             {/* Quantity Selector */}
-            <div className="mb-4 flex items-center gap-3">
+              <div className="mb-4 flex items-center gap-3">
               <label className="text-sm font-medium text-[var(--foreground)]">Quantity:</label>
-              <div className="flex items-center border border-[var(--surface-border)] rounded-3xl overflow-hidden bg-[var(--surface)]">
+              <div className="flex items-center rounded-3xl overflow-hidden bg-[var(--surface)] shadow-sm">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className="px-4 py-2 text-[var(--foreground)] hover:bg-[var(--surface-muted)]"
@@ -266,7 +266,7 @@ export default function ArrangementModal({
                   type="number"
                   value={quantity}
                   onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-14 text-center border-l border-r border-[var(--surface-border)] bg-[var(--surface)] text-[var(--foreground)] focus:outline-none"
+                  className="w-14 text-center bg-[var(--surface)] text-[var(--foreground)] focus:outline-none"
                   min="1"
                 />
                 <button
