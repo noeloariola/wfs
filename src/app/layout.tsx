@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/elements/header";
 import { CartProvider } from "@/context/CartContext";
 import CartSidebar from "@/components/elements/cart-sidebar";
+import { AnalyticsProvider } from "@/components/providers/AnalyticsProvider";
 
 export const metadata: Metadata = {
   title: "Wel's Flower Shop",
@@ -20,11 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="theme-blue antialiased bg-[var(--background)] text-[var(--foreground)] min-h-screen">
-        <CartProvider>
-          <Header />
-          <CartSidebar />
-          <main className="min-h-screen pb-16">{children}</main>
-        </CartProvider>
+        <AnalyticsProvider>
+          <CartProvider>
+            <Header />
+            <CartSidebar />
+            <main className="min-h-screen pb-16">{children}</main>
+          </CartProvider>
+        </AnalyticsProvider>
       </body>
     </html>
   );
