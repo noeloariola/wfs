@@ -91,9 +91,9 @@ export default function BouquetsPage() {
                                 />
                             </div>
                             <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">{arrangement.title}</h3>
-                            {arrangement.description && (
+                            {/* {arrangement.description && (
                                 <p className="text-sm text-[var(--surface-border)] mb-2">{arrangement.description}</p>
-                            )}
+                            )} */}
                             {
                                 arrangement.showPrice && (<p className="text-sm text-[var(--foreground)]">₱{(arrangement.price || 0) - (arrangement.discountPrice || 0)}{arrangement.discountPrice && arrangement.discountPrice > 0 ? <span className="ml-2 text-xs line-through text-[var(--surface-border)]">₱{arrangement.price}</span> : null}</p> )
                             }

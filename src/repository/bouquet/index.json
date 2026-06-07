@@ -6,7 +6,7 @@
     "images": [
       "/app/arrangements/bouquets/81/81.1.jpg"
     ],
-    "description": "5pcs Roses",
+    "description": "12pcs Carnations - Mixed Colors",
     "price": 1150,
     "discountPrice": 0,
     "showPrice": true,
@@ -27,7 +27,7 @@
     "images": [
       "/app/arrangements/bouquets/82/82.1.jpg"
     ],
-    "description": "5pcs Roses",
+    "description": "6pcs Roses",
     "price": 1150,
     "discountPrice": 0,
     "showPrice": true,
@@ -50,8 +50,8 @@
       "/app/arrangements/bouquets/83/83.2.jpg",
       "/app/arrangements/bouquets/83/83.3.jpg"
     ],
-    "description": "5pcs Roses",
-    "price": 1150,
+    "description": "5pcs Roses and 1 stem of lily",
+    "price": 1500,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": [
