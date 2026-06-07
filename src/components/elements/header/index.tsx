@@ -43,9 +43,9 @@ export default function Header() {
           aria-label="Toggle menu"
         >
           <div className="w-6 space-y-1">
-            <span className={`block h-0.5 w-full rounded-full bg-gray-800 transition ${isMenuOpen ? 'translate-y-2 rotate-45' : ''}`} />
-            <span className={`block h-0.5 w-full rounded-full bg-gray-800 transition ${isMenuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block h-0.5 w-full rounded-full bg-gray-800 transition ${isMenuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+            <span className={`block h-0.5 w-full rounded-full bg-[var(--foreground)] transition ${isMenuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+            <span className={`block h-0.5 w-full rounded-full bg-[var(--foreground)] transition ${isMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block h-0.5 w-full rounded-full bg-[var(--foreground)] transition ${isMenuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
           </div>
         </button>
       </div>
@@ -55,7 +55,7 @@ export default function Header() {
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <button onClick={toggleMenu} className="absolute right-6 top-6 rounded-full border border-green-200 bg-green-50 p-3 text-green-700">
+        <button onClick={toggleMenu} className="absolute right-6 top-6 rounded-full border border-[var(--surface-border)] bg-[var(--surface-muted)] p-3 text-[var(--foreground)]">
           ×
         </button>
         <ul className="flex flex-col items-center gap-6 text-lg font-semibold text-[var(--accent-strong)]">

@@ -54,10 +54,10 @@ export default function WrapperSelector({
   };
 
   return (
-    <div className="mb-6 rounded-[1.25rem] border border-pink-200 p-4 bg-pink-50/90">
-      <h3 className="text-lg font-semibold text-blue-950 mb-4">Select Wrapper Color</h3>
+    <div className="mb-6 rounded-[1.25rem] border border-[var(--surface-border)] p-4 bg-[var(--surface-muted)]">
+      <h3 className="text-lg font-semibold text-[var(--foreground)] mb-4">Select Wrapper Color</h3>
 
-      <div className="text-sm text-gray-600 mb-2">Selected: {selections.length} / {maxSelections}</div>
+      <div className="text-sm text-[var(--surface-border)] mb-2">Selected: {selections.length} / {maxSelections}</div>
 
       {/* Color buttons */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
@@ -71,8 +71,8 @@ export default function WrapperSelector({
                 }}
                 className={`px-4 py-2 rounded-2xl font-medium transition-all text-sm ${
                   isSelected
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-white text-blue-950 border border-pink-300 hover:border-blue-500'
+                    ? 'bg-[var(--accent)] text-[var(--surface)] shadow-md'
+                    : 'bg-[var(--surface)] text-[var(--foreground)] border border-[var(--surface-border)] hover:border-[var(--accent)]'
                 }`}
               >
                 {colorData.name}
@@ -80,7 +80,7 @@ export default function WrapperSelector({
               {isSelected && (
                 <button
                   onClick={() => removeSelection(colorKey)}
-                  className="text-xs text-rose-400 mt-1"
+                  className="text-xs text-[var(--accent)] mt-1"
                 >
                   Remove
                 </button>
@@ -93,7 +93,7 @@ export default function WrapperSelector({
       {/* Variant selector for expanded color */}
       {expanded && (
         <div className="mt-4">
-          <p className="text-sm font-medium text-gray-600 mb-3">
+          <p className="text-sm font-medium text-[var(--surface-border)] mb-3">
             Variants for {colors[expanded].name}:
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -103,11 +103,11 @@ export default function WrapperSelector({
                 onClick={() => handleSelectVariant(expanded as string, variant)}
                 className={`relative overflow-hidden rounded-2xl border-2 transition-all ${
                   selections.find((s) => s.variantId === variant.id && s.color === expanded)
-                    ? 'border-blue-500 shadow-md scale-105'
-                    : 'border-pink-300 hover:border-blue-500'
+                    ? 'border-[var(--accent)] shadow-md scale-105'
+                    : 'border-[var(--surface-border)] hover:border-[var(--accent)]'
                 }`}
               >
-                <div className="relative w-full h-24 bg-pink-100">
+                <div className="relative w-full h-24 bg-[var(--surface)]">
                   <Image
                     src={variant.image}
                     alt={variant.id}
@@ -118,7 +118,7 @@ export default function WrapperSelector({
                     }}
                   />
                 </div>
-                <p className="text-xs font-medium text-blue-950 p-2 text-center bg-white">{variant.id}</p>
+                <p className="text-xs font-medium text-[var(--foreground)] p-2 text-center bg-[var(--surface)]">{variant.id}</p>
               </button>
             ))}
           </div>
@@ -127,17 +127,17 @@ export default function WrapperSelector({
 
       {/* Selected wrapper previews */}
       {selections.length > 0 && (
-        <div className="mt-4 p-3 bg-white/80 rounded-2xl border border-pink-200">
-          <p className="text-sm text-gray-600 font-semibold mb-2">Selected:</p>
+        <div className="mt-4 p-3 bg-[var(--surface)]/80 rounded-2xl border border-[var(--surface-border)]">
+          <p className="text-sm text-[var(--surface-border)] font-semibold mb-2">Selected:</p>
           <div className="flex gap-2 overflow-x-auto">
             {selections.map((s) => (
-              <div key={s.color} className="flex items-center gap-2 bg-white p-2 rounded-lg border border-pink-200">
+              <div key={s.color} className="flex items-center gap-2 bg-[var(--surface)] p-2 rounded-lg border border-[var(--surface-border)]">
                 <div className="w-10 h-10 relative rounded overflow-hidden">
                   <Image src={s.variantImage} alt={s.variantId} fill className="object-cover" />
                 </div>
-                <div className="text-xs text-gray-600">
+                <div className="text-xs text-[var(--foreground)]">
                   <div className="font-medium">{colors[s.color].name}</div>
-                  <div className="text-gray-500">{s.variantId}</div>
+                  <div className="text-[var(--surface-border)]">{s.variantId}</div>
                 </div>
               </div>
             ))}

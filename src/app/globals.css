@@ -9,6 +9,8 @@
   --accent: #34D399; /* green-400 */
   --accent-strong: #047857; /* green-800 */
   --accent-soft: #BBF7D0;
+  --gradient-top: rgba(52, 211, 153, 0.12);
+  --gradient-bottom: rgba(16, 185, 129, 0.06);
 }
 
 .surface-card {
@@ -43,14 +45,27 @@
 
 /* Theme variants - add more themes here and switch by toggling the class on <body> */
 .theme-green {
-  --background: #F7FFFA;
-  --foreground: #123824;
+  --background: #ECFDF5;
+  --foreground: #064E3B;
   --surface: #FFFFFF;
-  --surface-muted: #F0FFF6;
-  --surface-border: #DFF6E9;
-  --accent: #34D399;
+  --surface-muted: #D1FAE5;
+  --surface-border: #86EFAC;
+  --accent: #10B981;
   --accent-strong: #047857;
   --accent-soft: #BBF7D0;
+}
+
+.theme-blue {
+  --background: #0F172A;
+  --foreground: #E2E8F0;
+  --surface: #152238;
+  --surface-muted: #1E293B;
+  --surface-border: #2563EB;
+  --accent: #60A5FA;
+  --accent-strong: #1D4ED8;
+  --accent-soft: #93C5FD;
+  --gradient-top: rgba(59, 130, 246, 0.22);
+  --gradient-bottom: rgba(37, 99, 235, 0.14);
 }
 
 .theme-purple {
@@ -72,8 +87,8 @@
 }
 
 body {
-  background: radial-gradient(circle at top left, rgba(52, 211, 153, 0.12), transparent 24%),
-    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.06), transparent 28%),
+  background: radial-gradient(circle at top left, var(--gradient-top), transparent 24%),
+    radial-gradient(circle at bottom right, var(--gradient-bottom), transparent 28%),
     var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
