@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="theme-blue antialiased bg-[var(--background)] text-[var(--foreground)] min-h-screen">
+      <body className="theme-green antialiased bg-[var(--background)] text-[var(--foreground)] min-h-screen">
         <AnalyticsProvider>
           <CartProvider>
             <Header />
