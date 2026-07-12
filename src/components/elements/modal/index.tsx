@@ -224,12 +224,13 @@ export default function ArrangementModal({
                   href={`https://www.youtube.com/watch?v=${youtubeIdToUse}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[var(--accent)] hover:underline"
+                  className="inline-flex items-center gap-3 bg-[#FF0000] text-white px-4 py-2 rounded-full font-semibold shadow-md hover:bg-[#cc0000] transition"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M8 5v14l11-7z" />
                   </svg>
-                  Watch sample arrangement
+                  <span>Watch sample arrangement</span>
+                  <span className="ml-2 inline-block rounded-full bg-white/20 px-2 py-0.5 text-xs font-medium">Sample</span>
                 </a>
               </div>
             )}
