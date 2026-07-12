@@ -111,6 +111,7 @@ export default function BouquetsPage() {
                     arrangementTitle={selectedArrangement.title}
                     arrangementDescription={selectedArrangement.description}
                     productId={selectedArrangement.id}
+                    productYoutubeId={selectedArrangement.youtubeId}
                     productPrice={(selectedArrangement.price || 0) - (selectedArrangement.discountPrice || 0)}
                 />
             )}

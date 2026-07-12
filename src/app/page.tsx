@@ -146,6 +146,8 @@ export default function Home() {
           onClose={closeModal}
           arrangementImages={selectedArrangement.images}
           arrangementTitle={selectedArrangement.title}
+          productId={selectedArrangement.id}
+          productYoutubeId={selectedArrangement.youtubeId}
         />
       )}
     </div>

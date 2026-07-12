@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 import bouquetData from '@/repository/bouquet/index.json';
+import { GetVideos } from '@/repository/youtube/videos';
 
 interface ModalProps {
   isOpen: boolean;
@@ -13,6 +14,7 @@ interface ModalProps {
   arrangementDescription?: string;
   productId?: string;
   productPrice?: number;
+  productYoutubeId?: string;
 }
 
 export default function ArrangementModal({ 
@@ -23,6 +25,7 @@ export default function ArrangementModal({
   arrangementDescription,
   productId,
   productPrice,
+  productYoutubeId,
 }: ModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(true);
@@ -34,20 +37,23 @@ export default function ArrangementModal({
 
   if (!isOpen) return null;
 
+  const hasPrev = currentImageIndex > 0;
+  const hasNext = currentImageIndex < arrangementImages.length - 1;
+
   const nextImage = () => {
-    setIsImageLoading(true);
-    setCurrentImageIndex((prev) => {
-      const i = (prev + 1) % arrangementImages.length
-      console.log('Next image index:', i);
-      return i;
-    });
+    // Only advance if there is a next image
+    if (currentImageIndex < arrangementImages.length - 1) {
+      setIsImageLoading(true);
+      setCurrentImageIndex((prev) => prev + 1);
+    }
   };
 
   const prevImage = () => {
-    setIsImageLoading(true);
-    setCurrentImageIndex((prev) => 
-      prev === 0 ? arrangementImages.length - 1 : prev - 1
-    );
+    // Only go back if there is a previous image
+    if (currentImageIndex > 0) {
+      setIsImageLoading(true);
+      setCurrentImageIndex((prev) => prev - 1);
+    }
   };
 
   const openFullscreen = () => {
@@ -113,6 +119,25 @@ export default function ArrangementModal({
     }, 500);
   };
 
+  // Try to find a related YouTube video for this arrangement
+  const videos = GetVideos();
+  const findMatch = () => {
+    const title = arrangementTitle?.toLowerCase() || '';
+    // Normalize video titles (strip 'code:' prefix)
+    for (const v of videos) {
+      const vt = (v.title || '').toLowerCase();
+      const vtStripped = vt.replace(/^code:\s*/i, '').trim();
+      if (!vt) continue;
+      if (vt.includes(title) || vtStripped.includes(title)) return v;
+      if (title.includes(vtStripped)) return v;
+      if (productId && (vt.includes(productId.toLowerCase()) || vtStripped.includes(productId.toLowerCase()))) return v;
+    }
+    return null;
+  };
+
+  const matchedVideo = findMatch();
+  const youtubeIdToUse = productYoutubeId || matchedVideo?.id || null;
+
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 px-3 py-6 backdrop-blur-sm">
       <div className="relative mx-auto w-full max-w-[95vw] rounded-[2rem] bg-[var(--surface)]/98 p-4 sm:p-6 shadow-[0_30px_60px_-24px_rgba(15,23,42,0.18)]">
@@ -151,7 +176,8 @@ export default function ArrangementModal({
               {/* Navigation buttons (overlay) */}
               <button
                 onClick={prevImage}
-                className="absolute left-3 top-1/2 z-10 transform -translate-y-1/2 rounded-full bg-[var(--surface)]/90 p-2 shadow-lg transition hover:bg-[var(--surface)]"
+                disabled={!hasPrev}
+                className={`absolute left-3 top-1/2 z-10 transform -translate-y-1/2 rounded-full bg-[var(--surface)]/90 p-2 shadow-lg transition hover:bg-[var(--surface)] ${!hasPrev ? 'opacity-50 pointer-events-none' : ''}`}
                 aria-label="Previous image"
               >
                 <svg className="w-6 h-6 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,7 +187,8 @@ export default function ArrangementModal({
 
               <button
                 onClick={nextImage}
-                className="absolute right-3 top-1/2 z-10 transform -translate-y-1/2 rounded-full bg-[var(--surface)]/90 p-2 shadow-lg transition hover:bg-[var(--surface)]"
+                disabled={!hasNext}
+                className={`absolute right-3 top-1/2 z-10 transform -translate-y-1/2 rounded-full bg-[var(--surface)]/90 p-2 shadow-lg transition hover:bg-[var(--surface)] ${!hasNext ? 'opacity-50 pointer-events-none' : ''}`}
                 aria-label="Next image"
               >
                 <svg className="w-6 h-6 text-[var(--foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -188,6 +215,23 @@ export default function ArrangementModal({
             {/* Price */}
             {productPrice && (
               <div className="text-lg font-semibold text-[var(--accent)] mb-4">₱{productPrice.toLocaleString()}</div>
+            )}
+
+            {/* YouTube sample link (if available) */}
+            {youtubeIdToUse && (
+              <div className="mb-4">
+                <a
+                  href={`https://www.youtube.com/watch?v=${youtubeIdToUse}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[var(--accent)] hover:underline"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  Watch sample arrangement
+                </a>
+              </div>
             )}
 
             {/* Notes (for all products) */}
@@ -285,8 +329,9 @@ export default function ArrangementModal({
 
               {/* Prev/Next in fullscreen */}
               <button
-                onClick={() => { setIsImageLoading(true); prevImage(); }}
-                className="absolute left-6 top-1/2 transform -translate-y-1/2 rounded-full p-3 text-[var(--surface)] bg-[var(--surface)]/10 hover:bg-[var(--surface)]/20"
+                onClick={() => prevImage()}
+                disabled={!hasPrev}
+                className={`absolute left-6 top-1/2 transform -translate-y-1/2 rounded-full p-3 text-[var(--surface)] bg-[var(--surface)]/10 hover:bg-[var(--surface)]/20 ${!hasPrev ? 'opacity-50 pointer-events-none' : ''}`}
                 aria-label="Previous image"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -295,8 +340,9 @@ export default function ArrangementModal({
               </button>
 
               <button
-                onClick={() => { setIsImageLoading(true); nextImage(); }}
-                className="absolute right-6 top-1/2 transform -translate-y-1/2 rounded-full p-3 text-[var(--surface)] bg-[var(--surface)]/10 hover:bg-[var(--surface)]/20"
+                onClick={() => nextImage()}
+                disabled={!hasNext}
+                className={`absolute right-6 top-1/2 transform -translate-y-1/2 rounded-full p-3 text-[var(--surface)] bg-[var(--surface)]/10 hover:bg-[var(--surface)]/20 ${!hasNext ? 'opacity-50 pointer-events-none' : ''}`}
                 aria-label="Next image"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

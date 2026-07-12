@@ -66,6 +66,7 @@ export interface ArrangementData {
   showPrice?: boolean;
   flowers?: string[]
   wrappers?: string[];
+  youtubeId?: string;
 }
 
 export const featuredArrangements: ArrangementData[] = [
