@@ -1,0 +1,18 @@
+[
+  {
+    "id": "fb_1",
+    "title": "FB#1",
+    "mainImage": "/app/arrangements/flower_box/fb_1/fb_1.1.jpg",
+    "images": [
+      "/app/arrangements/flower_box/fb_1/fb_1.1.jpg",
+      "/app/arrangements/flower_box/fb_1/fb_1.2.jpg",
+      "/app/arrangements/flower_box/fb_1/fb_1.3.jpg"
+    ],
+    "description": "Assorted seasonal flowers in a decorative box",
+    "price": 1200,
+    "discountPrice": 0,
+    "showPrice": true,
+    "flowers": ["mixed"],
+    "wrappers": ["white"]
+  }
+]
