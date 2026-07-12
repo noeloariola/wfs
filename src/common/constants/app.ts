@@ -21,7 +21,7 @@ export const headerLinks: {title: string, href: string}[] = [
     href: '/gifts'
   },
   {
-    title: 'Centerpieces',
+    title: 'Flower Box',
     href: '/centerpieces'
   },
   {
@@ -66,6 +66,7 @@ export interface ArrangementData {
   showPrice?: boolean;
   flowers?: string[]
   wrappers?: string[];
+  youtubeId?: string;
 }
 
 export const featuredArrangements: ArrangementData[] = [

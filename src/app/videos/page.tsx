@@ -12,7 +12,7 @@ export default function VideosPage() {
           <section className="rounded-[2rem] border border-pink-200 bg-pink-50/80 p-8 shadow-[0_30px_80px_-30px_rgba(15,23,42,0.8)]">
             <div className="mb-8 text-center">
               <p className="text-sm uppercase tracking-[0.32em] text-gray-500">Floral Design Videos</p>
-              <h2 className="mt-3 text-4xl font-semibold text-blue-950">Watch our latest floral tutorials</h2>
+              <h2 className="mt-3 text-4xl font-semibold text-blue-950">Watch our sample floral arrangement</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {videos.map((video) => (
