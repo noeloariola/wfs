@@ -8,8 +8,8 @@
       "/app/arrangements/bouquets/87/87.2.jpg",
       "/app/arrangements/bouquets/87/87.3.jpg"
     ],
-    "description": "46pcs China Rose with lily",
-    "price": 8100,
+    "description": "12pcs Sprayed Yellow Rose",
+    "price": 2300,
     "discountPrice": 0,
     "showPrice": true,
     "flowers": [
@@ -1220,8 +1220,8 @@
       "/app/arrangements/bouquets/REDGLD-1/REDGLD-1.1.jpg"
     ],
     "description": "3 Dozen Red Rose with chamomile",
-    "price": 4100,
-    "discountPrice": 450,
+    "price": 4800,
+    "discountPrice": 0,
     "showPrice": true,
     "wrappers": [
       "red",
